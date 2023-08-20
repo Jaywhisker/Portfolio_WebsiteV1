@@ -1,0 +1,70 @@
+.navContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Lato', sans-serif;
+    margin: 8vh 7.5vw;
+    opacity: 0;
+    animation: fadein 1s forwards;
+}
+
+.rightnavContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 20%;
+}
+
+
+.name,
+.righttext{
+    color: var(--dark_base);
+}
+
+.righttext:hover,
+.name:hover{
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--dark_base), var(--dark_base),#b0b0b0, var(--dark_base),var(--dark_base));
+    background-repeat: no-repeat;
+    animation: shine 2.5s linear infinite;
+    background-size: 300% 100%;
+    background-clip: text; 
+    color: transparent;
+  }
+
+
+.namedark,
+.righttextdark{
+    color: var(--light_base);
+}
+
+.righttextdark:hover,
+.namedark:hover{
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--light_base), var(--light_base),#b0b0b0, var(--light_base),var(--light_base));
+    background-repeat: no-repeat;
+    animation: shine 2.5s linear infinite;
+    background-size: 300% 100%;
+    background-clip: text; 
+    color: transparent;
+}
+
+@keyframes shine {
+    0%{
+        background-position: 100% 0;
+    }
+    100%{
+        background-position: 0% 0;
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

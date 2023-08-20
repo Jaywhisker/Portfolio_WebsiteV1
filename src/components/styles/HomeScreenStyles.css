@@ -1,0 +1,65 @@
+.home{
+    height: 100vh;
+    width: 100vw;
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+
+.logoCircleHome{
+    position: relative;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+    background-color: var(--light_orange);
+    margin: calc(30vh - 18vw) 35%;
+    transform-origin: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    animation: slideleft 2s ease-in-out forwards;
+}
+
+
+@keyframes slideleft {
+
+    0% {
+        margin: calc(30vh - 18vw) 35%;
+        transform: scale(1);
+    }
+    15%{
+        margin: calc(30vh - 18vw) 35%;
+        transform: scale(1.1);
+    }
+    40%{
+        margin: calc(30vh - 18vw) 35%;
+        transform: scale(0.8);
+    }
+
+    100% {
+        margin: calc(30vh - 18vw) 5%;
+        transform: scale(0.8);
+    }
+    
+}
+
+.eyesHome{
+    background-color: white;
+    position: absolute;
+    left:11vw;
+    z-index: 999;
+    width: 5vw;
+    height: 2.5vw;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.pupilsHome{
+    background-color: var(--dark_base);
+    width: 2.6vw;
+    height: 2.6vw;
+    border-radius: 50%;
+    margin-left: 20%;
+}

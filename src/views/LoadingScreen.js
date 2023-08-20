@@ -1,12 +1,16 @@
 import React,  { useState, useEffect }  from 'react';
 import '../components/styles/LoadingScreenStyles.css';
+import NavBar from './Navbar';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
-const LoadingScreen = () => {
+const LoadingScreen = ({lightMode}) => {
 
   return (
     <div className='loadingContainer'>
-      <div className='logoCircle'>
+      <div style={{opacity:0}}>
+        <NavBar/>
+      </div>
+      <div className='logoCircle' style={{backgroundColor: lightMode ? `var(--light_orange)` : `var(--light_base)`}}>
         <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 239.89 155.04">
           <defs>
             <style>{`.cls-1{stroke-miterlimit:10;}.cls-1`},{`.cls-2{fill:none;stroke:#252227;stroke-linecap:round;stroke-width:8px;}.cls-2{stroke-linejoin:round;}`}</style>

@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     opacity: 1;
-    animation: fadeanimation 2s forwards 8s;
+    animation: fadeanimation 1.5s forwards 5s;
 }
 
 .logoCircle{
@@ -15,7 +15,7 @@
     height: 30vw;
     border-radius: 50%;
     background-color: var(--light_orange);
-    margin: calc(50vh - 18vw) 35%;
+    margin: calc(30vh - 18vw) 35%;
     animation: expandPopUp 1s ease-in-out forwards;
     transform-origin: center;
     opacity: 0;
@@ -34,7 +34,7 @@
 .leftear{
     stroke-dasharray: 94px;
     opacity: 0;
-    animation: earanimation 1.2s forwards 4.5s;
+    animation: earanimation 1s forwards 4.5s;
 }
 
 .c-animation{
@@ -46,25 +46,25 @@
 .w-animation{
     stroke-dasharray: 150px;
     opacity: 0;
-    animation: wanimation 2.3s forwards 1.8s;
+    animation: wanimation 2s forwards 1.8s;
 }
 
 .x1-animation{
     stroke-dasharray: 29px;
     opacity: 0;
-    animation: xanimation 0.75s forwards 3s;
+    animation: xanimation 0.5s forwards 3.25s;
 }
 
 .x2-animation{
     stroke-dasharray: 29px;
     opacity: 0;
-    animation: xanimation 0.75s forwards 3.45s;
+    animation: xanimation 0.5s forwards 3.5s;
 }
 
 .whisker{
     stroke-dasharray: 22px;
     opacity: 0;
-    animation: whiskeranimation 1.2s forwards 4.5s;
+    animation: whiskeranimation 1s forwards 4.5s;
 }
 
 @keyframes fadeanimation {
@@ -192,7 +192,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    animation: eyeopening 1.5s forwards 4.5s
+    animation: eyeopening 1s forwards 4s
 }
 
 .pupils{
@@ -201,7 +201,7 @@
     height: 2.6vw;
     border-radius: 50%;
     margin-left: 20%;
-    animation: eyemoving 2s forwards 6s;
+    animation: eyemoving 1.5s forwards 5s;
 }
 
 @keyframes eyeopening {
