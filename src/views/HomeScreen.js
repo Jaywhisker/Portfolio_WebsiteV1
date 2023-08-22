@@ -14,8 +14,11 @@ const HomeScreen = () => {
 
   const [lightMode, setlightMode] = useState(true)
   const [isloadingScreen, setisLoadingScreen] = useState(location.state === null ? true : false)
-  console.log(location.state)
-  console.log(isloadingScreen)
+
+  let animationFinished = false;
+  let pupilXoffset;
+  let pupilYoffset;
+  
 
   useEffect(() => {
     if (lightMode) {
@@ -25,7 +28,6 @@ const HomeScreen = () => {
     }
   }, [lightMode]);
   
-
 
   useEffect(() => {
     if (isloadingScreen) {
@@ -44,13 +46,15 @@ const HomeScreen = () => {
     if (!isloadingScreen) {
       document.getElementsByClassName("contactbutton")[0].addEventListener("mouseover", mouseOver);
       document.getElementsByClassName("contactbutton")[0].addEventListener("mouseout", mouseOut);
+      document.querySelector('.logoCircleHome').addEventListener("animationend", animationEnd);
+      document.addEventListener("mousemove", movePupils);
     }
   }, [isloadingScreen])
 
   function mouseOver() {
     var getInTouchElement = document.getElementsByClassName("getintouch")[0];
     setTimeout(function() {
-      getInTouchElement.textContent = "Copy mail ?";
+      getInTouchElement.textContent = "Send a mail?";
     }, 100)
   }
 
@@ -60,6 +64,71 @@ const HomeScreen = () => {
       getInTouchElement.textContent = "Get in touch";
     }, 100)
   }
+
+  function contactMe() {
+    const email = "chengweixuan.business@gmail.com";
+    const mailtoLink = `mailto:${email}`;
+    window.location.href = mailtoLink;
+  }
+
+  function animationEnd() {
+    animationFinished = true
+    const eyeContainer = document.querySelector('.eyesHome');
+    const logoCircle = document.querySelector('.logoCircleHome');
+    pupilXoffset = eyeContainer.offsetLeft + logoCircle.offsetLeft;
+    pupilYoffset = eyeContainer.offsetTop + logoCircle.offsetTop;
+
+  }
+
+  function movePupils(event) {
+    if (animationFinished === true) {
+      const pupils = document.querySelector('.pupilsHome');
+      const eyeContainer = document.querySelector('.eyesHome');
+      const centerX = 18
+      const centerY = -1
+
+      const mouseX = event.clientX
+      const mouseY = event.clientY
+
+      const documentWidth = document.documentElement.clientWidth;
+      const documentHeight = document.documentElement.clientHeight; 
+      const boundary_container = [-10, 1, 8, (documentWidth*0.024 -1 )] //top left bottom right
+
+      const centerpointX = pupilXoffset + centerX
+      const centerpointY = pupilYoffset + centerY
+
+      let ratioX;
+      let ratioY;
+      let pupilleft;
+      let pupiltop;
+
+      if (mouseX <= centerpointX) {
+        ratioX = (mouseX / centerpointX).toFixed(1)
+        pupilleft = ((ratioX * (centerX - boundary_container[1])) + boundary_container[1]).toFixed(1)
+      } 
+      else {
+        ratioX = ((mouseX - centerpointX) / (documentWidth - centerpointX)).toFixed(2) * 5
+        if (ratioX > 1) {
+          ratioX = 1
+        }
+        pupilleft = ((ratioX * (boundary_container[3] - centerX)) + centerX).toFixed(1)
+      }
+
+      if (mouseY <= centerpointY) {
+        ratioY = (mouseY / centerpointY).toFixed(1)
+        pupiltop = ((ratioY * (centerY - boundary_container[0])) + boundary_container[0]).toFixed(1)
+      } 
+      else {
+        ratioY = ((mouseY - centerpointY) / (documentHeight - centerpointY)).toFixed(1)
+        pupiltop = ((ratioY * (boundary_container[2] - centerY)) + centerY).toFixed(1)
+      }
+
+      pupils.style.left = `${pupilleft}px`
+      pupils.style.top =  `${pupiltop}px`
+
+    }
+  }
+
 
   return (
     <div className='container'>
@@ -98,17 +167,19 @@ const HomeScreen = () => {
             </div>
 
             <div className='welcometext'>
-              <p className='info'>Hi! I’m Wei Xuan, a creative developer and AI engineer. I like making things fun and interactive to make an impact.</p>
+              <p className='info'>Hi! I’m Wei Xuan, a creative developer and an AI engineer. I like making things fun and interactive to make an impact.</p>
               <div className='iconContainer'>
                 <button className='contactbutton'>
-                  <p className='arrow'>→ <span className='getintouch'>Get in touch</span></p>
+                  <p> <span className='arrow'>→ </span><span className='getintouch' onClick={contactMe}>Get in touch</span></p>
                 </button>
                 <div className='righticonContainer'>
-                  <a href='https://github.com/Jaywhisker' target="_blank">
+                  <a style={{position:'relative'}} href='https://github.com/Jaywhisker' target="_blank">
                     <FontAwesomeIcon icon={faGithub} className="externalIcon"/>
+                    <div className='hoverContainer'>Github</div>
                   </a>
-                  <a href='https://www.linkedin.com/in/chengweixuan/' target="_blank">
+                  <a  style={{position:'relative'}}  href='https://www.linkedin.com/in/chengweixuan/' target="_blank">
                     <FontAwesomeIcon icon={faLinkedin} className="externalIcon"/>
+                    <div className='hoverContainer'>LinkedIn</div>
                   </a>
                 </div>
               </div>

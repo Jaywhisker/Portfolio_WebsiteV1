@@ -21,6 +21,7 @@
 .name,
 .righttext{
     color: var(--dark_base);
+    font-size: 1em;
 }
 
 .righttext:hover,
