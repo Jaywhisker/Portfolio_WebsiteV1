@@ -18,16 +18,7 @@ const HomeScreen = () => {
   let animationFinished = false;
   let pupilXoffset;
   let pupilYoffset;
-  
 
-  useEffect(() => {
-    if (lightMode) {
-      document.body.style.backgroundColor = `var(--light_base)`;
-    } else {
-      document.body.style.backgroundColor = `var(--dark_base)`;
-    }
-  }, [lightMode]);
-  
 
   useEffect(() => {
     if (isloadingScreen) {
@@ -42,14 +33,26 @@ const HomeScreen = () => {
   }, []); 
 
 
+  useEffect(() => {
+    console.log(document.body.style)
+    if (lightMode) {
+        document.body.style.backgroundColor = `var(--light_base)`;
+    } else {
+        document.body.style.backgroundColor = `var(--dark_base)`;
+    }
+  }, [lightMode]);
+  
+
+
   useEffect(()=> {
-    if (!isloadingScreen) {
+    if (!isloadingScreen) {  
       document.getElementsByClassName("contactbutton")[0].addEventListener("mouseover", mouseOver);
       document.getElementsByClassName("contactbutton")[0].addEventListener("mouseout", mouseOut);
       document.querySelector('.logoCircleHome').addEventListener("animationend", animationEnd);
       document.addEventListener("mousemove", movePupils);
     }
   }, [isloadingScreen])
+
 
   function mouseOver() {
     var getInTouchElement = document.getElementsByClassName("getintouch")[0];
@@ -71,19 +74,19 @@ const HomeScreen = () => {
     window.location.href = mailtoLink;
   }
 
+
   function animationEnd() {
     animationFinished = true
     const eyeContainer = document.querySelector('.eyesHome');
     const logoCircle = document.querySelector('.logoCircleHome');
     pupilXoffset = eyeContainer.offsetLeft + logoCircle.offsetLeft;
     pupilYoffset = eyeContainer.offsetTop + logoCircle.offsetTop;
-
   }
+
 
   function movePupils(event) {
     if (animationFinished === true) {
       const pupils = document.querySelector('.pupilsHome');
-      const eyeContainer = document.querySelector('.eyesHome');
       const centerX = 18
       const centerY = -1
 
@@ -128,7 +131,39 @@ const HomeScreen = () => {
 
     }
   }
+  
+  function eyeLightToggle() {
+      const eyeContainer = document.querySelector('.eyesHome');
+      const pupils = document.querySelector('.pupilsHome');
+      eyeContainer.style.animation = "none";
+      pupils.style.animation = "none";
+      pupils.style.top = '-1px';
+      pupils.style.left = '18px';
 
+      document.body.style.transition = "background-color 0.5s"
+      document.body.style.transitionDelay = "0.1s"
+
+      if (lightMode) {
+          eyeContainer.style.animation = "narrowingeyes 2s ease forwards";
+          pupils.style.animation = "sliteyes 2.5s ease forwards";
+          setTimeout(() => {
+            eyeContainer.style.backgroundColor = "var(--light_orange)"
+          }, 100)
+      } else {
+          eyeContainer.style.animation = "narrowingeyes 2s ease forwards";
+          pupils.style.animation = "openeyes 2.5s ease forwards";
+          setTimeout(() => {
+            eyeContainer.style.backgroundColor = "white"
+          }, 100)
+      }
+      eyeContainer.addEventListener("animationend", () => {
+        eyeContainer.style.animation = "blinking 6s ease-in-out infinite 5s";
+    }, { once: true }); 
+
+    console.log(document.body.style.transition, document.body.style.transitionDelay)
+    setlightMode(!lightMode);
+
+}
 
   return (
     <div className='container'>
@@ -161,7 +196,7 @@ const HomeScreen = () => {
                 </g>
               </svg>
               
-              <div className='eyesHome' id="clip">
+              <div className='eyesHome' id="clip" onClick={eyeLightToggle}>
                   <div className='pupilsHome'></div>
               </div>
             </div>

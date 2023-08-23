@@ -6,3 +6,7 @@
     --dark_base: #252227;
     --dark_gray: #949494;
 }
+
+body{
+    transition:none
+}

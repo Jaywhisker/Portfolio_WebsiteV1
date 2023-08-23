@@ -7,14 +7,6 @@ const NavBar = ({lightMode}) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (lightMode) {
-        document.body.style.backgroundColor = `var(--light_base)`;
-        } else {
-        document.body.style.backgroundColor = `var(--dark_base)`;
-        }
-    }, [lightMode]);
-
 
 
   return (
