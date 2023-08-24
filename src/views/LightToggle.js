@@ -1,11 +1,10 @@
 import React,  { useState, useEffect }  from 'react';
-import '../components/styles/NavBarScreenStyles.css';
+import '../components/styles/LightToggleStyles.css';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
-const NavBar = ({lightMode}) => {
+const NavBar = ({lightMode, setlightMode}) => {
 
-    const location = useLocation();
-    const navigate = useNavigate();
+    function toggleChange()
     
 
   return (

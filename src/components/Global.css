@@ -3,10 +3,13 @@
 :root {
     --light_base : #FFFAF1;
     --light_orange: #FFDFAE;
-    --dark_base: #282623;
+    --dark_base: #181818;
     --dark_gray: #949494;
+    --dark_brown: #4c4843;
+    --eye_orange: #e5c573;
 }
 
 body{
+    color: #8C8985;
     transition:none
 }

@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     opacity: 1;
-    animation: fadeanimation 1.5s forwards 5s;
+    animation: none
 }
 
 .logoCircle{
@@ -14,7 +14,6 @@
     width: 30vw;
     height: 30vw;
     border-radius: 50%;
-    background-color: var(--light_orange);
     margin: calc(30vh - 18vw) 35%;
     animation: expandPopUp 1s ease-in-out forwards;
     transform-origin: center;
@@ -22,6 +21,8 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    transition: background-color 1.5s;
+    transition-delay: 0.1s;
 }
 
 #logo{
@@ -67,12 +68,22 @@
     animation: whiskeranimation 1s forwards 4.5s;
 }
 
-@keyframes fadeanimation {
+@keyframes fadeanimationlight {
     from {
         background-color: white;
     }
     to {
         background-color: var(--light_base);
+    }
+}
+
+
+@keyframes fadeanimationdark {
+    from {
+        background-color: #282828;
+    }
+    to {
+        background-color: var(--dark_base);
     }
 }
 
@@ -250,3 +261,5 @@
         left: 18px;
     }
 }
+
+

@@ -3,17 +3,26 @@ import '../components/styles/LoadingScreenStyles.css';
 import NavBar from './Navbar';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
-const LoadingScreen = ({lightMode}) => {
+
+const LoadingScreen = ({lightMode, pathColour}) => {
+
+  useEffect(() =>  {
+    if (lightMode) {
+      document.querySelector('.loadingContainer').style.animation = 'fadeanimationlight 1.5s forwards 5s'
+    } else {
+      document.querySelector('.loadingContainer').style.animation = 'fadeanimationlight 1.5s forwards 5s'
+    }
+  })
 
   return (
-    <div className='loadingContainer'>
+    <div className='loadingContainer' style={{backgroundColor: lightMode ? 'white' : '#282828'}}>
       <div style={{opacity:0}}>
         <NavBar/>
       </div>
-      <div className='logoCircle' style={{backgroundColor: lightMode ? `var(--light_orange)` : `var(--light_base)`}}>
+      <div className='logoCircle' style={{backgroundColor: lightMode ? `var(--light_orange)` : `var(--dark_brown)`}}>
         <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 239.89 155.04">
           <defs>
-            <style>{`.cls-1{stroke-miterlimit:10;}.cls-1`},{`.cls-2{fill:none;stroke:#252227;stroke-linecap:round;stroke-width:8px;}.cls-2{stroke-linejoin:round;}`}</style>
+          <style>{`.cls-1{stroke-miterlimit:10;}.cls-1`},{`.cls-2{fill:none;stroke:${pathColour};stroke-linecap:round;stroke-width:8px;transition:stroke 1s ease;}.cls-2{stroke-linejoin:round;}`}</style>
           </defs>
           <g id="Layer_3">
             <path className="cls-1 leftear" d="m162,34s18-30,32-30,16,44,16,44"/>
@@ -29,8 +38,8 @@ const LoadingScreen = ({lightMode}) => {
           </g>
         </svg>
         
-        <div className='eyes' id="clip">
-            <div className='pupils'></div>
+        <div className='eyes' id="clip"  style={{backgroundColor: lightMode ? 'white' : `var(--eye_orange)`}}>
+            <div className='pupils' style={{transform: lightMode ? 'scaleX(1)' : 'scaleX(0.3)'}}></div>
         </div>
       </div>   
     </div>
