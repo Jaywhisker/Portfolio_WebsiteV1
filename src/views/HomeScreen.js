@@ -158,6 +158,7 @@ const HomeScreen = () => {
       }
       eyeContainer.addEventListener("animationend", () => {
         eyeContainer.style.animation = "blinking 6s ease-in-out infinite 5s";
+        pupils.style.top = '-1px';
     }, { once: true }); 
 
     console.log(document.body.style.transition, document.body.style.transitionDelay)

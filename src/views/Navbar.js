@@ -8,7 +8,6 @@ const NavBar = ({lightMode}) => {
     const navigate = useNavigate();
 
 
-
   return (
     <div className='navContainer'>
         <p className={lightMode ? 'name' : 'namedark'} onClick={() => navigate('/', {state: {firstTime:false}})}> Cheng Wei Xuan</p>

@@ -119,21 +119,33 @@
 @keyframes sliteyes {
     0% {
         transform: scaleX(1);
+        top:-1px
     }
     15%, 25% {
         transform: scaleX(1.4);
+        top: -15px;
     }
     80%, 100% {
         transform: scaleX(0.3);
+        top:-1px
     }
 }
 
 @keyframes openeyes {
-    0%, 20% {
+    0% {
         transform: scaleX(0.3);
+        top:-1px
+    }
+    20%{
+        transform: scaleX(0.3);
+        top:-15px
+    }
+    80%{
+        top:-15px
     }
     80%, 100% {
         transform: scaleX(1);
+        top:-1px
     }
 }
 

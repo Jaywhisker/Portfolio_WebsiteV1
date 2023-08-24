@@ -44,7 +44,7 @@
 .righttextdark:hover,
 .namedark:hover{
     cursor: pointer;
-    background: linear-gradient(90deg, var(--light_base), var(--light_base),#b0b0b0, var(--light_base),var(--light_base));
+    background: linear-gradient(90deg, var(--light_base), var(--light_base),#777777, var(--light_base),var(--light_base));
     background-repeat: no-repeat;
     animation: shine 2.5s linear infinite;
     background-size: 300% 100%;
