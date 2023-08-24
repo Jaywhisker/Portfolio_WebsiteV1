@@ -10,7 +10,7 @@ const LoadingScreen = ({lightMode, pathColour}) => {
     if (lightMode) {
       document.querySelector('.loadingContainer').style.animation = 'fadeanimationlight 1.5s forwards 5s'
     } else {
-      document.querySelector('.loadingContainer').style.animation = 'fadeanimationlight 1.5s forwards 5s'
+      document.querySelector('.loadingContainer').style.animation = 'fadeanimationdark 1.5s forwards 5s'
     }
   })
 
