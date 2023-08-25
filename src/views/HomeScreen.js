@@ -11,10 +11,8 @@ const HomeScreen = () => {
 
   const location = useLocation()
   const navigate = useNavigate()
-
   const [lightMode, setlightMode] = useState(undefined)
-  const [isloadingScreen, setisLoadingScreen] = useState(location.state === null ? true : false)
-
+  const [isloadingScreen, setisLoadingScreen] = useState(location.state === null)
   let animationFinished = false;
   const mountingCount = useRef(0);
   let pupilXoffset;
@@ -44,7 +42,7 @@ const HomeScreen = () => {
 
     if (isloadingScreen) {
       const timeoutId = setTimeout(() => {
-        setisLoadingScreen(false);
+        setisLoadingScreen(false)
         navigate('/', {state: {firstTime:false}})
         }, 6500); 
       return () => {
@@ -55,7 +53,10 @@ const HomeScreen = () => {
 
 
   useEffect(() => {
-    if (lightMode !== undefined) {
+    if (lightMode !== undefined && isloadingScreen === true) {
+      mountingCount.current += 1
+    }
+    else if (lightMode !== undefined && isloadingScreen === false) {
       mountingCount.current += 1
       const eyeContainer = document.querySelector('.eyesHome');
       const pupils = document.querySelector('.pupilsHome');
@@ -66,13 +67,12 @@ const HomeScreen = () => {
   
       document.body.style.transition = "background-color 1.5s"
       document.body.style.transitionDelay = "0.1s"
-
-      if (lightMode === true && mountingCount.current >1 ) {
+      if (lightMode === true && mountingCount.current >1) {
           document.body.style.backgroundColor = `var(--light_base)`;
           document.body.classList.remove("dark_mode");
           localStorage.setItem("lightMode", true);
-          eyeContainer.style.animation = "narrowingeyes 1.75s ease forwards";
-          pupils.style.animation = "openeyes 2.25s ease forwards";
+          eyeContainer.style.animation = "narrowingeyes 1.5s ease forwards";
+          pupils.style.animation = "openeyes 2s ease forwards";
           setTimeout(() => {
             eyeContainer.style.backgroundColor = "white"
           }, 100)
@@ -80,8 +80,8 @@ const HomeScreen = () => {
           document.body.style.backgroundColor = `var(--dark_base)`;
           document.body.classList.add("dark_mode");
           localStorage.setItem("lightMode", false);
-          eyeContainer.style.animation = "narrowingeyes 1.75s ease forwards";
-          pupils.style.animation = "sliteyes 2.25s ease forwards";
+          eyeContainer.style.animation = "narrowingeyes 1.5s ease forwards";
+          pupils.style.animation = "sliteyes 2s ease forwards";
           setTimeout(() => {
             eyeContainer.style.backgroundColor = "var(--eye_orange)"
           }, 100)
@@ -148,7 +148,6 @@ const HomeScreen = () => {
       const documentWidth = document.documentElement.clientWidth;
       const documentHeight = document.documentElement.clientHeight; 
       const boundary_container = [-10, 1, 8, (documentWidth*0.024 -1 )] //top left bottom right
-      console.log(boundary_container)
 
       const centerpointX = pupilXoffset + centerX
       const centerpointY = pupilYoffset + centerY
