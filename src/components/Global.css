@@ -5,11 +5,10 @@
     --light_orange: #FFDFAE;
     --dark_base: #181818;
     --dark_gray: #949494;
-    --dark_brown: #4c4843;
-    --eye_orange: #e5c573;
+    --dark_brown: #413f3c;
+    --eye_orange: #F8CB74;
 }
 
 body{
-    color: #8C8985;
     transition:none
 }

@@ -1,12 +1,14 @@
 import React,  { useState, useEffect }  from 'react';
 import '../components/styles/NavBarScreenStyles.css';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import LightToggle from './LightToggle';
 
-const NavBar = ({lightMode}) => {
 
-    const location = useLocation();
-    const navigate = useNavigate();
-    
+const NavBar = ({lightMode, setlightMode}) => {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  
 
   return (
     <div className='navContainer'>
@@ -14,7 +16,7 @@ const NavBar = ({lightMode}) => {
         <div className='rightnavContainer'>
             <p className={lightMode ? 'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/archive' ? 'underline' : 'none'}}>Archive</p>
             <p className={lightMode ?'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/about' ? 'underline' : 'none'}} onClick={() => navigate('/about')}>About</p>
-            <p>light toggle</p>
+            <LightToggle lightMode={lightMode} setlightMode={setlightMode}/>
         </div>
     </div>
   );

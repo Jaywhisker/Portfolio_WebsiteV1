@@ -131,33 +131,40 @@ p {
 @keyframes sliteyes {
     0% {
         transform: scaleX(1);
-        top:-1px
+        top:-1px;
+        left:18px
     }
     15%, 25% {
         transform: scaleX(1.4);
         top: -15px;
+        left:18px
     }
     80%, 100% {
         transform: scaleX(0.3);
-        top:-1px
+        top:-1px;
+        left:18px
     }
 }
 
 @keyframes openeyes {
     0% {
         transform: scaleX(0.3);
-        top:-1px
+        top:-1px;
+        left:18px
     }
     20%{
         transform: scaleX(0.3);
-        top:-15px
+        top:-15px;
+        left:18px;
     }
     80%{
-        top:-15px
+        top:-15px;
+        left:18px;
     }
     80%, 100% {
         transform: scaleX(1);
-        top:-1px
+        top:-1px;
+        left:18px;
     }
 }
 

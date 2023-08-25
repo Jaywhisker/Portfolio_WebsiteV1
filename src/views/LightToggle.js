@@ -1,22 +1,43 @@
-import React,  { useState, useEffect }  from 'react';
+import React,  { useState, useEffect, useRef }  from 'react';
 import '../components/styles/LightToggleStyles.css';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { faGithub, faLinkedin  } from '@fortawesome/free-brands-svg-icons';
+import { Sun } from 'react-feather';
 
-const NavBar = ({lightMode, setlightMode}) => {
+const LightToggle = ({lightMode, setlightMode}) => {
 
-    function toggleChange()
+  const mountCount = useRef(0);
+
+  function toggleChange() {
+    setlightMode(!lightMode)
+  }
+
+  useEffect(() => {
+    if (mountCount.current > 1) {
+      if (!lightMode) { //dark to light
+        document.querySelector('.toggleButton').style.animation = 'togglemoveleft 0.5s ease-in-out forwards'
+        document.querySelector('.toggleEyes').style.animation = 'eyeSlit 0.5s ease-in-out forwards'
+      } else {
+        document.querySelector('.toggleButton').style.animation = 'togglemoveright 0.5s ease-in-out forwards'
+        document.querySelector('.toggleEyes').style.animation = 'eyeWiden 0.5s ease-in-out forwards'
+      }
+    } else {
+      mountCount.current += 1
+    }
+  }, [lightMode])
     
 
   return (
-    <div className='navContainer'>
-        <p className={lightMode ? 'name' : 'namedark'} onClick={() => navigate('/', {state: {firstTime:false}})}> Cheng Wei Xuan</p>
-        <div className='rightnavContainer'>
-            <p className={lightMode ? 'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/archive' ? 'underline' : 'none'}}>Archive</p>
-            <p className={lightMode ?'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/about' ? 'underline' : 'none'}} onClick={() => navigate('/about')}>About</p>
-            <p>light toggle</p>
-        </div>
+    <div className='lightToggleContainer' style={{backgroundColor: lightMode ? `var(--dark_base)` : `var(--light_base)`}}>
+      <div className='toggleButton' style={{backgroundColor: lightMode ? `var(--light_base)` : `var(--eye_orange)`, left: lightMode ? '1.7em' : '0.15em'}} onClick={toggleChange}>
+        <div className='toggleEyes' style={{transform: lightMode ? 'scaleX(1)' : 'scaleX(0.2)'}}></div>
+      </div>
+
+      <Sun className='sun' style={{opacity: lightMode ? 1 : 0}}/>
+      <div className='moon' style={{opacity: lightMode ? 0 : 1}}></div>
+
     </div>
   );
 };
 
-export default NavBar;
+export default LightToggle;

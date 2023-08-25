@@ -1,4 +1,4 @@
-import React,  { useState, useEffect }  from 'react';
+import React,  { useState, useEffect, useRef }  from 'react';
 import '../components/styles/HomeScreenStyles.css';
 import '../components/styles/LoadingScreenStyles.css'
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
@@ -16,6 +16,7 @@ const HomeScreen = () => {
   const [isloadingScreen, setisLoadingScreen] = useState(location.state === null ? true : false)
 
   let animationFinished = false;
+  const mountingCount = useRef(0);
   let pupilXoffset;
   let pupilYoffset;
 
@@ -24,7 +25,6 @@ const HomeScreen = () => {
 
   useEffect(() => {
     const islightMode = localStorage.getItem("lightMode");
-
     if (islightMode === "true") {
       document.body.style.backgroundColor = `var(--light_base)`;
       document.body.classList.remove("dark_mode");
@@ -40,7 +40,6 @@ const HomeScreen = () => {
       document.body.classList.remove("dark_mode");
       localStorage.setItem("lightMode", true);
       setlightMode(true)
-      localStorage.setItem("lightMode", true);
     }
 
     if (isloadingScreen) {
@@ -56,14 +55,41 @@ const HomeScreen = () => {
 
 
   useEffect(() => {
-    if (lightMode === true ) {
-        document.body.style.backgroundColor = `var(--light_base)`;
-        document.body.classList.remove("dark_mode");
-        localStorage.setItem("lightMode", true);
-    } else if (lightMode === false ) {
-        document.body.style.backgroundColor = `var(--dark_base)`;
-        document.body.classList.add("dark_mode");
-        localStorage.setItem("lightMode", false);
+    if (lightMode !== undefined) {
+      mountingCount.current += 1
+      const eyeContainer = document.querySelector('.eyesHome');
+      const pupils = document.querySelector('.pupilsHome');
+      eyeContainer.style.animation = "none";
+      pupils.style.animation = "none";
+      pupils.style.top = '-1px';
+      pupils.style.left = '18px';
+  
+      document.body.style.transition = "background-color 1.5s"
+      document.body.style.transitionDelay = "0.1s"
+
+      if (lightMode === true && mountingCount.current >1 ) {
+          document.body.style.backgroundColor = `var(--light_base)`;
+          document.body.classList.remove("dark_mode");
+          localStorage.setItem("lightMode", true);
+          eyeContainer.style.animation = "narrowingeyes 1.75s ease forwards";
+          pupils.style.animation = "openeyes 2.25s ease forwards";
+          setTimeout(() => {
+            eyeContainer.style.backgroundColor = "white"
+          }, 100)
+      } else if (lightMode === false && mountingCount.current >1) {
+          document.body.style.backgroundColor = `var(--dark_base)`;
+          document.body.classList.add("dark_mode");
+          localStorage.setItem("lightMode", false);
+          eyeContainer.style.animation = "narrowingeyes 1.75s ease forwards";
+          pupils.style.animation = "sliteyes 2.25s ease forwards";
+          setTimeout(() => {
+            eyeContainer.style.backgroundColor = "var(--eye_orange)"
+          }, 100)
+      } 
+      eyeContainer.addEventListener("animationend", () => {
+        eyeContainer.style.animation = "blinking 6s ease-in-out infinite 5s";
+        pupils.style.animation = "none";
+      }, { once: true }); 
     }
   }, [lightMode]);
   
@@ -76,7 +102,6 @@ const HomeScreen = () => {
       document.querySelector('.logoCircleHome').addEventListener("animationend", animationEnd);
       document.addEventListener("mousemove", movePupils);
       document.querySelector('.pupilsHome').style.transform = lightMode ? 'scaleX(1)' : `scaleX(0.3)`
-
     }
   }, [isloadingScreen, lightMode])
 
@@ -154,7 +179,6 @@ const HomeScreen = () => {
         pupiltop = ((ratioY * (boundary_container[2] - centerY)) + centerY).toFixed(1)
       }
 
-      // console.log(pupilleft, pupiltop)
       pupils.style.left = `${pupilleft}px`
       pupils.style.top =  `${pupiltop}px`
 
@@ -164,34 +188,6 @@ const HomeScreen = () => {
   }
   
   function eyeLightToggle() {
-      const eyeContainer = document.querySelector('.eyesHome');
-      const pupils = document.querySelector('.pupilsHome');
-      eyeContainer.style.animation = "none";
-      pupils.style.animation = "none";
-      pupils.style.top = '-1px';
-      pupils.style.left = '18px';
-
-      document.body.style.transition = "background-color 1.5s"
-      document.body.style.transitionDelay = "0.1s"
-
-      if (lightMode) {
-          eyeContainer.style.animation = "narrowingeyes 2s ease forwards";
-          pupils.style.animation = "sliteyes 2.5s ease forwards";
-          setTimeout(() => {
-            eyeContainer.style.backgroundColor = "var(--eye_orange)"
-          }, 100)
-      } else {
-          eyeContainer.style.animation = "narrowingeyes 2s ease forwards";
-          pupils.style.animation = "openeyes 2.5s ease forwards";
-          setTimeout(() => {
-            eyeContainer.style.backgroundColor = "white"
-          }, 100)
-      }
-      eyeContainer.addEventListener("animationend", () => {
-        eyeContainer.style.animation = "blinking 6s ease-in-out infinite 5s";
-        pupils.style.animation = "none";
-      }, { once: true }); 
-
     setlightMode(!lightMode);
 }
 
@@ -204,7 +200,7 @@ const HomeScreen = () => {
             ) : (
             <div className='home'>
               <div className='fadein'>
-                <NavBar lightMode={lightMode}/>
+                <NavBar lightMode={lightMode} setlightMode={setlightMode}/>
               </div>
               <div className='flexcontainer'>
                 
