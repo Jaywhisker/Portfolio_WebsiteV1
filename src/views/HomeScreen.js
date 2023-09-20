@@ -1,7 +1,7 @@
 import React,  { useState, useEffect, useRef }  from 'react';
 import '../components/styles/HomeScreenStyles.css';
 import '../components/styles/LoadingScreenStyles.css'
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin  } from '@fortawesome/free-brands-svg-icons';
 import LoadingScreen from './LoadingScreen';
@@ -201,6 +201,7 @@ const HomeScreen = () => {
               <div className='fadein'>
                 <NavBar lightMode={lightMode} setlightMode={setlightMode}/>
               </div>
+              
               <div className='flexcontainer'>
                 
                 <div className='logoCircleHome' style={{backgroundColor: lightMode ? `var(--light_orange)` : `var(--dark_brown)`}}>
@@ -228,7 +229,9 @@ const HomeScreen = () => {
                 </div>
 
                 <div className='welcometext'>
-                  <p className='info'>Hi! I’m Wei Xuan, a creative developer and an AI engineer. I like making things fun and interactive to make an impact.</p>
+                  <p className='info'>Hi! I’m Wei Xuan,</p>
+                  <p className='info2'>a Creative Developer and an AI engineer.</p>
+                  <p className='info3'>Let's make things <span className='outline' style={{WebkitTextStrokeColor: lightMode ? `var(--dark_base)` : `var(--light_base)`}}>fun</span>!</p>
                   <div className='iconContainer'>
                     <button className='contactbutton'>
                       <p> <span className='arrow'>→ </span><span className='getintouch' onClick={contactMe}>Get in touch</span></p>
@@ -246,6 +249,14 @@ const HomeScreen = () => {
                   </div>
                 </div>
             </div>
+
+            <div className='flexright'>
+                  <p className='scroll'>Scoll to discover</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" className='arrowdown' style={{fill: lightMode ? `var(--dark_base)` : `var(--light_base)`}}>
+                    <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+                  </svg>
+            </div>
+
           </div>
           )}
         </div>
