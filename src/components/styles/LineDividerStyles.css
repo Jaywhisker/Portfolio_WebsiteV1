@@ -1,0 +1,44 @@
+.linecontainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 85vw;
+    position: relative;
+}
+
+.yarn{
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    position: absolute;
+    bottom: 49px;
+    left: 0;
+    animation: rollin 6.05s forwards ease-in-out, rotating 6s forwards ease-in-out
+}
+
+
+  @keyframes rollin {
+    0% {
+      left: -16px;
+    }
+    100% {
+      left: 97.1%; 
+    }
+  }
+
+  @keyframes rotating {
+    0%{
+        transform: rotate(0deg);
+    }100% {
+        transform: rotate(2160deg);
+    }
+  }
+
+@keyframes drawline {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+

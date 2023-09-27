@@ -12,3 +12,13 @@
 body{
     transition:none
 }
+
+p {
+    color: var(--dark_base);
+    transition: color 1.5s;
+    font-family: 'Lato';
+}
+
+.dark_mode p {
+    color: var(--light_base);
+}

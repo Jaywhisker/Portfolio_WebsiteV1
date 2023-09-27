@@ -1,31 +1,37 @@
-import React,  { useState, useEffect, useRef }  from 'react';
+import React,  { useEffect, useRef }  from 'react';
 import '../components/styles/LightToggleStyles.css';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import { faGithub, faLinkedin  } from '@fortawesome/free-brands-svg-icons';
 import { Sun } from 'react-feather';
 
 const LightToggle = ({lightMode, setlightMode}) => {
 
   const mountCount = useRef(0);
+  let count = 0;
 
   function toggleChange() {
     setlightMode(!lightMode)
+    localStorage.setItem('lightMode', !lightMode)
   }
 
   useEffect(() => {
+    count += 1
     if (mountCount.current > 1) {
       if (!lightMode) { //dark to light
-        document.querySelector('.toggleButton').style.animation = 'togglemoveleft 0.5s ease-in-out forwards'
-        document.querySelector('.toggleEyes').style.animation = 'eyeSlit 0.5s ease-in-out forwards'
+        document.querySelector('.toggleButton').style.animation = 'togglemoveleft 1s ease-in-out forwards'
+        document.querySelector('.toggleEyes').style.animation = 'eyeSlit 1s ease-in-out forwards'
       } else {
-        document.querySelector('.toggleButton').style.animation = 'togglemoveright 0.5s ease-in-out forwards'
-        document.querySelector('.toggleEyes').style.animation = 'eyeWiden 0.5s ease-in-out forwards'
+        document.querySelector('.toggleButton').style.animation = 'togglemoveright 1s ease-in-out forwards'
+        document.querySelector('.toggleEyes').style.animation = 'eyeWiden 1s ease-in-out forwards'
       }
     } else {
       mountCount.current += 1
     }
+    console.log('hi',lightMode)
+    console.log('count', count)
   }, [lightMode])
     
+  useEffect(() => {
+    console.log(count)
+  }, [count])
 
   return (
     <div className='lightToggleContainer' onClick={toggleChange} style={{backgroundColor: lightMode ? `var(--dark_base)` : `var(--light_base)`}}>

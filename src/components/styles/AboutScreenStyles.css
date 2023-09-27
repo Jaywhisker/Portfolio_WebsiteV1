@@ -1,0 +1,67 @@
+.about-container{
+    height: 100vh;
+    width: 100vw;
+    position:absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+.about,
+.skills,
+.experiences {
+    margin-left: 7.5vw;
+    margin-bottom: 75px;
+}
+
+.about-header,
+.skills-header,
+.experiences-header{
+    display: flex;
+    flex-direction: column;
+}
+
+.about-text,
+.skills-text,
+.experiences-text{
+    font: 600 36px 'Lato';
+    margin: 0;
+    margin-bottom: -35px;
+}
+
+.about-content{
+    flex-direction: row;
+    display: flex;
+    margin-top: -15px;
+}
+
+.about-me{
+    display: flex;
+    flex-direction: column;
+    width:710px;
+    padding-right: 240px;
+}
+
+.about-me-text{
+    font: 400 18px 'Lato';
+    word-spacing: 2px;
+    line-height: 25px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.about-contacts{
+    flex-direction: column;
+    display: flex;
+}
+
+.about-contacts-header{
+    font: 600 24px 'Lato';
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.about-contacts-link{
+    font: 500 20px 'Lato';
+    margin-bottom: 15px;
+}
