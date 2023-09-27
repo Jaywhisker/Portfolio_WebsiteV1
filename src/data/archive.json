@@ -1,0 +1,33 @@
+{
+    "projects": [
+      {
+        "key": "Hand_Gesture_Recognition",
+        "date": "Mar 2023",
+        "name": "Hand Gesture Recognition",
+        "company": "Personal",
+        "scope": "Computer Vision"
+      },
+      {
+        "key": "flea",
+        "date": "Aug 2022",
+        "name": "flea",
+        "company": "TU Berlin",
+        "scope": "UI/UX"
+      },
+      {
+        "key": "sh*t_landing_on_you",
+        "date": "Aug 2022",
+        "name": "Sh*t landing on you",
+        "company": "TU Berlin",
+        "scope": "Game Design, Modelling"
+      },
+      {
+        "key": "Community_Chess",
+        "date": "Feb - Apr 2021",
+        "name": "Community Chess",
+        "company": "SUTD",
+        "scope": "Design Thinking, Animation"
+      }
+    ]
+  }
+  

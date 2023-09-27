@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import gsap ,{ Elastic } from 'gsap';
 import '../components/styles/LineDividerStyles.css'
 
-function YarnLine({pathColour}) {
-    console.log(pathColour)
+function YarnLine({pathColour, lineContainerElement, pathElement}) {
     const [bounce, setBounce] = useState(false)
     const [mouseX, setMouseX] = useState(0);
     const [mouseY, setMouseY] = useState(0);
@@ -18,17 +17,48 @@ function YarnLine({pathColour}) {
     let straightSection = `M0,50 L${lineWidth -16}, 50`
   
 
+    useEffect(() => {
+        if (pathElement !== undefined) {
+            if (playAnimation) {
+                pathElement.style.setProperty('stroke-dasharray', (lineWidth -17) + 'px')
+                pathElement.style.setProperty('stroke-dashoffset', (lineWidth -18) + 'px')
+                pathElement.style.animation = 'drawline 3.93s forwards ease-in-out'
+                const timeoutId = setTimeout(() => {
+                    setPlayAnimation(false)
+                    }, 4000); 
+                  return () => {
+                    clearTimeout(timeoutId);
+                  };
+            } else {
+                window.addEventListener('mousemove', handleMouseMove);
+                var rangecurveleft = mouseX - 50
+                var rangecurveright = mouseX + 50 > `${lineWidth - 50}` ? `${lineWidth - 50}` : mouseX + 50
+            
+                var leftsection = `M0,50 L${rangecurveleft}, 50`
+                var rightsection = `M${rangecurveright},50 L${lineWidth-16}, 50`
+                var curve = `M${rangecurveleft}, 50 Q${mouseX}, 50 ${rangecurveright}, 50`
+                var line = leftsection + " " + curve + " " + rightsection
+                
+                pathElement.setAttribute('d', line);
+            }
+        } else {
+            setPlayAnimation(true)
+        }
+        return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, [playAnimation,  pathElement]);
+
     const handleMouseMove = (e) => {
         var mouseXcoord = e.clientX;
         var mouseYcoord = e.clientY;
         setMouseX(e.offsetX);
         setMouseY(e.offsetY);
-        divLocation = document.querySelector('.linecontainer').getBoundingClientRect()
+        divLocation = lineContainerElement.getBoundingClientRect()
 
         if ( 0 <= divLocation.bottom <= window.innerHeight) {
             if (divLocation.left <= mouseXcoord && mouseXcoord <= (divLocation.right - 100) && (divLocation.top+25) <= mouseYcoord && mouseYcoord <= (divLocation.bottom-25)) {
                 setBounce(true)
-                console.log(divLocation, e)
             } else {
                 setBounce(false)
             }
@@ -42,34 +72,6 @@ function YarnLine({pathColour}) {
             setBounce(false)
         }
     };
-
-
-    useEffect(() => {
-        if (playAnimation) {
-            document.querySelector('.linePath').style.setProperty('stroke-dasharray', (lineWidth -17) + 'px')
-            document.querySelector('.linePath').style.setProperty('stroke-dashoffset', (lineWidth -18) + 'px')
-            document.querySelector('.linePath').style.animation = 'drawline 6.05s forwards ease-in-out'
-            const timeoutId = setTimeout(() => {
-                setPlayAnimation(false)
-                var rangecurveleft = mouseX - 50
-                var rangecurveright = mouseX + 50 > `${lineWidth - 50}` ? `${lineWidth - 50}` : mouseX + 50
-            
-                var leftsection = `M0,50 L${rangecurveleft}, 50`
-                var rightsection = `M${rangecurveright},50 L${lineWidth-16}, 50`
-                var curve = `M${rangecurveleft}, 50 Q${mouseX}, 50 ${rangecurveright}, 50`
-                var line = leftsection + " " + curve + " " + rightsection
-                document.getElementById('#path').setAttribute('d', line);
-                }, 6000); 
-              return () => {
-                clearTimeout(timeoutId);
-              };
-        } else {
-            window.addEventListener('mousemove', handleMouseMove);
-        }
-        return () => {
-        window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, [playAnimation]);
 
 
     function setCurve () {
@@ -87,7 +89,7 @@ function YarnLine({pathColour}) {
             var curve = `M${rangecurveleft}, 50 Q${mouseX}, ${curveup} ${rangecurveright}, 50`
 
             var line = leftsection + " " + curve + " " + rightsection
-            var pathElement = document.getElementById('#path');
+            // var pathElement = document.getElementById('#path');
 
             gsap.to(pathElement, {
               attr: { d: line },
@@ -103,7 +105,7 @@ function YarnLine({pathColour}) {
             var curve = `M${rangecurveleft}, 50 Q${mouseX}, 50 ${rangecurveright}, 50`
             var line = leftsection + " " + curve + " " + rightsection
 
-            var pathElement = document.getElementById('#path');
+            // var pathElement = document.getElementById('#path');
         
             gsap.to(pathElement, {
               attr: { d: line },
@@ -127,17 +129,18 @@ function YarnLine({pathColour}) {
                 <svg width={lineWidth-16} height="100">
                 <path
                     vectorEffect="non-scaling-stroke"
-                    id="#path"
+                    id="path"
                     className='linePath'
                     d={straightSection}
                     stroke= {pathColour}
                     strokeWidth="1.5px"
                     fill="none"
+                    style={{transition: 'stroke 1.5s ease'}}
                 />
                 </svg>
                 <svg className='yarn' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 225">
                     <defs>
-                        <style>{`.cls-1{fill:none;stroke:${pathColour};stroke-miterlimit:10;stroke-width:8px;}`}</style>
+                        <style>{`.cls-1{fill:none;stroke:${pathColour};stroke-miterlimit:10;stroke-width:8px;transition: stroke 1.5s ease}`}</style>
                     </defs>
                     <g id="Layer_4">
                         <circle className="cls-1" cx="112.5" cy="112.5" r="108.5"/>

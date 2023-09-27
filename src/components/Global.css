@@ -15,7 +15,7 @@ body{
 
 p {
     color: var(--dark_base);
-    transition: color 1.5s;
+    transition: color 1.5s ease;
     font-family: 'Lato';
 }
 

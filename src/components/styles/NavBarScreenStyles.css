@@ -7,6 +7,9 @@
     margin: 8vh 7.5vw;
     opacity: 0;
     animation: fadein 1s forwards;
+    position: sticky;
+    top:8vh;
+    left:7.5vw;
 }
 
 .rightnavContainer{

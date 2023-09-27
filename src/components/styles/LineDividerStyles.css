@@ -15,7 +15,7 @@
     position: absolute;
     bottom: 49px;
     left: 0;
-    animation: rollin 6.05s forwards ease-in-out, rotating 6s forwards ease-in-out
+    animation: rollin 4s forwards ease-in-out, rotating 4s forwards ease-in-out;
 }
 
 
