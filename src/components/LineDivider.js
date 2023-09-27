@@ -22,7 +22,7 @@ function YarnLine({pathColour, lineContainerElement, pathElement}) {
             if (playAnimation) {
                 pathElement.style.setProperty('stroke-dasharray', (lineWidth -17) + 'px')
                 pathElement.style.setProperty('stroke-dashoffset', (lineWidth -18) + 'px')
-                pathElement.style.animation = 'drawline 3.9s forwards ease-in-out'
+                pathElement.style.animation = 'drawline 3.96s forwards ease-in-out'
                 const timeoutId = setTimeout(() => {
                     setPlayAnimation(false)
                     }, 4000); 
