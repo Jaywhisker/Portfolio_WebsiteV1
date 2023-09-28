@@ -25,10 +25,26 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Cheng Wei Xuan</title>
+    <link rel="stylesheet" href="../src/components/Global.css">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script src='../src/functions/scriptLightFunctions.js'></script>
+    <script>
+      const islightMode = localStorage.getItem("lightMode");
+      if (islightMode === "true") {
+          document.body.style.backgroundColor = `var(--light_base)`;
+          document.body.classList.remove("dark_mode");
+          localStorage.setItem("lightMode", true);
+      } else if (islightMode === "false") {
+          document.body.style.backgroundColor = `var(--dark_base)`;
+          document.body.classList.add("dark_mode");
+          localStorage.setItem("lightMode", false);
+      } else {
+          document.body.style.backgroundColor = `var(--light_base)`;
+          document.body.classList.remove("dark_mode");
+          localStorage.setItem("lightMode", true);
+      }
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

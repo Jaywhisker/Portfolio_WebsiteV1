@@ -31,7 +31,7 @@ const HomeScreen = () => {
         clearTimeout(timeoutId);
       };
     }
-  }, []); 
+  }, [lightMode]); 
 
 
   return (
