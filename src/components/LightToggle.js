@@ -6,22 +6,15 @@ import { toggleChange } from '../functions/lightModeFunctions';
 
 const LightToggle = ({lightMode, setlightMode}) => {
 
-  const mountCount = useRef(0);
-  let count = 0;
-
 
   useEffect(() => {
-    count += 1
-    if (mountCount.current > 1) {
-      if (!lightMode) { //dark to light
-        document.querySelector('.toggleButton').style.animation = 'togglemoveleft 1s ease-in-out forwards'
-        document.querySelector('.toggleEyes').style.animation = 'eyeSlit 1s ease-in-out forwards'
-      } else {
-        document.querySelector('.toggleButton').style.animation = 'togglemoveright 1s ease-in-out forwards'
-        document.querySelector('.toggleEyes').style.animation = 'eyeWiden 1s ease-in-out forwards'
-      }
+    console.log(lightMode)
+    if (!lightMode) {
+      document.querySelector('.toggleButton').style.animation = 'togglemoveleft 1s ease-in-out forwards'
+      document.querySelector('.toggleEyes').style.animation = 'eyeSlit 1s ease-in-out forwards'
     } else {
-      mountCount.current += 1
+      document.querySelector('.toggleButton').style.animation = 'togglemoveright 1s ease-in-out forwards'
+      document.querySelector('.toggleEyes').style.animation = 'eyeWiden 1s ease-in-out forwards'
     }
   }, [lightMode])
     
