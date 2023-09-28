@@ -2,15 +2,13 @@ import React,  { useEffect, useRef }  from 'react';
 import '../components/styles/LightToggleStyles.css';
 import { Sun } from 'react-feather';
 
+import { toggleChange } from '../functions/lightModeFunctions';
+
 const LightToggle = ({lightMode, setlightMode}) => {
 
   const mountCount = useRef(0);
   let count = 0;
 
-  function toggleChange() {
-    setlightMode(!lightMode)
-    localStorage.setItem('lightMode', !lightMode)
-  }
 
   useEffect(() => {
     count += 1
@@ -25,16 +23,11 @@ const LightToggle = ({lightMode, setlightMode}) => {
     } else {
       mountCount.current += 1
     }
-    console.log('hi',lightMode)
-    console.log('count', count)
   }, [lightMode])
     
-  useEffect(() => {
-    console.log(count)
-  }, [count])
 
   return (
-    <div className='lightToggleContainer' onClick={toggleChange} style={{backgroundColor: lightMode ? `var(--dark_base)` : `var(--light_base)`}}>
+    <div className='lightToggleContainer' onClick={() => toggleChange(lightMode, setlightMode)} style={{backgroundColor: lightMode ? `var(--dark_base)` : `var(--light_base)`}}>
       <div className='toggleButton' style={{backgroundColor: lightMode ? `var(--light_base)` : `var(--eye_orange)`, left: lightMode ? '1.7em' : '0.15em'}} >
         <div className='toggleEyes' style={{transform: lightMode ? 'scaleX(1)' : 'scaleX(0.2)'}}></div>
       </div>

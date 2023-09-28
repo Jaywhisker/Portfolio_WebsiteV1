@@ -2,7 +2,7 @@ import React,  { useEffect, useRef }  from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin  } from '@fortawesome/free-brands-svg-icons';
 
-import { movePupils } from '../functions/lightModeFunctions';
+import { toggleChange, movePupils } from '../functions/lightModeFunctions';
 import '../components/styles/LandingHeaderStyles.css';
 import '../components/Global.css';
 
@@ -30,19 +30,13 @@ const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour}) =
       document.body.style.transition = "background-color 2.5s"
       document.body.style.transitionDelay = "0.1s"
 
-      if (lightMode === true && mountingCount.current >2) {
-          document.body.style.backgroundColor = `var(--light_base)`;
-          document.body.classList.remove("dark_mode");
-          localStorage.setItem("lightMode", true);
+      if (lightMode === true && mountingCount.current >1) {
           eyeContainer.style.animation = "narrowingeyes 1.5s ease forwards";
           pupils.style.animation = "openeyes 2s ease forwards";
           setTimeout(() => {
             eyeContainer.style.backgroundColor = "white"
           }, 100)
-      } else if (lightMode === false && mountingCount.current >2) {
-          document.body.style.backgroundColor = `var(--dark_base)`;
-          document.body.classList.add("dark_mode");
-          localStorage.setItem("lightMode", false);
+      } else if (lightMode === false && mountingCount.current >1) {
           eyeContainer.style.animation = "narrowingeyes 1.5s ease forwards";
           pupils.style.animation = "sliteyes 2s ease forwards";
           setTimeout(() => {
@@ -103,12 +97,6 @@ const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour}) =
     pupilYoffset = eyeContainer.offsetTop + logoCircle.offsetTop;
   }
 
-  
-  function eyeLightToggle() {
-    setlightMode(!lightMode);
-}
-
-
 
   return (
     <>
@@ -132,7 +120,7 @@ const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour}) =
                 </g>
                 </svg>
                 
-                <div className='eyesHome' id="clip" onClick={eyeLightToggle} style={{backgroundColor: lightMode ? 'white' : `var(--eye_orange)`}} >
+                <div className='eyesHome' id="clip" onClick={() => toggleChange(lightMode, setlightMode)} style={{backgroundColor: lightMode ? 'white' : `var(--eye_orange)`}} >
                     <div className='pupilsHome'></div>
                 </div>
             </div>

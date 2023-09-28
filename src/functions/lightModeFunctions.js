@@ -27,6 +27,12 @@ export function DocumentMode() {
   }
 }
 
+export function toggleChange(lightMode, setlightMode) {
+  setlightMode(!lightMode)
+  localStorage.setItem('lightMode', !lightMode)
+}
+
+
 export function movePupils(event, animationFinished, pupilXoffset, pupilYoffset) {
   if (animationFinished === true) {
     const pupils = document.querySelector('.pupilsHome');
