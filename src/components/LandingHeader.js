@@ -9,12 +9,17 @@ import '../components/Global.css';
 const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour}) => {
 
   let animationFinished = false;
+  var mountingCount = useRef(0);
   let pupilXoffset;
   let pupilYoffset;
 
 
   useEffect(() => {
-    if (lightMode !== undefined && isloadingScreen === false) {
+    if (lightMode !== undefined && isloadingScreen === true) {
+      mountingCount.current += 1
+    }
+    else if (lightMode !== undefined && isloadingScreen === false) {
+      mountingCount.current += 1
       const eyeContainer = document.querySelector('.eyesHome');
       const pupils = document.querySelector('.pupilsHome');
       eyeContainer.style.animation = "none";
@@ -25,13 +30,13 @@ const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour}) =
       document.body.style.transition = "background-color 2.5s"
       document.body.style.transitionDelay = "0.1s"
 
-      if (lightMode === true) {
+      if (lightMode === true && mountingCount.current >1) {
           eyeContainer.style.animation = "narrowingeyes 1.5s ease forwards";
           pupils.style.animation = "openeyes 2s ease forwards";
           setTimeout(() => {
             eyeContainer.style.backgroundColor = "white"
           }, 100)
-      } else if (lightMode === false) {
+      } else if (lightMode === false && mountingCount.current >1) {
           eyeContainer.style.animation = "narrowingeyes 1.5s ease forwards";
           pupils.style.animation = "sliteyes 2s ease forwards";
           setTimeout(() => {
