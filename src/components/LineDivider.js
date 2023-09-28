@@ -4,7 +4,6 @@ import '../components/styles/LineDividerStyles.css'
 import '../components/styles/AboutScreenStyles.css'
 
 function LineDivider({pathColour, lineContainerElement, pathElement}) {
-    console.log(lineContainerElement)
     const [bounce, setBounce] = useState(false)
     const [mouseX, setMouseX] = useState(0);
     const [mouseY, setMouseY] = useState(0);
@@ -51,18 +50,15 @@ function LineDivider({pathColour, lineContainerElement, pathElement}) {
 
 
     const wave = (e) => {
-        console.log('move')
         var mouseXcoord = e.clientX;
         var mouseYcoord = e.clientY;
         setMouseX(e.offsetX);
         setMouseY(e.offsetY);
         divLocation = lineContainerElement.getBoundingClientRect()
-        console.log(e.clientX, e.clientY, divLocation)
 
         if ( 0 <= divLocation.bottom <= window.innerHeight) {
             if (divLocation.left <= mouseXcoord && mouseXcoord <= (divLocation.right) && (divLocation.top-10) <= mouseYcoord && mouseYcoord <= (divLocation.bottom+10)) {
                 setBounce(true)
-                console.log('inrange')
             } else {
                 setBounce(false)
             }

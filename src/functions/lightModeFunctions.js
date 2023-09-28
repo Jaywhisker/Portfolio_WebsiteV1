@@ -78,7 +78,5 @@ export function movePupils(event, animationFinished, pupilXoffset, pupilYoffset)
     pupils.style.left = `${pupilleft}px`
     pupils.style.top =  `${pupiltop}px`
 
-    console.log(pupils.style.left, pupils.style.top)
-
   }
 }

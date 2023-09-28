@@ -47,7 +47,6 @@ const ArchiveScreen = () => {
 
     archiveJSON.projects.forEach((proj, index) => {
       var tableLine = document.getElementsByClassName(index)
-      console.log(tableLine[0])
       initialLineState[index] = tableLine[0].querySelector('.linecontainer')
       initialPathState[index] = tableLine[0].querySelector('#path')
     })

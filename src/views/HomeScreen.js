@@ -2,7 +2,7 @@ import React,  { useState, useEffect }  from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { setDocumentMode } from '../functions/lightModeFunctions';
-import LoadingScreen from '../components/LoadingScreen';
+import LoadingScreen from './LoadingScreen';
 import NavBar from '../components/Navbar';
 import LandingHeader from '../components/LandingHeader';
 
