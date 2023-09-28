@@ -2,7 +2,8 @@ import React,  { useState, useEffect }  from 'react';
 
 import { setDocumentMode } from '../functions/lightModeFunctions';
 import NavBar from '../components/Navbar';
-import YarnLine from '../components/LineDivider';
+import YarnLine from '../components/YarnLineDivider';
+import LineDivider from '../components/LineDivider';
 import experienceJSON from '../data/experience.json'
 
 import '../components/Global.css'
@@ -21,8 +22,13 @@ const AboutScreen = () => {
   const [lineContainerExp, setlineContainerExp] = useState(undefined)
   const [pathElementExp, setpathElementExp] = useState(undefined)
 
-  document.removeEventListener('mousemove', window.handleMouseMove)
+  const [pathContainer, setpathContainer] = useState({})
+  const [lineElementContainer, setlineElementContainer] = useState({})
+  var initialPathState = {};
+  var initialLineState = {};
 
+  document.removeEventListener('mousemove', window.handleMouseMove)
+  
   var pathColour = aboutLightMode ? "var(--dark_base)" : "var(--light_base)"
   
   useEffect(() => {
@@ -47,7 +53,18 @@ const AboutScreen = () => {
     const expYarnLine = document.getElementsByClassName('experiences-header')
     setlineContainerExp(expYarnLine[0].querySelector('.linecontainer'))
     setpathElementExp(expYarnLine[0].querySelector('#path'))
+
+    experienceJSON.experience.forEach((exp, index) => {
+      var tableLine = document.getElementsByClassName(index)
+      console.log(tableLine[0])
+      initialLineState[index] = tableLine[0].querySelector('.linecontainer')
+      initialPathState[index] = tableLine[0].querySelector('#path')
+    })
+    setlineElementContainer(initialLineState)
+    setpathContainer(initialPathState)
   }, [])
+
+
 
   return (
     <div className='about-container'>
@@ -107,14 +124,16 @@ const AboutScreen = () => {
               <YarnLine pathColour={pathColour} lineContainerElement={lineContainerExp} pathElement={pathElementExp}/>
             </div>
             <div className='experiences-table'>
-              {experienceJSON.experience.map((exp) => (
-              <div key={exp.key}>
+              {experienceJSON.experience.map((exp, index) => (
+              <div key={exp.key} className={index}>
                 <div className='experiences-row'>
                   <p className='experiences-data'>{exp.date}</p>
                   <p className='experiences-company'>{exp.company}</p>
                   <p className='experiences-scope'>{exp.scope}</p>
                 </div>
-                <div className='experiences-table-line' style={{backgroundColor:`${pathColour}`}}></div>
+                <LineDivider pathColour={pathColour} lineContainerElement={lineElementContainer[index]} pathElement={pathContainer[index]}/>
+
+                {/* <div className='experiences-table-line' style={{backgroundColor:`${pathColour}`}}></div> */}
               </div>
               ))}
             </div>

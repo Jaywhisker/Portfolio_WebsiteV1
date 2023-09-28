@@ -10,6 +10,7 @@
     position: sticky;
     top:8vh;
     left:7.5vw;
+    z-index: 999;
 }
 
 .rightnavContainer{

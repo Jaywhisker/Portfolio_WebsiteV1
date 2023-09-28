@@ -135,15 +135,17 @@
     display: flex;
     flex-direction: row;
     margin-top: -45px;
+    z-index: 999;
+    margin-bottom: -45px;
 }
 
-.archive-row:hover *{
+.archive-table:hover *{
     cursor: pointer;
 }
 
 .experiences-data,
 .experiences-company{
-    width: 25%;
+     width: 25%;
     font: 400 20px 'Lato';
 }
 
