@@ -40,6 +40,7 @@ const ArchiveScreen = () => {
     }
   }, [archiveLightMode]);
 
+
   useEffect(() => {
     const YarnLine = document.getElementsByClassName("archive-header")
     setlineContainer(YarnLine[0].querySelector('.linecontainer'))
@@ -52,7 +53,46 @@ const ArchiveScreen = () => {
     })
     setlineElementContainer(initialLineState)
     setpathContainer(initialPathState)
+
   }, [])
+
+
+  
+  // useEffect(() => {
+  //   const divs = document.querySelectorAll('.archive-row')
+    
+  //   function handleMouseOut() {
+  //     divs.forEach(div => {
+  //       const paragraphs = div.querySelectorAll('p')
+  //       paragraphs.forEach(p => {
+  //         p.style.opacity = 1;
+  //       })
+  //     })
+  //   }
+  
+  //   function handleMouseOver(event) {
+  //     divs.forEach(div => {
+  //       if (div !== event.target) {
+  //         const paragraphs = div.querySelectorAll('p')
+  //         paragraphs.forEach(p=> {
+  //           p.style.opacity = 0.1;
+  //         })
+  //       }
+  //     })
+  //   }
+
+  //   divs.forEach(div => {
+  //     div.addEventListener('mouseover', handleMouseOver);
+  //     div.addEventListener('mouseout', handleMouseOut);
+  //   });
+
+  //   return () => {
+  //     divs.forEach(div => {
+  //       div.removeEventListener('mouseover', handleMouseOver);
+  //       div.removeEventListener('mouseout', handleMouseOut);
+  //     });
+  //   };
+  // }, []); 
 
 
   return (

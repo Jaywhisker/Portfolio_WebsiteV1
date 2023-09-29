@@ -17,15 +17,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 20%;
+    justify-content: flex-end;
+    width: 60%;
 }
 
 
 .name,
 .righttext{
     color: var(--dark_base);
-    font-size: 1em;
+    font-size: 2.25vmin;
+    margin-right: 50px;
 }
 
 .righttext:hover,
@@ -43,6 +44,8 @@
 .namedark,
 .righttextdark{
     color: var(--light_base);
+    font-size: 2.25vmin;
+    margin-right: 50px;
 }
 
 .righttextdark:hover,
