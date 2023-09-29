@@ -62,7 +62,7 @@ const HomeScreen = () => {
                   <div className='project-line' style={{backgroundColor: `${pathColour}`}}></div>
                 </div>
 
-                <div className='kopilo'>
+                <div className='kopilo' onClick={() => navigate('/kopilo')}>
                   <img src='/project/kopilo/dbsmain.png' className='project-image-small'></img>
                   <div className='project-text'>
                     <div className='project-top'>
@@ -73,7 +73,7 @@ const HomeScreen = () => {
                   </div>
                 </div>
 
-                <div className='satiscribe'>
+                <div className='satiscribe' onClick={() => navigate('/satiscribe')}>
                   <div className='project-text' style={{alignItems: 'flex-end'}}>
                     <div className='project-top'>
                       <p className='project-scope' style={{textAlign:'right'}}>ui/ux</p>
@@ -84,7 +84,7 @@ const HomeScreen = () => {
                   <img src='/project/satiscribe/satiscribelight.png' className='project-image-small'></img>
                 </div>  
 
-                <div className='aid'>
+                <div className='aid' onClick={() => navigate('/ai_framework')}>
                   <img src='/project/aid/aidmain.png' className='project-image-large'></img>
                   <div className='project-text-horizontal' >
                     <div className='project-top' style={{width: '100%'}}>
@@ -95,7 +95,7 @@ const HomeScreen = () => {
                   </div>
                 </div>                  
 
-                <div className='neptinium'>
+                <div className='neptinium' onClick={() => navigate('/neptinium')}>
                   <img src='/project/neptinium/neptiniummain.png' className='project-image-small'></img>
                   <div className='project-text'>
                     <div className='project-top'>
