@@ -10,7 +10,7 @@ const Routing = () => {
     <Router>
       <Routes>
         <Route path="/" element={<ProjectScroll/>} />
-        <Route path="/about" element={<ProjectScroll/>}/>
+        <Route path="/about" element={<AboutScreen/>}/>
         <Route path='/archive' element={<ArchiveScreen/>} />
       </Routes>
     </Router>
