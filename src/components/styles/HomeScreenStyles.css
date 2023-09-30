@@ -5,10 +5,18 @@
     top: 0;
     left: 0;
     overflow-x: hidden;
+    /* overflow-y: hidden; */
 }
 
 .head{
     height: 100vh;
+}
+
+.scrollsection{
+    display: flex;
+    flex-direction: column;
+    margin: 0 17.5vw 0 17.5vw;
+    height: 400vh;
 }
 
 .project-container{
@@ -42,15 +50,21 @@
     margin: 10vmin 0vw;
     display: flex;
     flex-direction: row;
-    transition: transform 1s;
+    transition: transform 1.5s;
     scroll-margin-bottom: 20vh;
+}
+
+.project{
+    display: flex;
+    flex-direction: column;
+    margin: 0 17.5vw 0 17.5vw;
 }
 
 .aid{
     margin: 10vmin 0vw;
     display: flex;
     flex-direction: column;
-    transition: transform 1s;
+    transition: transform 1.5s;
 }
 
 .satiscribe:hover .project-name,
@@ -71,7 +85,7 @@
 .kopilo:hover,
 .aid:hover{
     cursor: pointer;
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .project-image-small{

@@ -1,6 +1,6 @@
 import React,  { useEffect }  from 'react';
 import '../components/styles/LoadingScreenStyles.css';
-import NavBar from '../components/Navbar';
+import NavBar from '../components/navigation/Navbar';
 
 const LoadingScreen = ({lightMode, pathColour}) => {
 

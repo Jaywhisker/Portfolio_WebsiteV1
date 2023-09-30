@@ -10,7 +10,8 @@
 }
 
 body{
-    transition:none
+    transition:none;
+    overflow-x: hidden;
 }
 
 p {

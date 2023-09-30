@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import gsap ,{ Elastic } from 'gsap';
-import '../components/styles/LineDividerStyles.css'
+import '../styles/divider/LineDividerStyles.css'
 
 function YarnLine({pathColour, lineContainerElement, pathElement}) {
     const [bounce, setBounce] = useState(false)

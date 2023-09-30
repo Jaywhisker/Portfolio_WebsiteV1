@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.curtains-canvas {
+  position: fixed;
+  top: -10vh;
+  left: 0;
+  width: 100vw;
+  height: 120vh;
+  z-index: 1;
+  pointer-events: none;
+}

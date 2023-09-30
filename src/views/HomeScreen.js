@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import { setDocumentMode } from '../functions/lightModeFunctions';
 import LoadingScreen from './LoadingScreen';
-import NavBar from '../components/Navbar';
+import NavBar from '../components/navigation/Navbar';
 import LandingHeader from '../components/LandingHeader';
 
 import '../components/styles/HomeScreenStyles.css';

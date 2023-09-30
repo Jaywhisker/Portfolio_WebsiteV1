@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomeScreen from '../views/HomeScreen';
 import AboutScreen from '../views/AboutScreen';
 import ArchiveScreen from '../views/ArchiveScreen';
+import ProjectScroll from '../components/scrollAnimation/projectScroll';
 
 const Routing = () => {
-  
   return (
     <Router>
       <Routes>
