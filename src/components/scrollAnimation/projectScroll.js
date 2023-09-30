@@ -43,17 +43,17 @@ function ProjectScroll() {
       delta.y = -delta.y;
   
       // threshold
-      if (delta.y > 60) {
-        delta.y = 60;
-      } else if (delta.y < -60) {
-        delta.y = -60;
+      if (delta.y > 30) {
+        delta.y = 30;
+      } else if (delta.y < -30) {
+        delta.y = -30;
       }
   
       if (Math.abs(delta.y) > Math.abs(planesDeformations.current)) {
         planesDeformations.current = curtains.lerp(
           planesDeformations.current,
           delta.y,
-          0.25
+          0.1
         );
       }
     });
@@ -77,7 +77,7 @@ function ProjectScroll() {
       scrollEffect: {
         name: "uScrollEffect",
         type: "1f",
-        value: 1
+        value: 0
       },
       resolution: {
         name: "uResolution",
