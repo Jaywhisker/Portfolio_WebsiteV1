@@ -3,14 +3,14 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import { setDocumentMode } from '../functions/lightModeFunctions';
 import LoadingScreen from './LoadingScreen';
-import NavBar from '../components/Navbar';
+import NavBar from '../components/navigation/Navbar';
 import LandingHeader from '../components/LandingHeader';
 
 import '../components/styles/HomeScreenStyles.css';
 import '../components/styles/LoadingScreenStyles.css';
 import '../components/Global.css';
 
-const HomeScreen = () => {
+const HomeScreen = ({onClick}) => {
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -33,14 +33,6 @@ const HomeScreen = () => {
     }
   }, [lightMode]); 
 
-  function scrollIntoView () {
-    const firstProj = document.querySelector('.kopilo')
-    firstProj.scrollIntoView({
-      behavior: 'smooth', 
-      block: 'end'      
-    });
-  }
-
 
   return (
     lightMode !== undefined ? (
@@ -52,7 +44,7 @@ const HomeScreen = () => {
             <div className='home'>
               <NavBar lightMode={lightMode} setlightMode={setlightMode} animation={true}/>
               <div className='head'>
-                <LandingHeader lightMode={lightMode} setlightMode={setlightMode} isloadingScreen={isloadingScreen} pathColour={pathColour} onClick={scrollIntoView}/>
+                <LandingHeader lightMode={lightMode} setlightMode={setlightMode} isloadingScreen={isloadingScreen} pathColour={pathColour} onClick={onClick}/>
               </div>
 
               <div className='project-container'>
@@ -62,7 +54,7 @@ const HomeScreen = () => {
                   <div className='project-line' style={{backgroundColor: `${pathColour}`}}></div>
                 </div>
 
-                <div className='kopilo' onClick={() => navigate('/kopilo')}>
+                {/* <div className='kopilo' onClick={() => navigate('/kopilo')}>
                   <img src='/project/kopilo/dbsmain.png' className='project-image-small'></img>
                   <div className='project-text'>
                     <div className='project-top'>
@@ -106,7 +98,7 @@ const HomeScreen = () => {
                   </div>
                 </div>
 
-                <div style={{height:'25vh'}}></div>
+                <div style={{height:'25vh'}}></div> */}
               </div>
             </div>
           )}

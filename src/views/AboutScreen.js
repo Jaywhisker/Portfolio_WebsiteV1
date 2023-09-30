@@ -1,9 +1,9 @@
 import React,  { useState, useEffect }  from 'react';
 
 import { setDocumentMode } from '../functions/lightModeFunctions';
-import NavBar from '../components/Navbar';
-import YarnLine from '../components/YarnLineDivider';
-import LineDivider from '../components/LineDivider';
+import NavBar from '../components/navigation/Navbar';
+import YarnLine from '../components/divider/YarnLineDivider';
+import LineDivider from '../components/divider/LineDivider';
 import experienceJSON from '../data/experience.json'
 
 import '../components/Global.css'

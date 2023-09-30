@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import gsap ,{ Elastic } from 'gsap';
-import '../components/styles/LineDividerStyles.css'
-import '../components/styles/AboutScreenStyles.css'
+import '../styles/divider/LineDividerStyles.css'
+import '../styles/AboutScreenStyles.css'
 
 function LineDivider({pathColour, lineContainerElement, pathElement}) {
     const [bounce, setBounce] = useState(false)

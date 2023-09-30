@@ -1,8 +1,8 @@
 import React,  { useEffect, useRef }  from 'react';
-import '../components/styles/LightToggleStyles.css';
+import '../styles/navigation/LightToggleStyles.css';
 import { Sun } from 'react-feather';
 
-import { toggleChange } from '../functions/lightModeFunctions';
+import { toggleChange } from '../../functions/lightModeFunctions';
 
 const LightToggle = ({lightMode, setlightMode}) => {
 

@@ -1,5 +1,5 @@
 import React,  { useEffect }  from 'react';
-import '../components/styles/NavBarScreenStyles.css';
+import '../styles/navigation/NavBarScreenStyles.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import LightToggle from './LightToggle';
 

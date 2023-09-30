@@ -5,10 +5,18 @@
     top: 0;
     left: 0;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .head{
     height: 100vh;
+}
+
+.scrollsection{
+    display: flex;
+    flex-direction: column;
+    margin: 0 17.5vw 0 17.5vw;
+    height: 400vh;
 }
 
 .project-container{
@@ -44,6 +52,12 @@
     flex-direction: row;
     transition: transform 1s;
     scroll-margin-bottom: 20vh;
+}
+
+.project{
+    display: flex;
+    flex-direction: column;
+    margin: 0 17.5vw 0 17.5vw;
 }
 
 .aid{
