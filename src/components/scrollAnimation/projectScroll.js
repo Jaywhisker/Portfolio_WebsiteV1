@@ -43,17 +43,17 @@ function ProjectScroll() {
       delta.y = -delta.y;
   
       // threshold
-      if (delta.y > 30) {
-        delta.y = 30;
-      } else if (delta.y < -30) {
-        delta.y = -30;
+      if (delta.y > 50) {
+        delta.y = 50;
+      } else if (delta.y < -50) {
+        delta.y = -50;
       }
   
       if (Math.abs(delta.y) > Math.abs(planesDeformations.current)) {
         planesDeformations.current = curtains.lerp(
           planesDeformations.current,
           delta.y,
-          0.1
+          0.25
         );
       }
     });
@@ -92,7 +92,7 @@ function ProjectScroll() {
     };
 
 
-  const KopiloProjectPlane = () => {
+    const KopiloProjectPlane = () => {
 
     return (
     <div className="SelectiveRenderTargets-element" id='kopilo'>
@@ -264,7 +264,6 @@ function ProjectScroll() {
     </>
   );
 }
-
 
 
 export default ProjectScroll;

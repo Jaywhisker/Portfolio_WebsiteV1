@@ -5,7 +5,7 @@
     top: 0;
     left: 0;
     overflow-x: hidden;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 
 .head{
@@ -50,7 +50,7 @@
     margin: 10vmin 0vw;
     display: flex;
     flex-direction: row;
-    transition: transform 1s;
+    transition: transform 1.5s;
     scroll-margin-bottom: 20vh;
 }
 
@@ -64,7 +64,7 @@
     margin: 10vmin 0vw;
     display: flex;
     flex-direction: column;
-    transition: transform 1s;
+    transition: transform 1.5s;
 }
 
 .satiscribe:hover .project-name,
@@ -85,7 +85,7 @@
 .kopilo:hover,
 .aid:hover{
     cursor: pointer;
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .project-image-small{

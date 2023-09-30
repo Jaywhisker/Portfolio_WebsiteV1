@@ -10,7 +10,7 @@ import '../components/styles/HomeScreenStyles.css';
 import '../components/styles/LoadingScreenStyles.css';
 import '../components/Global.css';
 
-const HomeScreen = ({onClick}) => {
+const HomeScreen = () => {
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -33,6 +33,14 @@ const HomeScreen = ({onClick}) => {
     }
   }, [lightMode]); 
 
+  function scrollIntoView () {
+    const firstProj = document.querySelector('.kopilo')
+    firstProj.scrollIntoView({
+      behavior: 'smooth', 
+      block: 'end'      
+    });
+  }
+
 
   return (
     lightMode !== undefined ? (
@@ -44,7 +52,7 @@ const HomeScreen = ({onClick}) => {
             <div className='home'>
               <NavBar lightMode={lightMode} setlightMode={setlightMode} animation={true}/>
               <div className='head'>
-                <LandingHeader lightMode={lightMode} setlightMode={setlightMode} isloadingScreen={isloadingScreen} pathColour={pathColour} onClick={onClick}/>
+                <LandingHeader lightMode={lightMode} setlightMode={setlightMode} isloadingScreen={isloadingScreen} pathColour={pathColour} onClick={scrollIntoView}/>
               </div>
 
               <div className='project-container'>
@@ -54,7 +62,7 @@ const HomeScreen = ({onClick}) => {
                   <div className='project-line' style={{backgroundColor: `${pathColour}`}}></div>
                 </div>
 
-                {/* <div className='kopilo' onClick={() => navigate('/kopilo')}>
+                <div className='kopilo' onClick={() => navigate('/kopilo')}>
                   <img src='/project/kopilo/dbsmain.png' className='project-image-small'></img>
                   <div className='project-text'>
                     <div className='project-top'>
@@ -98,7 +106,7 @@ const HomeScreen = ({onClick}) => {
                   </div>
                 </div>
 
-                <div style={{height:'25vh'}}></div> */}
+                <div style={{height:'25vh'}}></div>
               </div>
             </div>
           )}
