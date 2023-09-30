@@ -154,7 +154,7 @@ const SatiscribeScreen = () => {
                         <p className='text-1-header' style={{textAlign:'center', marginTop:'3vh', marginBottom:'8vh'}}>Tagging Important Details during the meeting</p>
                     </div>
 
-                    <div className='container-1'>
+                    <div className='container-1' style={{marginBottom:'0vh'}}>
                         <div className='text-container-1'>
                             <img src='/project/satiscribe/edit.png' className='container-1-img'></img>
                             <p className='text-1-header'>Editing full transcript</p>

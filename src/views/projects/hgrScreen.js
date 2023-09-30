@@ -136,7 +136,7 @@ const HGRScreen = () => {
                 <div className='project-data-image-container'>
 
                     <div className='hgr-image-container'>
-                        <img src='/project/cvhand/cvdiag.png' className='hgr-image'></img>
+                        <img src='/project/cvhand/cvdiag.png' className='hgr-image' style={{marginBottom:'0vh'}}></img>
                     </div>
 
                 </div>

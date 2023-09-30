@@ -158,7 +158,7 @@ const FLEAScreen = () => {
                     </div>
 
                     
-                    <div className='flea-container-4' style={{marginBottom:'16vh'}}>
+                    <div className='flea-container-4' style={{marginBottom:'0vh'}}>
                         <img className='flea-image-2' src='/project/flea/mockup4.png'></img>
                         <p className='flea-right-text'>To incentivise social media influencer to join flea, we introduce a subscription based system such that influencers can also earn a side income from creating content on flea.
                         <br/><br/>

@@ -137,7 +137,7 @@ const AidScreen = () => {
                         <img src='/project/aid/pipeline2.png' className='aid-image'></img>
                         <img src='/project/aid/pipeline3.png' className='aid-image'></img>
                         <img src='/project/aid/pipeline4.png' className='aid-image'></img>
-                        <img src='/project/aid/pipeline5.png' className='aid-image'></img>
+                        <img src='/project/aid/pipeline5.png' className='aid-image' style={{marginBottom:'0vh'}}></img>
                     </div>
 
                 </div>
