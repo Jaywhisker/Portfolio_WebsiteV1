@@ -85,12 +85,12 @@ const AboutScreen = () => {
 
               <div className='about-contacts'>
                 <p className='about-contacts-header'>Contact Me</p>
-                <a className='about-contacts-link' style={{color: `${pathColour}`}} href="mailto:${chengweixuan7@gmail.com}" target="_blank">Email</a>
-                <a className='about-contacts-link' style={{color: `${pathColour}`}} href="https://www.linkedin.com/in/chengweixuan/" target="_blank">LinkedIn</a>
-                <a className='about-contacts-link' style={{color: `${pathColour}`, marginBottom:'50px'}} href="https://github.com/Jaywhisker/" target="_blank">GitHub</a>
+                <a className='about-contacts-link'  href="mailto:${chengweixuan7@gmail.com}" target="_blank">Email</a>
+                <a className='about-contacts-link'  href="https://www.linkedin.com/in/chengweixuan/" target="_blank">LinkedIn</a>
+                <a className='about-contacts-link' style={{ marginBottom:'50px'}} href="https://github.com/Jaywhisker/" target="_blank">GitHub</a>
 
                 <p className='about-contacts-header'>More Info</p>
-                <a className='about-contacts-link' style={{color: `${pathColour}`}} href="https://drive.google.com/file/d/1SqSyCcjOGzcV2nMU7FhiejgtdwgMqtOd/view?usp=sharing" target="_blank">Resume</a>
+                <a className='about-contacts-link' href="https://drive.google.com/file/d/1SqSyCcjOGzcV2nMU7FhiejgtdwgMqtOd/view?usp=sharing" target="_blank">Resume</a>
               </div>
             </div>
           </div>

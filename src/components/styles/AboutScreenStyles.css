@@ -64,7 +64,7 @@
 }
 
 .about-me-text{
-    font: 400 2.75vmin 'Lato';
+    font: 400 2.5vmin 'Lato';
     word-spacing: 2px;
     line-height: 25px;
     margin: 0;
@@ -77,13 +77,13 @@
 }
 
 .about-contacts-header{
-    font: 600 3vmin 'Lato';
+    font: 600 2.75vmin 'Lato';
     margin: 0;
     margin-bottom: 15px;
 }
 
 .about-contacts-link{
-    font: 500 2.75vmin 'Lato';
+    font: 500 2.5vmin 'Lato';
     margin-bottom: 15px;
     transition: color 1.5s ease;
 }
@@ -119,14 +119,14 @@
 }
 
 .skill-set-header{
-    font: 400 2.75vmin 'Lato';
+    font: 400 2.5vmin 'Lato';
     margin: 0;
     margin-bottom: 15px;
     text-decoration: underline;
 }
 
 .skill-set-text{
-    font: 400 2.75vmin 'Lato';
+    font: 400 2.5vmin 'Lato';
     margin: 0;
     margin-bottom: 30px;
 }
@@ -147,12 +147,12 @@
 .experiences-data,
 .experiences-company{
      width: 25%;
-    font: 400 2.75vmin 'Lato';
+    font: 400 2.5vmin 'Lato';
 }
 
 .experiences-scope{
     width:50%;
-    font: 400 2.75vmin 'Lato';
+    font: 400 2.5vmin 'Lato';
 }
 
 .experiences-table-line,

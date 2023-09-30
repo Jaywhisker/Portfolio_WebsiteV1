@@ -1,0 +1,49 @@
+.project-data-image-container{
+    margin-top: 15vh;
+    width: 80vw;
+    flex-direction: column;
+    margin-bottom: 5vh;
+}
+
+.container-1{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5vh;
+}
+
+.text-container-1{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-1-img{
+    padding: 2vw;
+    width: 36vw;
+    object-fit: contain;
+}
+
+.text-1-header{
+    font: 600 3vmin 'Lato';
+    margin: 0;
+    margin-left: 2vw;
+}
+
+.text-list{
+    font: 400 2.25vmin 'Lato';
+    margin: 1.5vh 2vw;
+    width: 85%;
+}
+
+.container-3{
+    width: 60vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.container-3-img{
+    width: 100%;
+    object-fit: contain;
+}

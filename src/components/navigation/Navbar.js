@@ -4,11 +4,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import LightToggle from './LightToggle';
 
 
-const NavBar = ({lightMode, setlightMode, animation}) => {
+const NavBar = ({lightMode, setlightMode, animation, override}) => {
 
   const location = useLocation();
   const navigate = useNavigate();
   
+  const pathColour = override !== undefined ? override: lightMode
+
   useEffect(() => {
     if (animation) {
       document.querySelector('.navContainer').style.opacity = 0
@@ -21,10 +23,10 @@ const NavBar = ({lightMode, setlightMode, animation}) => {
 
   return (
     <div className='navContainer'>
-        <p className={lightMode ? 'name' : 'namedark'} onClick={() => navigate('/', {state: {firstTime:false}})}> Cheng Wei Xuan</p>
+        <p className={pathColour ? 'name' : 'namedark'} onClick={() => navigate('/', {state: {firstTime:false}})}> Cheng Wei Xuan</p>
         <div className='rightnavContainer'>
-            <p className={lightMode ? 'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/archive' ? 'underline' : 'none'}} onClick={() => navigate('/archive')}>Archive</p>
-            <p className={lightMode ?'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/about' ? 'underline' : 'none'}} onClick={() => navigate('/about')}>About</p>
+            <p className={pathColour ? 'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/archive' ? 'underline' : 'none'}} onClick={() => navigate('/archive')}>Archive</p>
+            <p className={pathColour ?'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/about' ? 'underline' : 'none'}} onClick={() => navigate('/about')}>About</p>
             <LightToggle lightMode={lightMode} setlightMode={setlightMode}/>
         </div>
     </div>

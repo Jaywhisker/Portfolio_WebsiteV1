@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomeScreen from '../views/HomeScreen';
 import AboutScreen from '../views/AboutScreen';
 import ArchiveScreen from '../views/ArchiveScreen';
-import ProjectScroll from '../components/scrollAnimation/projectScroll';
+import KopiloScreen from '../views/projects/kopiloScreen';
+import SatiscribeScreen from '../views/projects/satiscribeScreen';
 
 const Routing = () => {
   return (
@@ -12,6 +13,8 @@ const Routing = () => {
         <Route path="/" element={<HomeScreen/>} />
         <Route path="/about" element={<AboutScreen/>}/>
         <Route path='/archive' element={<ArchiveScreen/>} />
+        <Route path='/kopilo' element={<KopiloScreen/>} />
+        <Route path='/satiscribe' element={<SatiscribeScreen/>}/>
       </Routes>
     </Router>
   );

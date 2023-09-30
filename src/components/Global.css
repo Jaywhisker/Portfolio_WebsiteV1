@@ -12,6 +12,7 @@
 body{
     transition:none;
     overflow-x: hidden;
+    margin: 0;
 }
 
 p {
@@ -21,5 +22,16 @@ p {
 }
 
 .dark_mode p {
+    color: var(--light_base);
+}
+
+a {
+    color: var(--dark_base);
+    transition: color 1.5s ease;
+    font-family: 'Lato';
+}
+
+
+.dark_mode a {
     color: var(--light_base);
 }
