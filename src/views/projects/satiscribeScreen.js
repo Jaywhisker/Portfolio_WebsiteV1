@@ -141,16 +141,16 @@ const SatiscribeScreen = () => {
                     </div>
 
                     <div className='container-2'>
-                        <p className='text-1-header' style={{textAlign:'center', marginBottom:'3vh'}}>Custom Meeting Templates to suit different use cases</p>
-                        <div >
+                        <div style={{marginLeft:'2.5vw', width:'80vw'}}>
                             <img src='/project/satiscribe/template.png' className='container-1-img'></img>
                             <img src='/project/satiscribe/edittemplate.png' className='container-1-img'></img>
                         </div>
+                        <p className='text-1-header' style={{textAlign:'center', marginTop:'0vh', marginBottom:'8vh'}}>Custom Meeting Templates to suit different use cases</p>
                     </div>
 
                     <div className='container-3'>
-                        <p className='text-1-header' style={{textAlign:'center', marginBottom:'5vh'}}>Tagging Important Details during the meeting</p>
                         <img src='/project/satiscribe/tag.png' className='container-3-img'></img>
+                        <p className='text-1-header' style={{textAlign:'center', marginTop:'3vh', marginBottom:'8vh'}}>Tagging Important Details during the meeting</p>
                     </div>
 
                     <div className='container-1'>

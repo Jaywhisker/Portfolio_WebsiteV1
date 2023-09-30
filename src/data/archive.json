@@ -1,7 +1,7 @@
 {
     "projects": [
       {
-        "key": "Hand_Gesture_Recognition",
+        "key": "hand_gesture_recognition",
         "date": "Mar 2023",
         "name": "Hand Gesture Recognition",
         "company": "Personal",
@@ -22,7 +22,7 @@
         "scope": "Game Design, Modelling"
       },
       {
-        "key": "Community_Chess",
+        "key": "community_chess",
         "date": "Feb - Apr 2021",
         "name": "Community Chess",
         "company": "SUTD",
