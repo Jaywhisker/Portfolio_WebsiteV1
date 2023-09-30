@@ -66,12 +66,15 @@ const HGRScreen = () => {
 
 
     useEffect(() => {
+        window.removeEventListener('scroll', window.handleScroll);
         window.addEventListener('scroll', handleScroll);
+        window.handleScroll = handleScroll;
         return () => {
           window.removeEventListener('scroll', handleScroll);
         };
       }, [])
 
+      
       useEffect(() => {
         // "document.documentElement.scrollTo" is the magic for React Router Dom v6
         document.documentElement.scrollTo({

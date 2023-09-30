@@ -28,7 +28,8 @@ const AboutScreen = () => {
   var initialLineState = {};
 
   document.removeEventListener('mousemove', window.handleMouseMove)
-  
+  document.removeEventListener('scoll', window.handleScroll)
+
   var pathColour = aboutLightMode ? "var(--dark_base)" : "var(--light_base)"
   
   useEffect(() => {

@@ -9,7 +9,7 @@ import AidScreen from '../views/projects/aidScreen';
 import NeptiniumScreen from '../views/projects/neptiniumScreen';
 import HGRScreen from '../views/projects/hgrScreen';
 import FLEAScreen from '../views/projects/fleaScreen';
-
+import CChessScreen from '../views/projects/comchessScreen';
 const Routing = () => {
   return (
     <Router>
@@ -23,6 +23,7 @@ const Routing = () => {
         <Route path='/neptinium' element={<NeptiniumScreen/>}/>
         <Route path='/hand_gesture_recognition' element={<HGRScreen/>}/>
         <Route path='/flea' element={<FLEAScreen/>}/>
+        <Route path='/community_chess' element={<CChessScreen/>}/>
       </Routes>
     </Router>
   );

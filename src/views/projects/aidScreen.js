@@ -66,7 +66,9 @@ const AidScreen = () => {
 
 
     useEffect(() => {
+        window.removeEventListener('scroll', window.handleScroll);
         window.addEventListener('scroll', handleScroll);
+        window.handleScroll = handleScroll;
         return () => {
           window.removeEventListener('scroll', handleScroll);
         };

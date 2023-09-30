@@ -11,7 +11,7 @@ import '../components/styles/LoadingScreenStyles.css';
 import '../components/Global.css';
 
 const HomeScreen = () => {
-
+  document.removeEventListener('scoll', window.handleScroll)
   const location = useLocation()
   const navigate = useNavigate()
   const [lightMode, setlightMode] = useState(undefined)

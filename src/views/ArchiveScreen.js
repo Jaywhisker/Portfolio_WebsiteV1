@@ -26,6 +26,7 @@ const ArchiveScreen = () => {
   var initialLineState = {};
 
   document.removeEventListener('mousemove', window.handleMouseMove)
+  document.removeEventListener('scoll', window.handleScroll)
 
   var pathColour = archiveLightMode ? "var(--dark_base)" : "var(--light_base)"
   const navigate = useNavigate()
