@@ -32,6 +32,10 @@
     width: 85%;
 }
 
+.text-list-1{
+    font: 400 2.25vmin 'Lato';
+}
+
 .container-3{
     width: 60vw;
     margin: auto;

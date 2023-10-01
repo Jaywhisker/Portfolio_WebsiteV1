@@ -25,3 +25,9 @@
     width: 60vw;
     object-fit: contain;
 }
+
+.sloy-render{
+    width: 60vw;
+    height: 30vw;
+    object-fit: contain;
+}

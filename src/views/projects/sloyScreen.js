@@ -121,10 +121,15 @@ const SLOYScreen = () => {
 
                 <div className='project-data-image-container'>
                     <div style={{marginLeft:'7vw'}}>
-                        <iframe width={idealWidth} height={aspectRatioHeight} src="https://www.youtube.com/embed/b1fiv-EDlFI?si=hJ-u0yqetDQrX33j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width={idealWidth} height={aspectRatioHeight} src="https://www.youtube.com/embed/t43B4KpcwoQ?si=wC_JzDabQxl6Pphq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         <p className='sloy-text'>Gameplay Footage</p>
                         <p className='sloy-text' style={{marginTop:'1vh'}}>Note: NPCs and Food models were done by Lead Artist Bei Ru</p>
                     </div>
+
+                    <div class="sketchfab-embed-wrapper" style={{'marginLeft':'12.5vw', 'marginTop': '16vh'}}> 
+                        <iframe title="sloy map final" className='sloy-render' frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/02065906d4674a8abf34c3c7e0b8c976/embed?autostart=1"> </iframe> 
+                    </div>
+                    <p className='sloy-text'>Game map created in Blender</p>
 
                     <div className='sloy-image-container-small'>
                         <img src='/project/sloy/sloyui.png' className='sloy-img-small'></img>
