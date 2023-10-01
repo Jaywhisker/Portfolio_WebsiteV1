@@ -111,7 +111,7 @@ const SLOYScreen = () => {
                     <p className='project-data-scope'>GAME DESIGN / MODELLING</p>
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]} yarnElement={yarnElementContainer[0]}/>
 
                 <div className='project-data-info'>
                     <p className='project-data-date'>Jul 2022</p>
@@ -164,7 +164,7 @@ const SLOYScreen = () => {
                     </div>
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]} yarnElement={yarnElementContainer[1]}/>
                 <div className='next-project'>
                     <p className='project-arrow'>→</p>
                     <p className='project-view' onClick={() => navigate('/community_chess')}>Next Project: <span style={{'borderBottomColor': `{pathColour}`}}>Community Chess</span></p>
