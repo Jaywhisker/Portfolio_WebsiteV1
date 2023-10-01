@@ -1,0 +1,27 @@
+.sloy-image-container{
+    margin-top: 16vh;
+    width:80vw;
+    margin-left: 2.5vw;
+}
+
+.sloy-img{
+    width: 80vw;
+    object-fit: contain;
+}
+
+.sloy-text{
+    font: 400 2.25vmin 'Lato';
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.sloy-image-container-small{
+    margin-top: 16vh;
+    width:60vw;
+    margin-left: 12.5vw;
+}
+
+.sloy-img-small{
+    width: 60vw;
+    object-fit: contain;
+}

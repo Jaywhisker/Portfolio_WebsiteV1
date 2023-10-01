@@ -7,12 +7,12 @@ import YarnLine from '../../components/divider/YarnLineDivider';
 
 import '../../components/Global.css'
 import '../../components/styles/projects/Main.css'
-import '../../components/styles/projects/SatiscribeStyles.css'
+import '../../components/styles/projects/sloyStyles.css'
 
-const NeptiniumScreen = () => {
+const SLOYScreen = () => {
 
     const [LightMode, setLightMode] = useState(undefined)
-    const [override, setOverride] = useState(false)
+    const [override, setOverride] = useState(true)
     const navigate = useNavigate()
 
     var pathColour = LightMode ? "var(--dark_base)" : "var(--light_base)"
@@ -21,7 +21,6 @@ const NeptiniumScreen = () => {
     const [lineElementContainer, setlineElementContainer] = useState({})
     var initialPathState = {};
     var initialLineState = {};
-
 
     const aspectRatio = 560/315
     const idealWidth = window.innerWidth * 0.7
@@ -44,6 +43,14 @@ const NeptiniumScreen = () => {
         }
       }
 
+    useEffect(() => {
+        // "document.documentElement.scrollTo" is the magic for React Router Dom v6
+        document.documentElement.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "instant", // Optional if you want to skip the scrolling animation
+        });
+      }, [pathname]);
 
     useEffect(() => {
         setDocumentMode(setLightMode)
@@ -69,7 +76,7 @@ const NeptiniumScreen = () => {
         setpathContainer(initialPathState)
     }, [])
 
-
+    
     useEffect(() => {
         window.removeEventListener('scroll', window.handleScroll);
         window.addEventListener('scroll', handleScroll);
@@ -79,77 +86,72 @@ const NeptiniumScreen = () => {
         };
       }, [])
 
-      useEffect(() => {
-        // "document.documentElement.scrollTo" is the magic for React Router Dom v6
-        document.documentElement.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "instant", // Optional if you want to skip the scrolling animation
-        });
-      }, [pathname]);
-
 
     return (
         <>
             <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override}/>
             <div>
-                <img src='/project/neptinium/neptiniumheader.png' className='project-data-header' />
+                <img src='/project/sloy/sloyheader.png' className='project-data-header' />
             </div>
 
             <div className='project-data-content'>
                 <div className='project-data-title-container'>
-                    <p className='project-data-title'>Neptinium</p>
-                    <p className='project-data-scope'>PRODUCT DESIGN, ANIMATION</p>
+                    <p className='project-data-title'>Sh*t landing on you</p>
+                    <p className='project-data-scope'>GAME DESIGN / MODELLING</p>
                 </div>
 
                 <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]}/>
 
                 <div className='project-data-info'>
-                    <p className='project-data-date'>Jan - May 2023</p>
-                    <p className='project-data-company'>SUTD</p>
-                    <div className='project-data-links'>
-                        <a className='project-data-link' href='https://www.straitstimes.com/life/motoring/singapore-made-electric-race-car-taking-shape' target='_blank'>Design Journey</a>
-                        {/* <a className='project-data-link' href='https://github.com/Jaywhisker/AI_design_framework' target='_blank'>GitHub</a> */}
-                    </div>
+                    <p className='project-data-date'>Jul 2022</p>
+                    <p className='project-data-company'>TU Berlin</p>
                 </div>
 
                 <div className='project-data-details'>
-                    <p>Neptinium is the design of SUTD’s first Electric Vehicle Additive Manufacturing (EVAM) car. Derived from “Neptunium”, a chemical compound that can be used to obtain electricity sustainably and “Inium”, the Latin word for beginning, Neptinium expresses SUTD’s desire to become a sustainability focused school, with our first additively manufactured electric car paving the way for future sustainability-centred endeavours.
-                        <br/><br/>
-                        Under the Product Design Studio Module in SUTD, my team partnered with SUTD’s EVAM team to design the exterior shell for SUTD’s first EVAM.
-                        <br/><br/>
-                        Throughout the 12 weeks, my team and I underwent multiple design iterations, from conducting user interviews to developing and iterating through multiple rounds of sketches before finally modelling our design.
-                        <br/><br/>
-                        Once we had our car model, I was in charge of the visual design for our project and created an animation showcasing Neptinium using <b>Blender</b>.
-                        <br/><br/>
-                        Our work has been featured on the Straits Times and the team is currently designing a book detailing our journey. Stay tuned!</p>
-                    <div className='project-redirect'>
-                        <div className='project-redirect-links'>
-                            <p className='project-arrow'>→</p>
-                            <a style={{'borderBottomColor': `{pathColour}`, textDecoration:'none'}} className='project-view' href='https://www.straitstimes.com/life/motoring/singapore-made-electric-race-car-taking-shape' target='_blank'><span>View Straits Times Article</span></a>
-                        </div>
-                    </div>
+                    <p>
+                    Sh*t landing on you is a light-hearted fun VR game where you play as a seagull and your aim is to successfully “bomb strike” as many beach-goers as you can before time runs out!
+                    <br/><br/>
+                    Under the Gaming for Virtual and Augmented Reality module, my team and I was given 3 weeks to develop this VR game. We were heavily inspired by the Untitled Goose Game for its silly yet charming game style.
+                    <br/><br/>
+                    For Sh*t landing on you, you start off the game with 5 “bomb strike”. Once you have ran out, you can refill your “bomb strike” by diving and snatching 5 food off different beach-goers. 
+                    <br/><br/>
+                    The game was built in Unity with C#. However, I was the main art director of this VR game instead of the coder. I designed the gameplay mechanics and modelled the game map in <b>Blender</b>. I also designed the logo, UI and some art assets for the game in <b>Adobe Illustrator</b>.  Once I was done with the assets, I integrated them into Unity and coded out the functioning UI in <b>C#</b>.
+                    </p>
                 </div>
+
                 <div className='project-data-image-container'>
                     <div style={{marginLeft:'7vw'}}>
                         <iframe width={idealWidth} height={aspectRatioHeight} src="https://www.youtube.com/embed/b1fiv-EDlFI?si=hJ-u0yqetDQrX33j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <p className='sloy-text'>Gameplay Footage</p>
+                        <p className='sloy-text' style={{marginTop:'1vh'}}>Note: NPCs and Food models were done by Lead Artist Bei Ru</p>
                     </div>
 
-                    <div className='nept-container-1' style={{marginTop:'15vh'}}>
-                        <img src='/project/neptinium/placeholder1.png' className='nept-container-1-img'></img>
-                        <img src='/project/neptinium/placeholder2.png' className='nept-container-1-img'></img>
+                    <div className='sloy-image-container-small'>
+                        <img src='/project/sloy/sloyui.png' className='sloy-img-small'></img>
+                        <p className='sloy-text'>Game UI for Sh*t Landing On You</p>
                     </div>
-                    
-                    <div className='nept-container-1' style={{marginBottom:'0vh'}}>
-                        <img src='/project/neptinium/placeholder3.png' className='nept-container-1-img'></img>
-                        <img src='/project/neptinium/placeholder4.png' className='nept-container-1-img' ></img>
+
+                    <div className='sloy-image-container'>
+                        <img src='/project/sloy/sloymenu.png' className='sloy-img'></img>
+                        <p className='sloy-text'>Game menus for Sh*t Landing On You</p>
+                    </div>
+
+                    <div className='sloy-image-container'>
+                        <img src='/project/sloy/sloytut.png' className='sloy-img'></img>
+                        <p className='sloy-text'>Tutorial Pages for Sh*t Landing On You</p>
+                        <p className='sloy-text' style={{marginTop:'1vh'}}>Designed by Lead Artist Bei Ru, edited and compiled by Wei Xuan</p>
+                    </div>
+
+                    <div className='sloy-image-container'>
+                        <img src='/project/sloy/sloypic.png' className='sloy-img'></img>
+                        <p className='sloy-text'>Additional Promotional Art</p>
                     </div>
                 </div>
 
                 <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]}/>
                 <div className='next-project'>
                     <p className='project-arrow'>→</p>
-                    <p className='project-view' onClick={() => navigate('/hand_gesture_recognition')}>Next [ARCHIVED] Project: <span style={{'borderBottomColor': `{pathColour}`}}>Hand Gesture Recognition</span></p>
+                    <p className='project-view' onClick={() => navigate('/community_chess')}>Next Project: <span style={{'borderBottomColor': `{pathColour}`}}>Community Chess</span></p>
                     <div className='project-lines'></div>
                 </div>
             </div>
@@ -158,4 +160,4 @@ const NeptiniumScreen = () => {
     );
 };
 
-export default NeptiniumScreen;
+export default SLOYScreen;
