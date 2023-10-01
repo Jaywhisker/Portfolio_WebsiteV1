@@ -129,7 +129,7 @@ const SLOYScreen = () => {
                     <div class="sketchfab-embed-wrapper" style={{'marginLeft':'12.5vw', 'marginTop': '16vh'}}> 
                         <iframe title="sloy map final" className='sloy-render' frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/02065906d4674a8abf34c3c7e0b8c976/embed?autostart=1"> </iframe> 
                     </div>
-                    <p className='sloy-text'>Game map created in Blender</p>
+                    <p className='sloy-text' style={{'marginLeft':'12.5vw'}}>Game map created in Blender</p>
 
                     <div className='sloy-image-container-small'>
                         <img src='/project/sloy/sloyui.png' className='sloy-img-small'></img>
