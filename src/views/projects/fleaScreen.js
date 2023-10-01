@@ -20,8 +20,10 @@ const FLEAScreen = () => {
 
     const [pathContainer, setpathContainer] = useState({})
     const [lineElementContainer, setlineElementContainer] = useState({})
+    const [yarnElementContainer, setyarnElementContainer] = useState({})
     var initialPathState = {};
     var initialLineState = {};
+    var initialYarnState={}
 
     const { pathname } = useLocation();
 
@@ -30,6 +32,28 @@ const FLEAScreen = () => {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
       }
+
+
+    useEffect(() => {
+        const allLineState = document.querySelectorAll('.linecontainer')
+        const allPathState = document.querySelectorAll('#path')
+        const allYarnState = document.querySelectorAll('.yarn')
+        allLineState.forEach((LineState, index) => {
+            initialLineState[index] = LineState
+        })
+
+        allPathState.forEach((PathState, index) => {
+            initialPathState[index] = PathState
+        })
+
+        allYarnState.forEach((YarnState, index) => {
+            initialYarnState[index] = YarnState
+        })
+
+        setlineElementContainer(initialLineState)
+        setpathContainer(initialPathState)
+        setyarnElementContainer(initialYarnState)
+    }, [])
 
     function handleScroll() {
         const rect = document.querySelector('.project-data-header').getBoundingClientRect()
@@ -59,20 +83,6 @@ const FLEAScreen = () => {
         }
     }, [LightMode]);
 
-    useEffect(() => {
-        const allLineState = document.querySelectorAll('.linecontainer')
-        const allPathState = document.querySelectorAll('#path')
-        allLineState.forEach((LineState, index) => {
-            initialLineState[index] = LineState
-        })
-
-        allPathState.forEach((PathState, index) => {
-            initialPathState[index] = PathState
-        })
-        setlineElementContainer(initialLineState)
-        setpathContainer(initialPathState)
-    }, [])
-
     
     useEffect(() => {
         window.removeEventListener('scroll', window.handleScroll);
@@ -97,7 +107,7 @@ const FLEAScreen = () => {
                     <p className='project-data-scope'>UI/UX</p>
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]} yarnElement={yarnElementContainer[0]}/>
 
                 <div className='project-data-info'>
                     <p className='project-data-date'>Aug 2022</p>
@@ -166,7 +176,7 @@ const FLEAScreen = () => {
                     </div>
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]} yarnElement={yarnElementContainer[1]}/>
                 <div className='next-project'>
                     <p className='project-arrow'>→</p>
                     <p className='project-view' onClick={() => navigate('/sh*t_landing_on_you')}>Next Project: <span style={{'borderBottomColor': `{pathColour}`}}>Sh*t landing on you</span></p>

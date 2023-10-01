@@ -13,14 +13,21 @@ const AboutScreen = () => {
 
   const [aboutLightMode, setAboutLightMode] = useState(undefined)
 
-  const [lineContainerAbout, setlineContainerAbout] = useState(undefined)
-  const [pathElementAbout, setpathElementAbout] = useState(undefined)
+  const [yarnpathContainer, setyarnpathContainer] = useState({})
+  const [yarnlineElementContainer, setyarnlineElementContainer] = useState({})
+  const [yarnElementContainer, setyarnElementContainer] = useState({})
+  var initialYarnPathState = {};
+  var initialYarnLineState = {};
+  var initialYarnState={}
 
-  const [lineContainerSkills, setlineContainerSkills] = useState(undefined)
-  const [pathElementSkills, setpathElementSkills] = useState(undefined)
+  // const [lineContainerAbout, setlineContainerAbout] = useState(undefined)
+  // const [pathElementAbout, setpathElementAbout] = useState(undefined)
 
-  const [lineContainerExp, setlineContainerExp] = useState(undefined)
-  const [pathElementExp, setpathElementExp] = useState(undefined)
+  // const [lineContainerSkills, setlineContainerSkills] = useState(undefined)
+  // const [pathElementSkills, setpathElementSkills] = useState(undefined)
+
+  // const [lineContainerExp, setlineContainerExp] = useState(undefined)
+  // const [pathElementExp, setpathElementExp] = useState(undefined)
 
   const [pathContainer, setpathContainer] = useState({})
   const [lineElementContainer, setlineElementContainer] = useState({})
@@ -43,23 +50,33 @@ const AboutScreen = () => {
   }, [aboutLightMode]);
 
   useEffect(() => {
-    const aboutYarnLine = document.getElementsByClassName("about-header")
-    setlineContainerAbout(aboutYarnLine[0].querySelector('.linecontainer'))
-    setpathElementAbout(aboutYarnLine[0].querySelector('#path'))
+    const allLineContainer = document.querySelectorAll('.linecontainer')
+    const allPathElement = document.querySelectorAll('#path')
+    const allYarnElement = document.querySelectorAll('.yarn')
 
-    const skillsYarnLine = document.getElementsByClassName('skills-header')
-    setlineContainerSkills(skillsYarnLine[0].querySelector('.linecontainer'))
-    setpathElementSkills(skillsYarnLine[0].querySelector('#path'))
-
-    const expYarnLine = document.getElementsByClassName('experiences-header')
-    setlineContainerExp(expYarnLine[0].querySelector('.linecontainer'))
-    setpathElementExp(expYarnLine[0].querySelector('#path'))
-
-    experienceJSON.experience.forEach((exp, index) => {
-      var tableLine = document.getElementsByClassName(index)
-      initialLineState[index] = tableLine[0].querySelector('.linecontainer')
-      initialPathState[index] = tableLine[0].querySelector('#path')
+    allLineContainer.forEach((lineElement, index) => {
+      if (index < 3) {
+        initialYarnLineState[index] = lineElement
+      } else {
+        initialLineState[(index - 3)] = lineElement
+      }
     })
+
+    allPathElement.forEach((pathElement, index) => {
+      if (index < 3) {
+        initialYarnPathState[index] = pathElement
+      } else {
+        initialPathState[(index - 3)] = pathElement
+      }
+    })
+
+    allYarnElement.forEach((yarnElement, index) => {
+        initialYarnState[index] = yarnElement
+    })
+    setyarnElementContainer(initialYarnState)
+    setyarnlineElementContainer(initialYarnLineState)
+    setyarnpathContainer(initialYarnPathState)
+
     setlineElementContainer(initialLineState)
     setpathContainer(initialPathState)
   }, [])
@@ -73,7 +90,7 @@ const AboutScreen = () => {
           <div className='about'>
             <div className='about-header'>
               <p className='about-text'>About</p>
-              <YarnLine pathColour={pathColour} lineContainerElement={lineContainerAbout} pathElement={pathElementAbout}/>
+              <YarnLine pathColour={pathColour} lineContainerElement={yarnlineElementContainer[0]} pathElement={yarnpathContainer[0]} yarnElement={yarnElementContainer[0]}/>
             </div>
 
             <div className='about-content'>
@@ -99,7 +116,7 @@ const AboutScreen = () => {
           <div className='skills'>
             <div className='skills-header'>
               <p className='skills-text'>Skills</p>
-              <YarnLine pathColour={pathColour} lineContainerElement={lineContainerSkills} pathElement={pathElementSkills}/>
+              <YarnLine pathColour={pathColour} lineContainerElement={yarnlineElementContainer[1]} pathElement={yarnpathContainer[1]} yarnElement={yarnElementContainer[1]}/>
             </div>
 
             <div className='skill-set'>
@@ -121,7 +138,7 @@ const AboutScreen = () => {
           <div className='experiences'>
             <div className='experiences-header'>
               <p className='experiences-text'>Experiences</p>
-              <YarnLine pathColour={pathColour} lineContainerElement={lineContainerExp} pathElement={pathElementExp}/>
+              <YarnLine pathColour={pathColour} lineContainerElement={yarnlineElementContainer[2]} pathElement={yarnpathContainer[2]} yarnElement={yarnElementContainer[2]}/>
             </div>
             <div className='experiences-table'>
               {experienceJSON.experience.map((exp, index) => (

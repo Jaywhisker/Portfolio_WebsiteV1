@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import gsap ,{ Elastic } from 'gsap';
 import '../styles/divider/LineDividerStyles.css'
 
-function YarnLine({pathColour, lineContainerElement, pathElement}) {
+function YarnLine({pathColour, lineContainerElement, pathElement, yarnElement}) {
     const [bounce, setBounce] = useState(false)
     const [mouseX, setMouseX] = useState(0);
     const [mouseY, setMouseY] = useState(0);
@@ -22,7 +22,8 @@ function YarnLine({pathColour, lineContainerElement, pathElement}) {
             if (playAnimation) {
                 pathElement.style.setProperty('stroke-dasharray', (lineWidth -17) + 'px')
                 pathElement.style.setProperty('stroke-dashoffset', (lineWidth -18) + 'px')
-                pathElement.style.animation = 'drawline 3.99s forwards ease-in-out'
+                pathElement.style.animation = 'drawline 3.99s forwards ease-in-out';
+                yarnElement.style.animation = 'rollin 4s forwards ease-in-out, rotating 4s forwards ease-in-out'
 
                 const timeoutId = setTimeout(() => {
                     setPlayAnimation(false)

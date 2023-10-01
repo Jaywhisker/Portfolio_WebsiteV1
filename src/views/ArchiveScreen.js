@@ -19,6 +19,7 @@ const ArchiveScreen = () => {
 
   const [lineContainer, setlineContainer] = useState(undefined)
   const [pathElement, setpathElement] = useState(undefined)
+  const [yarnElement, setyarnElement] = useState(undefined)
 
   const [pathContainer, setpathContainer] = useState({})
   const [lineElementContainer, setlineElementContainer] = useState({})
@@ -46,6 +47,7 @@ const ArchiveScreen = () => {
     const YarnLine = document.getElementsByClassName("archive-header")
     setlineContainer(YarnLine[0].querySelector('.linecontainer'))
     setpathElement(YarnLine[0].querySelector('#path'))
+    setyarnElement(YarnLine[0].querySelector('.yarn'))
 
     archiveJSON.projects.forEach((proj, index) => {
       var tableLine = document.getElementsByClassName(index)
@@ -102,7 +104,7 @@ const ArchiveScreen = () => {
         <div className='archive'>
             <div className='archive-header'>
                 <p className='archive-text'>Past Projects</p>
-                <YarnLine pathColour={pathColour} lineContainerElement={lineContainer} pathElement={pathElement}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineContainer} pathElement={pathElement} yarnElement={yarnElement}/>
             </div>
             
             <div className='archive-table'>

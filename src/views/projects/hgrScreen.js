@@ -19,8 +19,10 @@ const HGRScreen = () => {
 
     const [pathContainer, setpathContainer] = useState({})
     const [lineElementContainer, setlineElementContainer] = useState({})
+    const [yarnElementContainer, setyarnElementContainer] = useState({})
     var initialPathState = {};
     var initialLineState = {};
+    var initialYarnState={}
 
     const { pathname } = useLocation();
 
@@ -29,6 +31,29 @@ const HGRScreen = () => {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
       }
+
+
+    useEffect(() => {
+        const allLineState = document.querySelectorAll('.linecontainer')
+        const allPathState = document.querySelectorAll('#path')
+        const allYarnState = document.querySelectorAll('.yarn')
+        allLineState.forEach((LineState, index) => {
+            initialLineState[index] = LineState
+        })
+
+        allPathState.forEach((PathState, index) => {
+            initialPathState[index] = PathState
+        })
+
+        allYarnState.forEach((YarnState, index) => {
+            initialYarnState[index] = YarnState
+        })
+
+        setlineElementContainer(initialLineState)
+        setpathContainer(initialPathState)
+        setyarnElementContainer(initialYarnState)
+    }, [])
+
 
     function handleScroll() {
         const rect = document.querySelector('.project-data-header').getBoundingClientRect()
@@ -49,20 +74,6 @@ const HGRScreen = () => {
         document.body.style.transitionDelay = "0.1s"
         }
     }, [LightMode]);
-
-    useEffect(() => {
-        const allLineState = document.querySelectorAll('.linecontainer')
-        const allPathState = document.querySelectorAll('#path')
-        allLineState.forEach((LineState, index) => {
-            initialLineState[index] = LineState
-        })
-
-        allPathState.forEach((PathState, index) => {
-            initialPathState[index] = PathState
-        })
-        setlineElementContainer(initialLineState)
-        setpathContainer(initialPathState)
-    }, [])
 
 
     useEffect(() => {
@@ -98,7 +109,7 @@ const HGRScreen = () => {
                     <p className='project-data-scope'>AI - CV</p>
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]} yarnElement={yarnElementContainer[0]}/>
 
                 <div className='project-data-info'>
                     <p className='project-data-date'>Mar 2023</p>
@@ -141,7 +152,7 @@ const HGRScreen = () => {
 
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]} yarnElement={yarnElementContainer[1]}/>
                 <div className='next-project'>
                     <p className='project-arrow'>→</p>
                     <p className='project-view' onClick={() => navigate('/flea')}>Next [ARCHIVED] Project: <span style={{'borderBottomColor': `{pathColour}`}}>flea</span></p>

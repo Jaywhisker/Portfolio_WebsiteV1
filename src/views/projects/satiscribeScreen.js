@@ -20,8 +20,10 @@ const SatiscribeScreen = () => {
 
     const [pathContainer, setpathContainer] = useState({})
     const [lineElementContainer, setlineElementContainer] = useState({})
+    const [yarnElementContainer, setyarnElementContainer] = useState({})
     var initialPathState = {};
     var initialLineState = {};
+    var initialYarnState={}
 
     const { pathname } = useLocation();
 
@@ -30,6 +32,32 @@ const SatiscribeScreen = () => {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
       }
+
+    const aspectRatio = 560/315
+    const idealWidth = window.innerWidth * 0.7
+    const aspectRatioHeight = idealWidth / aspectRatio
+
+    useEffect(() => {
+        const allLineState = document.querySelectorAll('.linecontainer')
+        const allPathState = document.querySelectorAll('#path')
+        const allYarnState = document.querySelectorAll('.yarn')
+        allLineState.forEach((LineState, index) => {
+            initialLineState[index] = LineState
+        })
+
+        allPathState.forEach((PathState, index) => {
+            initialPathState[index] = PathState
+        })
+
+        allYarnState.forEach((YarnState, index) => {
+            initialYarnState[index] = YarnState
+        })
+
+        setlineElementContainer(initialLineState)
+        setpathContainer(initialPathState)
+        setyarnElementContainer(initialYarnState)
+    }, [])
+
 
     function handleScroll() {
         const rect = document.querySelector('.project-data-header').getBoundingClientRect()
@@ -60,21 +88,6 @@ const SatiscribeScreen = () => {
     }, [LightMode]);
 
     useEffect(() => {
-        const allLineState = document.querySelectorAll('.linecontainer')
-        const allPathState = document.querySelectorAll('#path')
-        allLineState.forEach((LineState, index) => {
-            initialLineState[index] = LineState
-        })
-
-        allPathState.forEach((PathState, index) => {
-            initialPathState[index] = PathState
-        })
-        setlineElementContainer(initialLineState)
-        setpathContainer(initialPathState)
-    }, [])
-
-
-    useEffect(() => {
         window.removeEventListener('scroll', window.handleScroll);
         window.addEventListener('scroll', handleScroll);
         window.handleScroll = handleScroll;
@@ -96,7 +109,7 @@ const SatiscribeScreen = () => {
                     <p className='project-data-scope'>UI/UX</p>
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]} yarnElement={yarnElementContainer[0]}/>
 
                 <div className='project-data-info'>
                     <p className='project-data-date'>May - Aug 2023</p>
@@ -130,6 +143,12 @@ const SatiscribeScreen = () => {
                 </div>
 
                 <div className='project-data-image-container'>
+
+                    <div style={{marginLeft:'7vw', marginBottom:'8vh'}}>
+                        <iframe width={idealWidth} height={aspectRatioHeight} src="https://www.youtube.com/embed/O30XPCtOOj8?si=UIEsUxHDtbbwyVSi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <p className='text-list' style={{textAlign:'center'}}>Satiscribe Trailer</p>
+                    </div>
+
                     <div className='container-1'>
                         <div className='text-container-1'>
                             <img src='/project/satiscribe/homedb.png' className='container-1-img'></img>
@@ -166,7 +185,7 @@ const SatiscribeScreen = () => {
 
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]} yarnElement={yarnElementContainer[1]}/>
                 <div className='next-project'>
                     <p className='project-arrow'>→</p>
                     <p className='project-view' onClick={() => navigate('/ai_framework')}>Next Project: <span style={{'borderBottomColor': `{pathColour}`}}>AI Design Framework</span></p>

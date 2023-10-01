@@ -19,8 +19,10 @@ const AidScreen = () => {
 
     const [pathContainer, setpathContainer] = useState({})
     const [lineElementContainer, setlineElementContainer] = useState({})
+    const [yarnElementContainer, setyarnElementContainer] = useState({})
     var initialPathState = {};
     var initialLineState = {};
+    var initialYarnState={}
 
     const { pathname } = useLocation();
 
@@ -30,15 +32,27 @@ const AidScreen = () => {
         window.scrollTo(0, 0);
       }
 
-    function handleScroll() {
-        const rect = document.querySelector('.project-data-header').getBoundingClientRect()
-        if (rect.bottom > (window.innerHeight*0.08)) {
-            setOverride(true);
-        } else {
-            setOverride(undefined);
-        }
-      }
 
+    useEffect(() => {
+        const allLineState = document.querySelectorAll('.linecontainer')
+        const allPathState = document.querySelectorAll('#path')
+        const allYarnState = document.querySelectorAll('.yarn')
+        allLineState.forEach((LineState, index) => {
+            initialLineState[index] = LineState
+        })
+
+        allPathState.forEach((PathState, index) => {
+            initialPathState[index] = PathState
+        })
+
+        allYarnState.forEach((YarnState, index) => {
+            initialYarnState[index] = YarnState
+        })
+
+        setlineElementContainer(initialLineState)
+        setpathContainer(initialPathState)
+        setyarnElementContainer(initialYarnState)
+    }, [])
 
     useEffect(() => {
         setDocumentMode(setLightMode)
@@ -50,21 +64,16 @@ const AidScreen = () => {
         }
     }, [LightMode]);
 
-    useEffect(() => {
-        const allLineState = document.querySelectorAll('.linecontainer')
-        const allPathState = document.querySelectorAll('#path')
-        allLineState.forEach((LineState, index) => {
-            initialLineState[index] = LineState
-        })
 
-        allPathState.forEach((PathState, index) => {
-            initialPathState[index] = PathState
-        })
-        setlineElementContainer(initialLineState)
-        setpathContainer(initialPathState)
-    }, [])
-
-
+    function handleScroll() {
+        const rect = document.querySelector('.project-data-header').getBoundingClientRect()
+        if (rect.bottom > (window.innerHeight*0.08)) {
+            setOverride(true);
+        } else {
+            setOverride(undefined);
+        }
+      }
+    
     useEffect(() => {
         window.removeEventListener('scroll', window.handleScroll);
         window.addEventListener('scroll', handleScroll);
@@ -97,7 +106,7 @@ const AidScreen = () => {
                     <p className='project-data-scope'>AI - NLP</p>
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[0]} pathElement={pathContainer[0]} yarnElement={yarnElementContainer[0]}/>
 
                 <div className='project-data-info'>
                     <p className='project-data-date'>Apr - May 2023</p>
@@ -142,7 +151,7 @@ const AidScreen = () => {
 
                 </div>
 
-                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]}/>
+                <YarnLine pathColour={pathColour} lineContainerElement={lineElementContainer[1]} pathElement={pathContainer[1]} yarnElement={yarnElementContainer[1]}/>
                 <div className='next-project'>
                     <p className='project-arrow'>→</p>
                     <p className='project-view' onClick={() => navigate('/neptinium')}>Next Project: <span style={{'borderBottomColor': `{pathColour}`}}>Neptinium</span></p>

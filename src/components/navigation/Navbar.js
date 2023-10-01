@@ -9,7 +9,7 @@ const NavBar = ({lightMode, setlightMode, animation, override}) => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const pathColour = override !== undefined ? override: lightMode
+  const pathColour = !(override === undefined ) ? override: lightMode
 
   useEffect(() => {
     if (animation) {

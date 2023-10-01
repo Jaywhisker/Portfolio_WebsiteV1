@@ -19,12 +19,10 @@ const SLOYScreen = () => {
 
     const [pathContainer, setpathContainer] = useState({})
     const [lineElementContainer, setlineElementContainer] = useState({})
+    const [yarnElementContainer, setyarnElementContainer] = useState({})
     var initialPathState = {};
     var initialLineState = {};
-
-    const aspectRatio = 560/315
-    const idealWidth = window.innerWidth * 0.7
-    const aspectRatioHeight = idealWidth / aspectRatio
+    var initialYarnState={}
 
     const { pathname } = useLocation();
 
@@ -33,6 +31,33 @@ const SLOYScreen = () => {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
       }
+
+
+    useEffect(() => {
+        const allLineState = document.querySelectorAll('.linecontainer')
+        const allPathState = document.querySelectorAll('#path')
+        const allYarnState = document.querySelectorAll('.yarn')
+        allLineState.forEach((LineState, index) => {
+            initialLineState[index] = LineState
+        })
+
+        allPathState.forEach((PathState, index) => {
+            initialPathState[index] = PathState
+        })
+
+        allYarnState.forEach((YarnState, index) => {
+            initialYarnState[index] = YarnState
+        })
+
+        setlineElementContainer(initialLineState)
+        setpathContainer(initialPathState)
+        setyarnElementContainer(initialYarnState)
+    }, [])
+
+    const aspectRatio = 560/315
+    const idealWidth = window.innerWidth * 0.7
+    const aspectRatioHeight = idealWidth / aspectRatio
+
 
     function handleScroll() {
         const rect = document.querySelector('.project-data-header').getBoundingClientRect()
@@ -61,20 +86,6 @@ const SLOYScreen = () => {
         document.body.style.transitionDelay = "0.1s"
         }
     }, [LightMode]);
-
-    useEffect(() => {
-        const allLineState = document.querySelectorAll('.linecontainer')
-        const allPathState = document.querySelectorAll('#path')
-        allLineState.forEach((LineState, index) => {
-            initialLineState[index] = LineState
-        })
-
-        allPathState.forEach((PathState, index) => {
-            initialPathState[index] = PathState
-        })
-        setlineElementContainer(initialLineState)
-        setpathContainer(initialPathState)
-    }, [])
 
     
     useEffect(() => {
