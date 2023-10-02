@@ -22,6 +22,7 @@ function YarnLine({pathColour, lineContainerElement, pathElement, yarnElement}) 
             if (playAnimation) {
                 pathElement.style.setProperty('stroke-dasharray', (lineWidth -17) + 'px')
                 pathElement.style.setProperty('stroke-dashoffset', (lineWidth -18) + 'px')
+                pathElement.style.opacity = '1'
                 pathElement.style.animation = 'drawline 3.99s forwards ease-in-out';
                 yarnElement.style.animation = 'rollin 4s forwards ease-in-out, rotating 4s forwards ease-in-out'
 
@@ -132,12 +133,11 @@ function YarnLine({pathColour, lineContainerElement, pathElement, yarnElement}) 
                 <path
                     vectorEffect="non-scaling-stroke"
                     id="path"
-                    className='linePath'
                     d={straightSection}
                     stroke= {pathColour}
                     strokeWidth="1.5px"
                     fill="none"
-                    style={{transition: 'stroke 1.5s ease'}}
+                    style={{transition: 'stroke 1.5s ease', opacity:'0'}}
                 />
                 </svg>
                 <svg className='yarn' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 225">

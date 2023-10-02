@@ -4,15 +4,16 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { setDocumentMode } from '../../functions/lightModeFunctions';
 import NavBar from '../../components/navigation/Navbar';
 import YarnLine from '../../components/divider/YarnLineDivider';
+import ProjLoadingScreen from '../../components/loaders/projloaderScreen';
 
 import '../../components/Global.css'
 import '../../components/styles/projects/Main.css'
 import '../../components/styles/projects/AidStyles.css'
 
 const AidScreen = () => {
-
     const [LightMode, setLightMode] = useState(undefined)
     const [override, setOverride] = useState(true)
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
     var pathColour = LightMode ? "var(--dark_base)" : "var(--light_base)"
@@ -27,32 +28,61 @@ const AidScreen = () => {
     const { pathname } = useLocation();
 
     document.removeEventListener('mousemove', window.handleMouseMove)
+    window.removeEventListener('scroll', window.handleScroll)
 
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
       }
 
+      
+    useEffect(() => {
+    const randomInt = Math.floor (Math.random() * (3-0))
+
+    if (randomInt == 1 || randomInt ==2) {
+        setLoading(false)
+    } else {
+        const randomTime = Math.floor(Math.random() * (2700-1500) + 1500);
+
+        const timeoutId = setTimeout(() => {
+            document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000)
+        }, randomTime);
+            return () => {
+            clearTimeout(timeoutId);
+        };
+    }
+    }, []);
+
 
     useEffect(() => {
-        const allLineState = document.querySelectorAll('.linecontainer')
-        const allPathState = document.querySelectorAll('#path')
-        const allYarnState = document.querySelectorAll('.yarn')
-        allLineState.forEach((LineState, index) => {
-            initialLineState[index] = LineState
-        })
+        if (!loading) {
+            const allLineState = document.querySelectorAll('.linecontainer')
+            const allPathState = document.querySelectorAll('#path')
+            const allYarnState = document.querySelectorAll('.yarn')
+            allLineState.forEach((LineState, index) => {
+                initialLineState[index] = LineState
+            })
+    
+            allPathState.forEach((PathState, index) => {
+                initialPathState[index] = PathState
+            })
+    
+            allYarnState.forEach((YarnState, index) => {
+                initialYarnState[index] = YarnState
+            })
+    
+            setlineElementContainer(initialLineState)
+            setpathContainer(initialPathState)
+            setyarnElementContainer(initialYarnState)
 
-        allPathState.forEach((PathState, index) => {
-            initialPathState[index] = PathState
-        })
+            window.removeEventListener('scroll', window.handleScroll);
+            window.addEventListener('scroll', handleScroll);
+            window.handleScroll = handleScroll;
+        }
+    }, [loading])
 
-        allYarnState.forEach((YarnState, index) => {
-            initialYarnState[index] = YarnState
-        })
-
-        setlineElementContainer(initialLineState)
-        setpathContainer(initialPathState)
-        setyarnElementContainer(initialYarnState)
-    }, [])
 
     useEffect(() => {
         setDocumentMode(setLightMode)
@@ -75,26 +105,20 @@ const AidScreen = () => {
       }
     
     useEffect(() => {
-        window.removeEventListener('scroll', window.handleScroll);
-        window.addEventListener('scroll', handleScroll);
-        window.handleScroll = handleScroll;
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-        };
-      }, [])
-
-      useEffect(() => {
-        // "document.documentElement.scrollTo" is the magic for React Router Dom v6
-        document.documentElement.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "instant", // Optional if you want to skip the scrolling animation
-        });
-      }, [pathname]);
+    // "document.documentElement.scrollTo" is the magic for React Router Dom v6
+    document.documentElement.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant", // Optional if you want to skip the scrolling animation
+    });
+    }, [pathname]);
 
 
     return (
-        <>
+        loading ? (
+            <ProjLoadingScreen/>
+        ) : (
+            <>
             <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override}/>
             <div>
                 <img src='/project/aid/aidheader.png' className='project-data-header' />
@@ -160,6 +184,7 @@ const AidScreen = () => {
             </div>
             <div style={{height:'55vh'}}></div>
         </>
+        )
     );
 };
 

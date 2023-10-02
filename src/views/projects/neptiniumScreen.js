@@ -8,11 +8,18 @@ import YarnLine from '../../components/divider/YarnLineDivider';
 import '../../components/Global.css'
 import '../../components/styles/projects/Main.css'
 import '../../components/styles/projects/SatiscribeStyles.css'
+import ProjLoadingScreen from '../../components/loaders/projloaderScreen';
 
 const NeptiniumScreen = () => {
 
+
+    const aspectRatio = 560/315
+    const idealWidth = window.innerWidth * 0.7
+    const aspectRatioHeight = idealWidth / aspectRatio
+
     const [LightMode, setLightMode] = useState(undefined)
-    const [override, setOverride] = useState(false)
+    const [override, setOverride] = useState(true)
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
     var pathColour = LightMode ? "var(--dark_base)" : "var(--light_base)"
@@ -27,47 +34,54 @@ const NeptiniumScreen = () => {
     const { pathname } = useLocation();
 
     document.removeEventListener('mousemove', window.handleMouseMove)
+    window.removeEventListener('scroll', window.handleScroll)
 
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
       }
 
+      
+    useEffect(() => {
+    const randomTime = Math.floor(Math.random() * (3250-1500) + 1500);
+
+    const timeoutId = setTimeout(() => {
+        document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000)
+    }, randomTime);
+        return () => {
+        clearTimeout(timeoutId);
+    };
+    }, []);
+
 
     useEffect(() => {
-        const allLineState = document.querySelectorAll('.linecontainer')
-        const allPathState = document.querySelectorAll('#path')
-        const allYarnState = document.querySelectorAll('.yarn')
-        allLineState.forEach((LineState, index) => {
-            initialLineState[index] = LineState
-        })
+        if (!loading) {
+            const allLineState = document.querySelectorAll('.linecontainer')
+            const allPathState = document.querySelectorAll('#path')
+            const allYarnState = document.querySelectorAll('.yarn')
+            allLineState.forEach((LineState, index) => {
+                initialLineState[index] = LineState
+            })
+    
+            allPathState.forEach((PathState, index) => {
+                initialPathState[index] = PathState
+            })
+    
+            allYarnState.forEach((YarnState, index) => {
+                initialYarnState[index] = YarnState
+            })
+    
+            setlineElementContainer(initialLineState)
+            setpathContainer(initialPathState)
+            setyarnElementContainer(initialYarnState)
 
-        allPathState.forEach((PathState, index) => {
-            initialPathState[index] = PathState
-        })
-
-        allYarnState.forEach((YarnState, index) => {
-            initialYarnState[index] = YarnState
-        })
-
-        setlineElementContainer(initialLineState)
-        setpathContainer(initialPathState)
-        setyarnElementContainer(initialYarnState)
-    }, [])
-
-
-    const aspectRatio = 560/315
-    const idealWidth = window.innerWidth * 0.7
-    const aspectRatioHeight = idealWidth / aspectRatio
-
-
-    function handleScroll() {
-        const rect = document.querySelector('.project-data-header').getBoundingClientRect()
-        if (rect.bottom > (window.innerHeight*0.08)) {
-            setOverride(true);
-        } else {
-            setOverride(undefined);
+            window.removeEventListener('scroll', window.handleScroll);
+            window.addEventListener('scroll', handleScroll);
+            window.handleScroll = handleScroll;
         }
-      }
+    }, [loading])
 
 
     useEffect(() => {
@@ -81,26 +95,29 @@ const NeptiniumScreen = () => {
     }, [LightMode]);
 
 
+    function handleScroll() {
+        const rect = document.querySelector('.project-data-header').getBoundingClientRect()
+        if (rect.bottom > (window.innerHeight*0.08)) {
+            setOverride(true);
+        } else {
+            setOverride(undefined);
+        }
+      }
+    
     useEffect(() => {
-        window.removeEventListener('scroll', window.handleScroll);
-        window.addEventListener('scroll', handleScroll);
-        window.handleScroll = handleScroll;
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-        };
-      }, [])
-
-      useEffect(() => {
-        // "document.documentElement.scrollTo" is the magic for React Router Dom v6
-        document.documentElement.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "instant", // Optional if you want to skip the scrolling animation
-        });
-      }, [pathname]);
+    // "document.documentElement.scrollTo" is the magic for React Router Dom v6
+    document.documentElement.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant", // Optional if you want to skip the scrolling animation
+    });
+    }, [pathname]);
 
 
     return (
+        loading ? (
+            <ProjLoadingScreen/>
+        ) : (
         <>
             <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override}/>
             <div>
@@ -166,6 +183,7 @@ const NeptiniumScreen = () => {
             </div>
             <div style={{height:'55vh'}}></div>
         </>
+        )
     );
 };
 

@@ -1,24 +1,35 @@
 import React,  { useState, useEffect }  from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+import { renderCorrectScreen } from '../functions/mobileFunctions';
 import { setDocumentMode } from '../functions/lightModeFunctions';
 import LoadingScreen from './LoadingScreen';
 import NavBar from '../components/navigation/Navbar';
 import LandingHeader from '../components/LandingHeader';
+import MobileScreen from '../components/loaders/isMobile';
+import RotateScreen from '../components/loaders/rotateScreen';
+
 
 import '../components/styles/HomeScreenStyles.css';
 import '../components/styles/LoadingScreenStyles.css';
 import '../components/Global.css';
 
+
 const HomeScreen = () => {
   document.removeEventListener('scoll', window.handleScroll)
+
   const location = useLocation()
   const navigate = useNavigate()
   const [lightMode, setlightMode] = useState(undefined)
   const [isloadingScreen, setisLoadingScreen] = useState(location.state === null)
+  const [rotate, setRotate] = useState(false)
+  const [mobile, setMobile] = useState(false)
 
   var pathColour = lightMode ? "var(--dark_base)" : "var(--light_base)";
 
+  useEffect(() => {
+    renderCorrectScreen(navigate, location, setRotate, setMobile)
+  }, [])
 
   useEffect(() => {
     setDocumentMode(setlightMode)
@@ -45,7 +56,12 @@ const HomeScreen = () => {
   return (
     lightMode !== undefined ? (
       <div className='container'>
-          {isloadingScreen ? 
+          { mobile ? (
+            <MobileScreen/>
+            ) : rotate ? (
+              <RotateScreen/>
+            ) :
+            isloadingScreen ? 
             (
             <LoadingScreen lightMode={lightMode} pathColour={pathColour}/>
             ) : (
