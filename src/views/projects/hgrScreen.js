@@ -30,12 +30,19 @@ const HGRScreen = () => {
     const { pathname } = useLocation();
 
     document.removeEventListener('mousemove', window.handleMouseMove)
-    window.removeEventListener('scroll', window.handleScroll)
 
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
       }
 
+      useEffect(() => {
+        window.removeEventListener('scroll', window.handleScroll);
+        window.addEventListener('scroll', handleScroll);
+        window.handleScroll = handleScroll;
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, [])
       
       
       useEffect(() => {
@@ -78,10 +85,6 @@ const HGRScreen = () => {
             setlineElementContainer(initialLineState)
             setpathContainer(initialPathState)
             setyarnElementContainer(initialYarnState)
-
-            window.removeEventListener('scroll', window.handleScroll);
-            window.addEventListener('scroll', handleScroll);
-            window.handleScroll = handleScroll;
         }
     }, [loading])
 

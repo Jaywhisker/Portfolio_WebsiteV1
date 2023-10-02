@@ -29,32 +29,33 @@ const KopiloScreen = () => {
     const { pathname } = useLocation();
 
     document.removeEventListener('mousemove', window.handleMouseMove)
-    window.removeEventListener('scroll', window.handleScroll)
 
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
       }
 
-      
+      useEffect(() => {
+        window.removeEventListener('scroll', window.handleScroll);
+        window.addEventListener('scroll', handleScroll);
+        window.handleScroll = handleScroll;
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, [])
       
       useEffect(() => {
         const randomInt = Math.floor (Math.random() * (3-0))
-    
         if (randomInt == 1 || randomInt == 0) {
             setLoading(false)
         } else {
             const randomTime = Math.floor(Math.random() * (2700-1500) + 1500);
-    
             const timeoutId = setTimeout(() => {
                 document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
                 setTimeout(() => {
                     setLoading(false);
                 }, 1000)
             }, randomTime);
-                return () => {
-                clearTimeout(timeoutId);
-            };
-        }
+            }
         }, []);
 
 
@@ -78,10 +79,6 @@ const KopiloScreen = () => {
             setlineElementContainer(initialLineState)
             setpathContainer(initialPathState)
             setyarnElementContainer(initialYarnState)
-
-            window.removeEventListener('scroll', window.handleScroll);
-            window.addEventListener('scroll', handleScroll);
-            window.handleScroll = handleScroll;
         }
     }, [loading])
 
