@@ -5,6 +5,7 @@ import { setDocumentMode } from '../../functions/lightModeFunctions';
 import NavBar from '../../components/navigation/Navbar';
 import YarnLine from '../../components/divider/YarnLineDivider';
 import ProjLoadingScreen from '../../components/loaders/projloaderScreen';
+import header from '../../components/projectAsset/aidheader.png'
 
 import '../../components/Global.css'
 import '../../components/styles/projects/Main.css'
@@ -121,7 +122,7 @@ const AidScreen = () => {
             <>
             <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override}/>
             <div>
-                <img src='/project/aid/aidheader.png' className='project-data-header' />
+                <img src={header} className='project-data-header' />
             </div>
 
             <div className='project-data-content'>

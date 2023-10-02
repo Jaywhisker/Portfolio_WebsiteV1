@@ -4,11 +4,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { setDocumentMode } from '../../functions/lightModeFunctions';
 import NavBar from '../../components/navigation/Navbar';
 import YarnLine from '../../components/divider/YarnLineDivider';
+import ProjLoadingScreen from '../../components/loaders/projloaderScreen';
+import header from '../../components/projectAsset/fleaheader.png'
 
 import '../../components/Global.css'
 import '../../components/styles/projects/Main.css'
 import '../../components/styles/projects/fleaStyles.css'
-import ProjLoadingScreen from '../../components/loaders/projloaderScreen';
 
 
 const FLEAScreen = () => {
@@ -122,7 +123,7 @@ const FLEAScreen = () => {
         <>
             <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override}/>
             <div>
-                <img src='/project/flea/fleaheader.png' className='project-data-header' />
+                <img src={header} className='project-data-header' />
             </div>
 
             <div className='project-data-content'>
