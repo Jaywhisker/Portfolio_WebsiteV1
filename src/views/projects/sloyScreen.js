@@ -5,7 +5,6 @@ import { setDocumentMode } from '../../functions/lightModeFunctions';
 import NavBar from '../../components/navigation/Navbar';
 import YarnLine from '../../components/divider/YarnLineDivider';
 import ProjLoadingScreen from '../../components/loaders/projloaderScreen';
-import header from '../../components/projectAsset/sloyheader.png'
 
 import '../../components/Global.css'
 import '../../components/styles/projects/Main.css'
@@ -48,26 +47,70 @@ const SLOYScreen = () => {
         };
       }, [])
       
-      
+
       useEffect(() => {
-        const randomInt = Math.floor (Math.random() * (3-0))
+        window.removeEventListener('scroll', window.handleScroll);
+        window.addEventListener('scroll', handleScroll);
+        window.handleScroll = handleScroll;
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, [])
+
+        
+    useEffect(() => {
+        const imgs = [
+            '/project/sloy/sloyheader.png',
+            '/project/sloy/sloymenu.png',
+            '/project/sloy/sloypic.png',
+            '/project/sloy/sloytut.png',
+            '/project/sloy/sloyui.png',
+        ];
+        cacheImages(imgs)
+    }, [])
+
     
-        if (randomInt == 1) {
+    const cacheImages = async (srcArray) => {
+        const startTime = performance.now();
+
+        const promises = await srcArray.map((src) => {
+            return new Promise(function (resolve, reject) {
+                const img = new Image();
+
+                img.src = src
+                img.onload = resolve();
+                img.onerror = reject();
+            })
+        })
+        await Promise.all(promises);
+        const endTime = performance.now(); // Record the end time
+        const executionTime = endTime - startTime; // Calculate the execution time in milliseconds
+        console.log(executionTime)
+        if ( executionTime < 500 ) {
             setLoading(false)
         } else {
-            const randomTime = Math.floor(Math.random() * (2700-1500) + 1500);
-    
-            const timeoutId = setTimeout(() => {
-                document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
-                setTimeout(() => {
-                    setLoading(false);
-                }, 1000)
-            }, randomTime);
-                return () => {
-                clearTimeout(timeoutId);
-            };
+            setTimeout(() => setLoading(false), 2000)
         }
-        }, []);
+    }     
+    //   useEffect(() => {
+    //     const randomInt = Math.floor (Math.random() * (3-0))
+    
+    //     if (randomInt == 1) {
+    //         setLoading(false)
+    //     } else {
+    //         const randomTime = Math.floor(Math.random() * (2700-1500) + 1500);
+    
+    //         const timeoutId = setTimeout(() => {
+    //             document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
+    //             setTimeout(() => {
+    //                 setLoading(false);
+    //             }, 1000)
+    //         }, randomTime);
+    //             return () => {
+    //             clearTimeout(timeoutId);
+    //         };
+    //     }
+    //     }, []);
 
     useEffect(() => {
         if (!loading) {
@@ -130,7 +173,7 @@ const SLOYScreen = () => {
         <>
             <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override}/>
             <div>
-                <img src={header} className='project-data-header' />
+                <img src='/project/sloy/sloyheader.png' className='project-data-header' />
             </div>
 
             <div className='project-data-content'>

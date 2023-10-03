@@ -5,7 +5,6 @@ import { setDocumentMode } from '../../functions/lightModeFunctions';
 import NavBar from '../../components/navigation/Navbar';
 import YarnLine from '../../components/divider/YarnLineDivider';
 import ProjLoadingScreen from '../../components/loaders/projloaderScreen';
-import header from '../../components/projectAsset/aidheader.png'
 
 import '../../components/Global.css'
 import '../../components/styles/projects/Main.css'
@@ -42,26 +41,63 @@ const AidScreen = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [])
-      
+    
     useEffect(() => {
-    const randomInt = Math.floor (Math.random() * (3-0))
+        const imgs = [
+            '/project/aid/aidheader.png',
+            '/project/aid/pipeline1.png',
+            '/project/aid/pipeline2.png',
+            '/project/aid/pipeline3.png',
+            '/project/aid/pipeline4.png',
+            '/project/aid/pipeline5.png'
+        ];
+        cacheImages(imgs)
+    }, [])
 
-    if (randomInt == 1 || randomInt ==2) {
-        setLoading(false)
-    } else {
-        const randomTime = Math.floor(Math.random() * (2700-1500) + 1500);
 
-        const timeoutId = setTimeout(() => {
-            document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
-            setTimeout(() => {
-                setLoading(false);
-            }, 1000)
-        }, randomTime);
-            return () => {
-            clearTimeout(timeoutId);
-        };
-    }
-    }, []);
+    const cacheImages = async (srcArray) => {
+        const startTime = performance.now();
+
+        const promises = await srcArray.map((src) => {
+            return new Promise(function (resolve, reject) {
+                const img = new Image();
+
+                img.src = src
+                img.onload = resolve();
+                img.onerror = reject();
+            })
+        })
+        await Promise.all(promises);
+        const endTime = performance.now(); // Record the end time
+        const executionTime = endTime - startTime; // Calculate the execution time in milliseconds
+        console.log(executionTime)
+        if ( executionTime < 500 ) {
+            setLoading(false)
+        } else {
+            setTimeout(() => setLoading(false), 2000)
+        }
+    }   
+
+
+    // useEffect(() => {
+    // const randomInt = Math.floor (Math.random() * (3-0))
+
+    // if (randomInt == 1 || randomInt ==2) {
+    //     setLoading(false)
+    // } else {
+    //     const randomTime = Math.floor(Math.random() * (2700-1500) + 1500);
+
+    //     const timeoutId = setTimeout(() => {
+    //         document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
+    //         setTimeout(() => {
+    //             setLoading(false);
+    //         }, 1000)
+    //     }, randomTime);
+    //         return () => {
+    //         clearTimeout(timeoutId);
+    //     };
+    // }
+    // }, []);
 
 
     useEffect(() => {
@@ -125,7 +161,7 @@ const AidScreen = () => {
             <>
             <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override}/>
             <div>
-                <img src={header} className='project-data-header' />
+                <img src='/project/aid/aidheader.png' className='project-data-header' />
             </div>
 
             <div className='project-data-content'>
