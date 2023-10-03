@@ -48,7 +48,7 @@ const ProjLoadingScreen = () => {
                             <path className="cls-1" d="m65.93,93.77s10.92-1.37,11.5,4.48c.67,6.8-12.17,15.24-30.32,17.03-24.83,2.45-34.2,10.83-34.13,17.45.11,9.88,13.03,6.49,13.03,6.49"/>
                     </g>
                     </svg>
-                    <p className='loading-text'>Untangling yarn, please wait</p>
+                    <p className='loading-text'>Untangling yarn, please wait </p>
                 </div>
             </div>
         ) : lightMode !== undefined && randomLoader == 2 ? (
@@ -91,7 +91,7 @@ const ProjLoadingScreen = () => {
                         <path className="cls-2" d="m26.45,37.32s-4.82,3.29-5.27,6.83,3.44,3.88,3.44,3.88"/>
                         </g>
                     </svg>
-                    <p className='loading-text'>Finding the start of the yarn ball, please wait</p>
+                    <p className='loading-text'>Finding the start of the yarn ball, please wait </p>
                 </div>
             </div>
         ) : lightMode !== undefined && randomLoader == 3 ? (
@@ -110,7 +110,7 @@ const ProjLoadingScreen = () => {
                         <path className="cls-2" d="m63.2,6.41s-1.54,6.66-1.43,12.41.84,9.4.84,9.4"/><path className="cls-2" d="m71.77,6.08s-1.54,6-1.54,10.21.77,4.83.77,4.83"/><path className="cls-2" d="m96.86,66.03s-6.07-1.69-11.55-6.67c-5.48-4.98-5.86-9.44-5.86-9.44"/><path className="cls-2" d="m88.7,73.38s-5.08-2.99-8.58-6.5-7.48-9.24-7.48-9.24"/><path className="cls-2" d="m78.64,77.15s-4.53-2.81-6.87-5.15c-2.34-2.34-4.13-5.97-4.13-5.97"/><path className="cls-2" d="m45.31,16.63s.43,2.85,3.55,5.89,4.28,2.75,4.28,2.75"/><path className="cls-2" d="m39.62,25.27s1.89,4.73,5.94,7.92c4.05,3.18,8.25,5.02,8.25,5.02"/><path className="cls-2" d="m79.45,50.88s9.18,3.25,17.41,2.65,9.6-2.65,9.6-2.65"/><path className="cls-2" d="m88.63,43.17s7.29,1.39,12.81.7,6.22-2.29,6.22-2.29"/><path className="cls-1" d="m49.55,71.59c-.2,3-.32,6.15-.32,9.53-.06,24.35,5.7,55.87,5.7,55.87"/><path className="cls-1" d="m4,136.98s-3.12-28.26-2.39-54.97c.24-8.63,2.17-45.65,14.12-65.37C29.38-5.91,48.26,1.04,53.52,9.97"/><path className="cls-1" d="m117.81,137.98s15.86-37.26,17.26-60.1c1.4-22.79.35-36.3.35-36.3"/><path className="cls-1" d="m126.59,34.97c.79.79,1.68,1.55,2.69,2.28,12.6,9.13,22.41,9.76,22.41,9.76"/><path className="cls-1" d="m164.43,142.81s10.16-22.31,11.65-73.89c1.03-35.46-4.51-49.72-21.81-58.51-21.95-11.15-41.55,10.67-27.68,24.56"/><path className="cls-6" d="m142.88,32.55c-2.42,1.99-4.47,4.47-5.99,7.2-.48.86-.23,2.09.67,2.57s2.05.24,2.57-.67c.36-.64.74-1.27,1.16-1.88.21-.3.42-.6.64-.9.07-.09.28-.32-.05.06.05-.06.1-.12.14-.18.12-.15.24-.3.37-.45.95-1.13,2-2.16,3.13-3.1.35-.29.55-.89.55-1.33,0-.46-.2-1.01-.55-1.33s-.83-.57-1.33-.55c-.52.02-.92.22-1.33.55h0Z"/><path className="cls-6" d="m129.8,24.38c-2.22,1.8-4.25,4-5.73,6.45-.51.84-.21,2.1.67,2.57s2.02.23,2.57-.67c.36-.6.76-1.16,1.18-1.71l-.29.38c1.24-1.6,2.68-3.07,4.25-4.35.35-.28.55-.9.55-1.33,0-.46-.2-1.01-.55-1.33s-.83-.57-1.33-.55c-.53.02-.92.22-1.33.55h0Z"/><path className="cls-4" d="m39.62,25.27s-.68-3.31-3.63-3.31-8.93,4.67-11.12,9.01c-2.27,4.51,9.16,5.33,9.16,5.33"/>
                         <ellipse className="cls-4" cx="28.27" cy="16.62" rx="2.09" ry="3.77"/><ellipse className="cls-4" cx="39.62" cy="14.34" rx="3.77" ry="2.09" transform="translate(18.09 50.56) rotate(-79.17)"/></g>
                     </svg>
-                    <p className='loading-text'>Winding yarn ball, please wait</p>
+                    <p className='loading-text'>Winding yarn ball, please wait </p>
                 </div>
             </div>
         ) : null

@@ -11,7 +11,7 @@ import HGRScreen from '../views/projects/hgrScreen';
 import FLEAScreen from '../views/projects/fleaScreen';
 import SLOYScreen from '../views/projects/sloyScreen';
 import CChessScreen from '../views/projects/comchessScreen';
-
+import ProjLoadingScreen from '../components/loaders/projloaderScreen';
 const Routing = () => {
   return (
     <Router>

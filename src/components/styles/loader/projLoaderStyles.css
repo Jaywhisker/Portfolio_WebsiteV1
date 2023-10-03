@@ -56,6 +56,29 @@
 
 .loading-text{
     font: 400 2.15vmin 'Lato';
-    width: 15vw;
+    width: 16vw;
     text-align: center;
 }
+
+
+.loading-text:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4,end) 2s infinite;      
+    animation: ellipsis steps(4,end) 2s infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+  
+  @keyframes ellipsis {
+    to {
+      width: 2.15vmin;    
+    }
+  }
+  
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 2.15vmin;    
+    }
+  }

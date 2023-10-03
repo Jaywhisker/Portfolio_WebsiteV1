@@ -50,40 +50,6 @@ const NeptiniumScreen = () => {
       }, [])
 
       
-    // useEffect(() => {
-    //     const imgs = [
-    //         '/project/neptinium/neptiniumheader.png',
-    //         '/project/neptinium/placeholder1.png',
-    //         '/project/neptinium/placeholder2.png',
-    //         '/project/neptinium/placeholder3.png',
-    //         '/project/neptinium/placeholder4.png',
-    //     ];
-    //     cacheImages(imgs)
-    // }, [])
-
-
-    // const cacheImages = async (srcArray) => {
-    //     const startTime = performance.now();
-
-    //     const promises = await srcArray.map((src) => {
-    //         return new Promise(function (resolve, reject) {
-    //             const img = new Image();
-
-    //             img.src = src
-    //             img.onload = resolve();
-    //             img.onerror = reject();
-    //         })
-    //     })
-    //     await Promise.all(promises);
-    //     const endTime = performance.now(); // Record the end time
-    //     const executionTime = endTime - startTime; // Calculate the execution time in milliseconds
-    //     console.log(executionTime)
-    //     if ( executionTime < 500 ) {
-    //         setLoading(false)
-    //     } else {
-    //         setTimeout(() => setLoading(false), 2000)
-    //     }
-    // }   
 
       useEffect(() => {
         const randomInt = Math.floor (Math.random() * (3-0))
