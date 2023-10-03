@@ -1,5 +1,5 @@
 import Routing from "./routes/Routes";
-import React from 'react';
+import React, {useEffect} from 'react';
 
 function App() {
 
@@ -47,8 +47,6 @@ function App() {
 
 
 const cacheImages = async (srcArray) => {
-    const startTime = performance.now();
-
     const promises = await srcArray.map((src) => {
         return new Promise(function (resolve, reject) {
             const img = new Image();
@@ -59,14 +57,6 @@ const cacheImages = async (srcArray) => {
         })
     })
     await Promise.all(promises);
-    const endTime = performance.now(); // Record the end time
-    const executionTime = endTime - startTime; // Calculate the execution time in milliseconds
-    console.log(executionTime)
-    if ( executionTime < 500 ) {
-        setLoading(false)
-    } else {
-        setTimeout(() => setLoading(false), 2000)
-    }
 }   
 
   return (
