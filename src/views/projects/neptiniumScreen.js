@@ -18,7 +18,7 @@ const NeptiniumScreen = () => {
     const aspectRatioHeight = idealWidth / aspectRatio
 
     const [LightMode, setLightMode] = useState(undefined)
-    const [override, setOverride] = useState(true)
+    const [override, setOverride] = useState(false)
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
@@ -50,60 +50,60 @@ const NeptiniumScreen = () => {
       }, [])
 
       
-    useEffect(() => {
-        const imgs = [
-            '/project/neptinium/neptiniumheader.png',
-            '/project/neptinium/placeholder1.png',
-            '/project/neptinium/placeholder2.png',
-            '/project/neptinium/placeholder3.png',
-            '/project/neptinium/placeholder4.png',
-        ];
-        cacheImages(imgs)
-    }, [])
+    // useEffect(() => {
+    //     const imgs = [
+    //         '/project/neptinium/neptiniumheader.png',
+    //         '/project/neptinium/placeholder1.png',
+    //         '/project/neptinium/placeholder2.png',
+    //         '/project/neptinium/placeholder3.png',
+    //         '/project/neptinium/placeholder4.png',
+    //     ];
+    //     cacheImages(imgs)
+    // }, [])
 
 
-    const cacheImages = async (srcArray) => {
-        const startTime = performance.now();
+    // const cacheImages = async (srcArray) => {
+    //     const startTime = performance.now();
 
-        const promises = await srcArray.map((src) => {
-            return new Promise(function (resolve, reject) {
-                const img = new Image();
+    //     const promises = await srcArray.map((src) => {
+    //         return new Promise(function (resolve, reject) {
+    //             const img = new Image();
 
-                img.src = src
-                img.onload = resolve();
-                img.onerror = reject();
-            })
-        })
-        await Promise.all(promises);
-        const endTime = performance.now(); // Record the end time
-        const executionTime = endTime - startTime; // Calculate the execution time in milliseconds
-        console.log(executionTime)
-        if ( executionTime < 500 ) {
-            setLoading(false)
-        } else {
-            setTimeout(() => setLoading(false), 2000)
-        }
-    }   
-
-    //   useEffect(() => {
-    //     const randomInt = Math.floor (Math.random() * (3-0))
-    
-    //     if (randomInt == 1) {
+    //             img.src = src
+    //             img.onload = resolve();
+    //             img.onerror = reject();
+    //         })
+    //     })
+    //     await Promise.all(promises);
+    //     const endTime = performance.now(); // Record the end time
+    //     const executionTime = endTime - startTime; // Calculate the execution time in milliseconds
+    //     console.log(executionTime)
+    //     if ( executionTime < 500 ) {
     //         setLoading(false)
     //     } else {
-    //         const randomTime = Math.floor(Math.random() * (2700-1500) + 1500);
-    
-    //         const timeoutId = setTimeout(() => {
-    //             document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
-    //             setTimeout(() => {
-    //                 setLoading(false);
-    //             }, 1000)
-    //         }, randomTime);
-    //             return () => {
-    //             clearTimeout(timeoutId);
-    //         };
+    //         setTimeout(() => setLoading(false), 2000)
     //     }
-    //     }, []);
+    // }   
+
+      useEffect(() => {
+        const randomInt = Math.floor (Math.random() * (3-0))
+    
+        if (randomInt == 1) {
+            setLoading(false)
+        } else {
+            const randomTime = Math.floor(Math.random() * (2700-1500) + 1500);
+    
+            const timeoutId = setTimeout(() => {
+                document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
+                setTimeout(() => {
+                    setLoading(false);
+                }, 1000)
+            }, randomTime);
+                return () => {
+                clearTimeout(timeoutId);
+            };
+        }
+        }, []);
 
 
     useEffect(() => {
