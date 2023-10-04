@@ -166,13 +166,13 @@ const SatiscribeScreen = () => {
                     <br/><br/>
                     This project was part of the HCI-AI module. Hence, the focused on this project was understanding user needs and researching on the UI/UX rather than actually creating the solution. The main focus for my group was how could we integrate AI into our solution to give user control yet use the power of different NLP models to alleviate the painstaking process of writing, cleaning and summarising long meeting minutes.
                     <br/><br/>
-                    Throughout the 12 weeks, we went through 3 iterations, each further developing our solution. For our first iteration, we created user personas and user scenarios to explain our problem statement before ideating for our solution. From our solution, we then created <b>paper prototypes</b> and conducted a <b>heuristic evaluation</b> with 6 participants.
+                    Throughout the 12 weeks, we went through 3 iterations, each further developing our solution. For our first iteration, we created user personas and user scenarios to explain our problem statement before ideating for our solution. From our solution, we then created <b>paper prototypes</b> and conducted a <b>heuristic evaluation</b> with 5 participants.
                     <br/><br/>
                     For our second iteration, we adjusted our solution based on the feedback of our heuristic evaluation before developing our own design system on <b>figma</b> for SATISCRIBE. After which, we developed <b>hi-fi protoypes</b> on figma and conducted a <b>laboratory experiment</b> with 20 participants. 
                     <br/><br/>
                     After analyse and evaluating the results, we started our third iteration by developing part of the solution with <b>Next.js</b>. We then conducted an <b>A/B testing</b> through a <b>web experiment</b> on 20 participants. 
                     <br/><br/>
-                    Currently, we are further developing our solution based on the results of our web experiment and through research related to using AI to automate meeting minutes/recap. We aim to publish a late breaking workshop paper for CHI 2023.
+                    Currently, we are further developing our solution based on the results of our web experiment and through research related to using AI to automate meeting minutes/recap. We aim to publish a late breaking workshop paper for CHI 2024.
                     </p>
                     {/* <div className='project-redirect'>
                         <div className='project-redirect-links'>
