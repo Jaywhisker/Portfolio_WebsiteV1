@@ -1,5 +1,5 @@
 import React,  { useState, useEffect }  from 'react';
-
+import { useLocation } from 'react-router-dom';
 import { setDocumentMode } from '../functions/lightModeFunctions';
 import NavBar from '../components/navigation/Navbar';
 import YarnLine from '../components/divider/YarnLineDivider';
@@ -35,7 +35,6 @@ const AboutScreen = () => {
   var initialLineState = {};
 
   document.removeEventListener('mousemove', window.handleMouseMove)
-  document.removeEventListener('scoll', window.handleScroll)
 
   var pathColour = aboutLightMode ? "var(--dark_base)" : "var(--light_base)"
   
@@ -85,8 +84,7 @@ const AboutScreen = () => {
 
   return (
     <div className='about-container'>
-        <NavBar lightMode={aboutLightMode} setlightMode={setAboutLightMode} animation={false}/>
-        
+        <NavBar lightMode={aboutLightMode} setlightMode={setAboutLightMode} animation={false} sticky={false}/>
           <div className='about'>
             <div className='about-header'>
               <p className='about-text'>About</p>

@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import LightToggle from './LightToggle';
 
 
-const NavBar = ({lightMode, setlightMode, animation, override}) => {
+const NavBar = ({lightMode, setlightMode, animation, override, visible, sticky}) => {
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const NavBar = ({lightMode, setlightMode, animation, override}) => {
   })
 
   return (
-    <div className='navContainer'>
+    <div className='navContainer' style={{visibility: visible===false ? 'hidden' : 'visible', position: sticky===false ? 'static' : 'sticky'}}>
         <p className={pathColour ? 'name' : 'namedark'} onClick={() => navigate('/', {state: {firstTime:false}})}> Cheng Wei Xuan</p>
         <div className='rightnavContainer'>
             <p className={pathColour ? 'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/archive' ? 'underline' : 'none'}} onClick={() => navigate('/archive')}>Archive</p>

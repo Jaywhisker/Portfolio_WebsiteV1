@@ -99,12 +99,20 @@ const HGRScreen = () => {
     }, [LightMode]);
 
 
+    const [visible, setVisible] = useState(true)
     function handleScroll() {
         const rect = document.querySelector('.project-data-header').getBoundingClientRect()
-        if (rect.bottom > (window.innerHeight*0.08)) {
+        const header = document.querySelector('.project-data-title').getBoundingClientRect()
+        if (rect.bottom > (window.innerHeight*0.1)) {
             setOverride(true);
         } else {
             setOverride(undefined);
+        }
+
+        if (header.top < (window.innerHeight*0.14)) {
+            setVisible(false)
+        } else {
+            setVisible(true)
         }
       }
     
@@ -117,12 +125,13 @@ const HGRScreen = () => {
     });
     }, [pathname]);
 
+
     return (
         loading ? (
             <ProjLoadingScreen/>
         ) : (
         <>
-            <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override}/>
+            <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override} visible={visible}/>
             <div>
                 <img src='/project/cvhand/cvheader.png' className='project-data-header' />
             </div>

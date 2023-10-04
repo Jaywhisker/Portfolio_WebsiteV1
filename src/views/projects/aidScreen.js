@@ -14,6 +14,7 @@ const AidScreen = () => {
     const [LightMode, setLightMode] = useState(undefined)
     const [override, setOverride] = useState(true)
     const [loading, setLoading] = useState(true)
+    const [visible, setVisible] = useState(true)
     const navigate = useNavigate()
 
     var pathColour = LightMode ? "var(--dark_base)" : "var(--light_base)"
@@ -101,10 +102,17 @@ const AidScreen = () => {
 
     function handleScroll() {
         const rect = document.querySelector('.project-data-header').getBoundingClientRect()
-        if (rect.bottom > (window.innerHeight*0.08)) {
+        const header = document.querySelector('.project-data-title').getBoundingClientRect()
+        if (rect.bottom > (window.innerHeight*0.1)) {
             setOverride(true);
         } else {
             setOverride(undefined);
+        }
+
+        if (header.top < (window.innerHeight*0.14)) {
+            setVisible(false)
+        } else {
+            setVisible(true)
         }
       }
     
@@ -122,8 +130,8 @@ const AidScreen = () => {
         loading ? (
             <ProjLoadingScreen/>
         ) : (
-            <>
-            <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override}/>
+        <>
+            <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override} visible={visible}/>
             <div>
                 <img src='/project/aid/aidheader.png' className='project-data-header' />
             </div>
