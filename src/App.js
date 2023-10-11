@@ -1,5 +1,6 @@
 import Routing from "./routes/Routes";
 import React, {useEffect} from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
 
