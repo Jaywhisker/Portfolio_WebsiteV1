@@ -106,7 +106,7 @@ const AboutScreen = () => {
                 <a className='about-contacts-link' style={{ marginBottom:'50px'}} href="https://github.com/Jaywhisker/" target="_blank">GitHub</a>
 
                 <p className='about-contacts-header'>More Info</p>
-                <a className='about-contacts-link' href="https://drive.google.com/file/d/1SqSyCcjOGzcV2nMU7FhiejgtdwgMqtOd/view?usp=sharing" target="_blank">Resume</a>
+                <a className='about-contacts-link' href="https://drive.google.com/file/d/1sJad9ToWNDW__E1j7bGRUq4TbP-626DX/view?usp=sharing" target="_blank">Resume</a>
               </div>
             </div>
           </div>
