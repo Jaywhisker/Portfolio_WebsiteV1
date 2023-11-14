@@ -106,7 +106,7 @@ const AboutScreen = () => {
                 <a className='about-contacts-link' style={{ marginBottom:'50px'}} href="https://github.com/Jaywhisker/" target="_blank">GitHub</a>
 
                 <p className='about-contacts-header'>More Info</p>
-                <a className='about-contacts-link' href="https://drive.google.com/file/d/1sJad9ToWNDW__E1j7bGRUq4TbP-626DX/view?usp=sharing" target="_blank">Resume</a>
+                <a className='about-contacts-link' href="https://drive.google.com/file/d/1yHu6SuPPmIVvO8Q6i8zFVZyeawNcqjc9/view?usp=drive_link" target="_blank">Resume</a>
               </div>
             </div>
           </div>
@@ -119,13 +119,16 @@ const AboutScreen = () => {
 
             <div className='skill-set'>
                 <p className='skill-set-header' style={{marginTop: '-15px'}}>Web Development</p>
-                <p className='skill-set-text'>React, Next.js, Javascript, HTML/CSS, Flask, Ruby on Rails</p>
+                <p className='skill-set-text'>React, Next.js, Javascript, HTML/CSS, FastAPI, Flask</p>
 
                 <p className='skill-set-header'>AI Development</p>
                 <p className='skill-set-text'>Tensorflow, Pytorch, Computer Vision, Natural Language Processing</p>
                 
+                <p className='skill-set-header'>Database</p>
+                <p className='skill-set-text'>MongoDB, ScyllaDB, Elasticsearch, Weaviate, Chroma</p>
+                
                 <p className='skill-set-header'>DevOps</p>
-                <p className='skill-set-text'>Docker, gRPC, Google Cloud, elasticSearch, ScyllaDB</p>
+                <p className='skill-set-text'>Docker, gRPC, Google Cloud</p>
                 
                 <p className='skill-set-header'>Creative Development</p>
                 <p className='skill-set-text' style={{marginBottom:'8px'}}>2D: Adobe Suite (Illustrator, Photoshop, Premiere Pro, After Effects), Figma</p>
