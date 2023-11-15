@@ -27,17 +27,18 @@
     color: var(--dark_base) !important;
     font-size: 2.25vmin;
     margin-right: 42px;
+    transition: color 1s;
 }
 
 .righttext:hover,
 .name:hover{
     cursor: pointer;
     background: linear-gradient(90deg, var(--dark_base), var(--dark_base),#b0b0b0, var(--dark_base),var(--dark_base));
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     animation: shine 2.5s linear infinite;
     background-size: 300% 100%;
     background-clip: text; 
-    color: transparent;
+    color: transparent !important;
   }
 
 
@@ -46,17 +47,18 @@
     color: var(--light_base) !important;
     font-size: 2.25vmin;
     margin-right: 42px;
+    transition: color 1s;
 }
 
 .righttextdark:hover,
 .namedark:hover{
     cursor: pointer;
     background: linear-gradient(90deg, var(--light_base), var(--light_base),#777777, var(--light_base),var(--light_base));
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     animation: shine 2.5s linear infinite;
     background-size: 300% 100%;
     background-clip: text; 
-    color: transparent;
+    color: transparent !important;
 }
 
 @keyframes shine {

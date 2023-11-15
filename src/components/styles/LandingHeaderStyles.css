@@ -204,14 +204,14 @@
     color: transparent;
     font-weight: 900;
     -webkit-text-stroke-width: 1.5px;
-    transition: -webkit-text-stroke-color 2.5s;
+    transition: -webkit-text-stroke-color 1.5s;
     transition-delay: 0.1s;
 }
 
 .externalIcon{
     font-size: 6vmin;
     margin: 1vh 1vw 0 1vw;
-    transition: color 2.5s;
+    transition: color 1.5s;
     transition-delay: 0.1s;
 }
 
@@ -285,9 +285,9 @@ a:hover div{
 }
 
 .flexright:hover .scroll{
-    background: linear-gradient(90deg, #bebdbd, #bebdbd,#333333, #bebdbd,#bebdbd);
+    background: linear-gradient(90deg, #e0e0e0, #999999,#424242, #999999,#e0e0e0);
     background-repeat: repeat;
-    animation: shining 3s linear infinite;
+    animation: shining 5s linear infinite;
     background-size: 300% 100%;
     background-clip: text; 
     color: transparent;

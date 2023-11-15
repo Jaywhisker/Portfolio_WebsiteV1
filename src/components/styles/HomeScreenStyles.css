@@ -71,9 +71,9 @@
 .neptinium:hover .project-name,
 .kopilo:hover .project-name,
 .aid:hover .project-name{
-    background: linear-gradient(90deg, #bebdbd, #bebdbd,#333333, #bebdbd,#bebdbd);
+    background: linear-gradient(90deg, #e0e0e0, #999999,#424242, #999999,#e0e0e0);
     background-repeat: repeat;
-    animation: shining 3s linear infinite;
+    animation: shining 5s linear infinite;
     background-size: 300% 100%;
     background-clip: text; 
     color: transparent;
@@ -135,9 +135,9 @@
 
 @keyframes shining {
     0%{
-        background-position: 100% 0%;
+        background-position: 150% 0%;
     }
     100%{
-        background-position: -50% 0%;
+        background-position: -150% 0%;
     }
 }
