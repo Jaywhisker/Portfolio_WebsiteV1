@@ -59,7 +59,7 @@ const HomeScreen = () => {
           { mobile ? (
             <MobileScreen/>
             ) : rotate ? (
-              <RotateScreen/>
+            <RotateScreen/>
             ) :
             isloadingScreen ? 
             (

@@ -6,7 +6,14 @@
     left: 0;
     overflow-x: hidden;
     /* overflow-y: hidden; */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
+
+.home::-webkit-scrollbar {
+    display: none;
+}
+  
 
 .head{
     height: 100vh;

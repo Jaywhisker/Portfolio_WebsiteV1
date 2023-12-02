@@ -15,6 +15,10 @@ body{
     margin: 0;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+  
 p {
     color: var(--dark_base);
     transition: color 1.5s ease;
