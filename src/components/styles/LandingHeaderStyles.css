@@ -299,8 +299,7 @@ a:hover div{
 }
 
 .arrowdown{
-    width: 20px;
-    height: 20px;
+    height: 3vmin;
     margin-left: 0.5vw;
     margin-top: 0px;
     animation: bounce 2s ease-in-out infinite;

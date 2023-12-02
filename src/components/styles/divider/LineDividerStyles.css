@@ -9,8 +9,7 @@
 
 .yarn{
     z-index: 1;
-    width: 36px;
-    height: 36px;
+    height: 5vmin;
     object-fit: contain;
     position: absolute;
     bottom: 49px;

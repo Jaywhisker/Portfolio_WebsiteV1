@@ -1,4 +1,4 @@
-import React,  { useEffect, useRef }  from 'react';
+import React,  { useEffect, useState }  from 'react';
 import '../styles/navigation/LightToggleStyles.css';
 import { Sun } from 'react-feather';
 
@@ -6,16 +6,19 @@ import { toggleChange } from '../../functions/lightModeFunctions';
 
 const LightToggle = ({lightMode, setlightMode}) => {
 
+  const [onMount, setOnMount] = useState(0)
 
   useEffect(() => {
-    console.log(lightMode)
-    if (!lightMode) {
+    console.log(lightMode, onMount)
+    if (!lightMode && onMount >= 1) {
       document.querySelector('.toggleButton').style.animation = 'togglemoveleft 1s ease-in-out forwards'
       document.querySelector('.toggleEyes').style.animation = 'eyeSlit 1s ease-in-out forwards'
-    } else {
+    } else if (onMount >= 1){
       document.querySelector('.toggleButton').style.animation = 'togglemoveright 1s ease-in-out forwards'
       document.querySelector('.toggleEyes').style.animation = 'eyeWiden 1s ease-in-out forwards'
-    }
+    } else if (onMount < 1 && lightMode !== undefined){
+      setOnMount(onMount + 1)
+    } 
   }, [lightMode])
     
 
