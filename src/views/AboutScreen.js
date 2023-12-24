@@ -20,15 +20,6 @@ const AboutScreen = () => {
   var initialYarnLineState = {};
   var initialYarnState={}
 
-  // const [lineContainerAbout, setlineContainerAbout] = useState(undefined)
-  // const [pathElementAbout, setpathElementAbout] = useState(undefined)
-
-  // const [lineContainerSkills, setlineContainerSkills] = useState(undefined)
-  // const [pathElementSkills, setpathElementSkills] = useState(undefined)
-
-  // const [lineContainerExp, setlineContainerExp] = useState(undefined)
-  // const [pathElementExp, setpathElementExp] = useState(undefined)
-
   const [pathContainer, setpathContainer] = useState({})
   const [lineElementContainer, setlineElementContainer] = useState({})
   var initialPathState = {};
@@ -106,7 +97,7 @@ const AboutScreen = () => {
                 <a className='about-contacts-link' style={{ marginBottom:'50px'}} href="https://github.com/Jaywhisker/" target="_blank">GitHub</a>
 
                 <p className='about-contacts-header'>More Info</p>
-                <a className='about-contacts-link' href="https://drive.google.com/file/d/1JzsoaxsUshx63GhLI3zBerEtCbTXlhCz/view?usp=sharing" target="_blank">Resume</a>
+                <a className='about-contacts-link' href="https://drive.google.com/file/d/1VMr903L17p_e4-Rx14c4lxbg7rRgdwYf/view?usp=sharing" target="_blank">Resume</a>
               </div>
             </div>
           </div>
