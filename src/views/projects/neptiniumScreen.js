@@ -41,7 +41,7 @@ const NeptiniumScreen = () => {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
       }
-        
+
     useEffect(() => {
         window.removeEventListener('scroll', window.handleScroll);
         window.addEventListener('scroll', handleScroll);
@@ -55,9 +55,9 @@ const NeptiniumScreen = () => {
         const rect = document.querySelector('.project-data-header').getBoundingClientRect()
         const header = document.querySelector('.project-data-title').getBoundingClientRect()
         if (rect.bottom > (window.innerHeight*0.1)) {
-            setOverride(true);
+            setOverride(false);
         } else {
-            setOverride(undefined);
+            setOverride(true);
         }
 
         if (header.top < (window.innerHeight*0.14)) {
