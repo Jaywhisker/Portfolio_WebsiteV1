@@ -125,7 +125,7 @@ function LineDivider({pathColour, lineContainerElement, pathElement}) {
     return (
         <>
             <div className='linecontainer'>
-                <svg width={lineWidth} height="100">
+                <svg width={lineWidth} height="75">
                 <path
                     vectorEffect="non-scaling-stroke"
                     id="path"

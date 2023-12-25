@@ -1,10 +1,11 @@
 import React,  { useState, useEffect }  from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import { useTheme } from '../context/lightContext';
 import { setDocumentMode } from '../functions/lightModeFunctions';
 import NavBar from '../components/navigation/Navbar';
 import YarnLine from '../components/divider/YarnLineDivider';
 import LineDivider from '../components/divider/LineDivider';
-import { useNavigate } from 'react-router-dom';
 
 import '../components/Global.css'
 import '../components/styles/AboutScreenStyles.css'
@@ -15,7 +16,7 @@ import archiveJSON from '../data/archive.json';
 
 const ArchiveScreen = () => {
 
-  const [archiveLightMode, setArchiveLightMode] = useState(undefined)
+  const archiveLightMode = useTheme()
 
   const [lineContainer, setlineContainer] = useState(undefined)
   const [pathElement, setpathElement] = useState(undefined)
@@ -31,16 +32,6 @@ const ArchiveScreen = () => {
 
   var pathColour = archiveLightMode ? "var(--dark_base)" : "var(--light_base)"
   const navigate = useNavigate()
-
-  useEffect(() => {
-    setDocumentMode(setArchiveLightMode)
-    pathColour = archiveLightMode ? "var(--dark_base)" : "var(--light_base)";
-
-    if (archiveLightMode !== undefined) {
-      document.body.style.transition = "background-color 1.5s"
-      document.body.style.transitionDelay = "0.1s"
-    }
-  }, [archiveLightMode]);
 
 
   useEffect(() => {
@@ -60,47 +51,9 @@ const ArchiveScreen = () => {
   }, [])
 
 
-  
-  // useEffect(() => {
-  //   const divs = document.querySelectorAll('.archive-row')
-    
-  //   function handleMouseOut() {
-  //     divs.forEach(div => {
-  //       const paragraphs = div.querySelectorAll('p')
-  //       paragraphs.forEach(p => {
-  //         p.style.opacity = 1;
-  //       })
-  //     })
-  //   }
-  
-  //   function handleMouseOver(event) {
-  //     divs.forEach(div => {
-  //       if (div !== event.target) {
-  //         const paragraphs = div.querySelectorAll('p')
-  //         paragraphs.forEach(p=> {
-  //           p.style.opacity = 0.1;
-  //         })
-  //       }
-  //     })
-  //   }
-
-  //   divs.forEach(div => {
-  //     div.addEventListener('mouseover', handleMouseOver);
-  //     div.addEventListener('mouseout', handleMouseOut);
-  //   });
-
-  //   return () => {
-  //     divs.forEach(div => {
-  //       div.removeEventListener('mouseover', handleMouseOver);
-  //       div.removeEventListener('mouseout', handleMouseOut);
-  //     });
-  //   };
-  // }, []); 
-
-
   return (
     <div className='archive-container'>
-        <NavBar lightMode={archiveLightMode} setlightMode={setArchiveLightMode} animation={false}/>
+        <NavBar animation={false}/>
         <div className='archive'>
             <div className='archive-header'>
                 <p className='archive-text'>Past Projects</p>

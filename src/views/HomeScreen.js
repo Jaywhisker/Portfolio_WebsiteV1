@@ -1,5 +1,6 @@
 import React,  { useState, useEffect, useContext }  from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { screenTypeContext } from '../context/mobileContext';
 
 import { setDocumentMode } from '../functions/lightModeFunctions';
 import LoadingScreen from './LoadingScreen';
@@ -11,7 +12,7 @@ import RotateScreen from '../components/loaders/rotateScreen';
 import '../components/styles/HomeScreenStyles.css';
 import '../components/styles/LoadingScreenStyles.css';
 import '../components/Global.css';
-import { screenTypeContext } from '../context/mobileContext';
+import { useTheme } from '../context/lightContext';
 
 
 const HomeScreen = () => {
@@ -19,7 +20,8 @@ const HomeScreen = () => {
   document.removeEventListener('scoll', window.handleScroll)
   const location = useLocation()
   const navigate = useNavigate()
-  const [lightMode, setlightMode] = useState(undefined)
+  const lightMode = useTheme()
+
   const [isloadingScreen, setisLoadingScreen] = useState(location.state === null)
 
   var pathColour = lightMode ? "var(--dark_base)" : "var(--light_base)";
@@ -28,7 +30,7 @@ const HomeScreen = () => {
 
 
   useEffect(() => {
-    setDocumentMode(setlightMode)
+    // setDocumentMode(setlightMode)
     if (isloadingScreen) {
       const timeoutId = setTimeout(() => {
         setisLoadingScreen(false)
@@ -38,7 +40,7 @@ const HomeScreen = () => {
         clearTimeout(timeoutId);
       };
     }
-  }, [lightMode]); 
+  }, []); 
 
   
   function scrollIntoView () {
@@ -63,9 +65,9 @@ const HomeScreen = () => {
             <LoadingScreen lightMode={lightMode} pathColour={pathColour}/>
             ) : (
             <div className='home'>
-              <NavBar lightMode={lightMode} setlightMode={setlightMode} animation={true}/>
+              <NavBar animation={true}/>
               <div className='head'>
-                <LandingHeader lightMode={lightMode} setlightMode={setlightMode} isloadingScreen={isloadingScreen} pathColour={pathColour} onClick={scrollIntoView}/>
+                <LandingHeader lightMode={lightMode} isloadingScreen={isloadingScreen} pathColour={pathColour} onClick={scrollIntoView}/>
               </div>
 
               <div className='project-container'>

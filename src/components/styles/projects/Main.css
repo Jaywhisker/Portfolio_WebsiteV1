@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: column;
     margin: 18vw 7.5vw 0 7.5vw;
+
 }
 
 .project-data-title-container{
@@ -49,7 +50,6 @@
     flex-direction: row;
     display: flex;
     align-items: flex-start;
-    margin-top: -24px;
     font: 400 2.5vmin 'Lato';
     opacity: 0;
     animation: slideright 1.5s forwards ease-in-out 1.75s
@@ -73,6 +73,7 @@
 
 .project-data-link{
     margin-bottom: 4px;
+    text-underline-offset:0.5vh;
 }
 
 .project-data-details{
@@ -81,10 +82,13 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    line-height: 1.35;
     opacity: 0;
     font: 400 2.25vmin 'Lato';
     animation: sliderright 1.5s forwards ease-in-out 1.75s
+}
+
+.project-data-details p{
+    line-height: 3.25vmin;
 }
 
 @keyframes sliderright {

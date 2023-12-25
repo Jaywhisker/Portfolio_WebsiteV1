@@ -1,14 +1,16 @@
 import React,  { useEffect }  from 'react';
 import '../styles/navigation/NavBarScreenStyles.css';
 import { useNavigate, useLocation } from 'react-router-dom';
+
 import LightToggle from './LightToggle';
 
+import { useTheme } from '../../context/lightContext';
 
-const NavBar = ({lightMode, setlightMode, animation, override, visible, sticky}) => {
+const NavBar = ({animation, override, visible, sticky}) => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  
+  const lightMode = useTheme()
   const pathColour = !(override === undefined ) ? override: lightMode
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const NavBar = ({lightMode, setlightMode, animation, override, visible, sticky})
         <div className='rightnavContainer'>
             <p className={pathColour ? 'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/archive' ? 'underline' : 'none'}} onClick={() => navigate('/archive')}>Archive</p>
             <p className={pathColour ?'righttext' : 'righttextdark'} style={{textDecoration: location.pathname==='/about' ? 'underline' : 'none'}} onClick={() => navigate('/about')}>About</p>
-            <LightToggle lightMode={lightMode} setlightMode={setlightMode}/>
+            <LightToggle/>
         </div>
     </div>
   );

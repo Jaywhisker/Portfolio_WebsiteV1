@@ -129,7 +129,7 @@ function YarnLine({pathColour, lineContainerElement, pathElement, yarnElement}) 
     return (
         <>
             <div className='linecontainer'>
-                <svg width={lineWidth-16} height="100">
+                <svg width={lineWidth-16} height="75">
                 <path
                     vectorEffect="non-scaling-stroke"
                     id="path"

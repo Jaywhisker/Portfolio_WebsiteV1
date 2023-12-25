@@ -1,5 +1,5 @@
 import React,  { useState, useEffect }  from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { setDocumentMode } from '../functions/lightModeFunctions';
 import NavBar from '../components/navigation/Navbar';
 import YarnLine from '../components/divider/YarnLineDivider';
@@ -8,10 +8,9 @@ import experienceJSON from '../data/experience.json'
 
 import '../components/Global.css'
 import '../components/styles/AboutScreenStyles.css'
+import { useSetTheme, useTheme } from '../context/lightContext';
 
 const AboutScreen = () => {
-
-  const [aboutLightMode, setAboutLightMode] = useState(undefined)
 
   const [yarnpathContainer, setyarnpathContainer] = useState({})
   const [yarnlineElementContainer, setyarnlineElementContainer] = useState({})
@@ -27,17 +26,9 @@ const AboutScreen = () => {
 
   document.removeEventListener('mousemove', window.handleMouseMove)
 
-  var pathColour = aboutLightMode ? "var(--dark_base)" : "var(--light_base)"
-  
-  useEffect(() => {
-    setDocumentMode(setAboutLightMode)
-    pathColour = aboutLightMode ? "var(--dark_base)" : "var(--light_base)";
+  const lightMode = useTheme()
 
-    if (aboutLightMode !== undefined) {
-      document.body.style.transition = "background-color 1.5s"
-      document.body.style.transitionDelay = "0.1s"
-    }
-  }, [aboutLightMode]);
+  var pathColour = lightMode ? "var(--dark_base)" : "var(--light_base)"
 
   useEffect(() => {
     const allLineContainer = document.querySelectorAll('.linecontainer')
@@ -75,7 +66,7 @@ const AboutScreen = () => {
 
   return (
     <div className='about-container'>
-        <NavBar lightMode={aboutLightMode} setlightMode={setAboutLightMode} animation={false} sticky={false}/>
+        <NavBar animation={false} sticky={false}/>
           <div className='about'>
             <div className='about-header'>
               <p className='about-text'>About</p>
