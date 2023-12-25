@@ -142,7 +142,7 @@
 .archive-row{
     display: flex;
     flex-direction: row;
-    margin-top: -45px;
+    margin-top: -24px;
     z-index: 999;
     margin-bottom: -45px;
 }

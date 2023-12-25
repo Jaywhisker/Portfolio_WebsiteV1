@@ -2,23 +2,22 @@ import React,  { useEffect, useRef }  from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin  } from '@fortawesome/free-brands-svg-icons';
 
-import { toggleChange, movePupils } from '../functions/lightModeFunctions';
+import { movePupils } from '../functions/lightModeFunctions';
 import '../components/styles/LandingHeaderStyles.css';
 import '../components/Global.css';
+import { useSetTheme } from '../context/lightContext';
 
-const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour , onClick}) => {
+const LandingHeader = ({lightMode, isloadingScreen, pathColour , onClick}) => {
 
   let animationFinished = false;
   var mountingCount = useRef(0);
   let pupilXoffset;
   let pupilYoffset;
 
+  const setLightMode = useSetTheme()
 
   useEffect(() => {
-    if (lightMode !== undefined && isloadingScreen === true) {
-      mountingCount.current += 1
-    }
-    else if (lightMode !== undefined && isloadingScreen === false) {
+    if (isloadingScreen === false && mountingCount.current >= 1) {
       mountingCount.current += 1
       const eyeContainer = document.querySelector('.eyesHome');
       const pupils = document.querySelector('.pupilsHome');
@@ -30,13 +29,13 @@ const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour , o
       document.body.style.transition = "background-color 2.5s"
       document.body.style.transitionDelay = "0.1s"
 
-      if (lightMode === true && mountingCount.current >1) {
+      if (lightMode === true) {
           eyeContainer.style.animation = "narrowingeyes 1.5s ease forwards";
           pupils.style.animation = "openeyes 2s ease forwards";
           setTimeout(() => {
             eyeContainer.style.backgroundColor = "white"
           }, 100)
-      } else if (lightMode === false && mountingCount.current >1) {
+      } else if (lightMode === false) {
           eyeContainer.style.animation = "narrowingeyes 1.5s ease forwards";
           pupils.style.animation = "sliteyes 2s ease forwards";
           setTimeout(() => {
@@ -48,12 +47,15 @@ const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour , o
         pupils.style.animation = "none";
       }, { once: true }); 
     }
+    else {
+      mountingCount.current += 1
+    }
   }, [lightMode]);
   
 
 
   useEffect(()=> {
-    if (!isloadingScreen && lightMode!==  undefined) {  
+    if (!isloadingScreen && lightMode!==undefined) {  
       document.getElementsByClassName("contactbutton")[0].addEventListener("mouseover", mouseOver);
       document.getElementsByClassName("contactbutton")[0].addEventListener("mouseout", mouseOut);
       document.querySelector('.logoCircleHome').addEventListener("animationend", animationEnd);
@@ -63,6 +65,7 @@ const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour , o
       window.handleMouseMove = handleMouseMove;
     }
   }, [isloadingScreen, lightMode])
+
 
   function handleMouseMove(e) {
     movePupils(e, animationFinished, pupilXoffset, pupilYoffset);
@@ -120,7 +123,7 @@ const LandingHeader = ({lightMode, setlightMode, isloadingScreen, pathColour , o
                 </g>
                 </svg>
                 
-                <div className='eyesHome' id="clip" onClick={() => toggleChange(lightMode, setlightMode)} style={{backgroundColor: lightMode ? 'white' : `var(--eye_orange)`}} >
+                <div className='eyesHome' id="clip" onClick={() => setLightMode()} style={{backgroundColor: lightMode ? 'white' : `var(--eye_orange)`}} >
                     <div className='pupilsHome'></div>
                 </div>
             </div>

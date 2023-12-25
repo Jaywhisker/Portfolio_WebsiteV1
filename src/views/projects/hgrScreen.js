@@ -1,7 +1,9 @@
 import React,  { useState, useEffect }  from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { setDocumentMode } from '../../functions/lightModeFunctions';
+import { useTheme } from '../../context/lightContext';
+import { assignLoadingScreen, rollYarn, scrollToTop } from '../../functions/projectsFunction';
+
 import NavBar from '../../components/navigation/Navbar';
 import YarnLine from '../../components/divider/YarnLineDivider';
 import ProjLoadingScreen from '../../components/loaders/projloaderScreen';
@@ -12,12 +14,13 @@ import '../../components/styles/projects/AidStyles.css'
 
 const HGRScreen = () => {
 
-    const [LightMode, setLightMode] = useState(undefined)
+    const [visible, setVisible] = useState(true)
     const [override, setOverride] = useState(true)
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
-    var pathColour = LightMode ? "var(--dark_base)" : "var(--light_base)"
+    const lightMode = useTheme()
+    var pathColour = lightMode ? "var(--dark_base)" : "var(--light_base)"
 
     const [pathContainer, setpathContainer] = useState({})
     const [lineElementContainer, setlineElementContainer] = useState({})
@@ -34,72 +37,15 @@ const HGRScreen = () => {
         window.scrollTo(0, 0);
       }
 
-      useEffect(() => {
+    useEffect(() => {
         window.removeEventListener('scroll', window.handleScroll);
         window.addEventListener('scroll', handleScroll);
         window.handleScroll = handleScroll;
         return () => {
-          window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         };
-      }, [])
-      
-      
-      useEffect(() => {
-        const randomInt = Math.floor (Math.random() * (3-0))
+    }, [])
     
-        if (randomInt == 1 || randomInt == 0) {
-            setLoading(false)
-        } else {
-            const randomTime = Math.floor(Math.random() * (2700-1500) + 1500);
-    
-            const timeoutId = setTimeout(() => {
-                document.querySelector('.loading-container').style.animation = 'contract 1s ease-in-out forwards'
-                setTimeout(() => {
-                    setLoading(false);
-                }, 1000)
-            }, randomTime);
-                return () => {
-                clearTimeout(timeoutId);
-            };
-        }
-        }, []);
-
-    useEffect(() => {
-        if (!loading) {
-            const allLineState = document.querySelectorAll('.linecontainer')
-            const allPathState = document.querySelectorAll('#path')
-            const allYarnState = document.querySelectorAll('.yarn')
-            allLineState.forEach((LineState, index) => {
-                initialLineState[index] = LineState
-            })
-    
-            allPathState.forEach((PathState, index) => {
-                initialPathState[index] = PathState
-            })
-    
-            allYarnState.forEach((YarnState, index) => {
-                initialYarnState[index] = YarnState
-            })
-    
-            setlineElementContainer(initialLineState)
-            setpathContainer(initialPathState)
-            setyarnElementContainer(initialYarnState)
-        }
-    }, [loading])
-
-
-    useEffect(() => {
-        setDocumentMode(setLightMode)
-        pathColour = LightMode ? "var(--dark_base)" : "var(--light_base)";
-
-        if (LightMode !== undefined) {
-        document.body.style.transition = "background-color 1.5s"
-        document.body.style.transitionDelay = "0.1s"
-        }
-    }, [LightMode]);
-
-
-    const [visible, setVisible] = useState(true)
     function handleScroll() {
         const rect = document.querySelector('.project-data-header').getBoundingClientRect()
         const header = document.querySelector('.project-data-title').getBoundingClientRect()
@@ -117,21 +63,29 @@ const HGRScreen = () => {
       }
     
     useEffect(() => {
-    // "document.documentElement.scrollTo" is the magic for React Router Dom v6
-    document.documentElement.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant", // Optional if you want to skip the scrolling animation
-    });
-    }, [pathname]);
+        assignLoadingScreen(3, setLoading)
+    }, []);
 
+    useEffect(() => {
+        rollYarn(loading, 
+            initialLineState, 
+            initialPathState, 
+            initialYarnState, 
+            setlineElementContainer,
+            setpathContainer,
+            setyarnElementContainer)
+    }, [loading])
+
+    useEffect(() => {
+        scrollToTop()
+    }, [pathname]);
 
     return (
         loading ? (
             <ProjLoadingScreen/>
         ) : (
         <>
-            <NavBar lightMode={LightMode} setlightMode={setLightMode} animation={false} override={override} visible={visible}/>
+            <NavBar animation={false} override={override} visible={visible}/>
             <div>
                 <img src='/project/cvhand/cvheader.png' className='project-data-header' />
             </div>

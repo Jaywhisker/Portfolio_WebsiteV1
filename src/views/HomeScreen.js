@@ -1,7 +1,7 @@
-import React,  { useState, useEffect }  from 'react';
+import React,  { useState, useEffect, useContext }  from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { screenTypeContext } from '../context/mobileContext';
 
-import { renderCorrectScreen } from '../functions/mobileFunctions';
 import { setDocumentMode } from '../functions/lightModeFunctions';
 import LoadingScreen from './LoadingScreen';
 import NavBar from '../components/navigation/Navbar';
@@ -9,30 +9,28 @@ import LandingHeader from '../components/LandingHeader';
 import MobileScreen from '../components/loaders/isMobile';
 import RotateScreen from '../components/loaders/rotateScreen';
 
-
 import '../components/styles/HomeScreenStyles.css';
 import '../components/styles/LoadingScreenStyles.css';
 import '../components/Global.css';
+import { useTheme } from '../context/lightContext';
 
 
 const HomeScreen = () => {
+  
   document.removeEventListener('scoll', window.handleScroll)
-
   const location = useLocation()
   const navigate = useNavigate()
-  const [lightMode, setlightMode] = useState(undefined)
+  const lightMode = useTheme()
+
   const [isloadingScreen, setisLoadingScreen] = useState(location.state === null)
-  const [rotate, setRotate] = useState(false)
-  const [mobile, setMobile] = useState(false)
 
   var pathColour = lightMode ? "var(--dark_base)" : "var(--light_base)";
 
-  useEffect(() => {
-    renderCorrectScreen(navigate, location, setRotate, setMobile)
-  }, [])
+  var screenType = useContext(screenTypeContext)
+
 
   useEffect(() => {
-    setDocumentMode(setlightMode)
+    // setDocumentMode(setlightMode)
     if (isloadingScreen) {
       const timeoutId = setTimeout(() => {
         setisLoadingScreen(false)
@@ -42,8 +40,9 @@ const HomeScreen = () => {
         clearTimeout(timeoutId);
       };
     }
-  }, [lightMode]); 
+  }, []); 
 
+  
   function scrollIntoView () {
     const firstProj = document.querySelector('.kopilo')
     firstProj.scrollIntoView({
@@ -56,9 +55,9 @@ const HomeScreen = () => {
   return (
     lightMode !== undefined ? (
       <div className='container'>
-          { mobile ? (
+          { screenType === 'mobile' ? (
             <MobileScreen/>
-            ) : rotate ? (
+            ) : screenType === 'rotate' ? (
             <RotateScreen/>
             ) :
             isloadingScreen ? 
@@ -66,9 +65,9 @@ const HomeScreen = () => {
             <LoadingScreen lightMode={lightMode} pathColour={pathColour}/>
             ) : (
             <div className='home'>
-              <NavBar lightMode={lightMode} setlightMode={setlightMode} animation={true}/>
+              <NavBar animation={true}/>
               <div className='head'>
-                <LandingHeader lightMode={lightMode} setlightMode={setlightMode} isloadingScreen={isloadingScreen} pathColour={pathColour} onClick={scrollIntoView}/>
+                <LandingHeader lightMode={lightMode} isloadingScreen={isloadingScreen} pathColour={pathColour} onClick={scrollIntoView}/>
               </div>
 
               <div className='project-container'>

@@ -1,6 +1,7 @@
 import Routing from "./routes/Routes";
 import React, {useEffect} from 'react';
-import { Analytics } from '@vercel/analytics/react';
+import { screenTypeContext, screenType } from "./context/mobileContext";
+import { ThemeProvider } from "./context/lightContext";
 
 function App() {
 
@@ -61,7 +62,12 @@ const cacheImages = async (srcArray) => {
 }   
 
   return (
-    <Routing></Routing>
+    <screenTypeContext.Provider value={screenType()}>
+      <ThemeProvider>
+        <Routing>
+        </Routing>
+      </ThemeProvider>
+    </screenTypeContext.Provider>
   );
 }
 

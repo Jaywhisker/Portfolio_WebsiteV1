@@ -10,7 +10,7 @@
 }
 
 body{
-    transition:none;
+    transition: background-color 1.5s ease;
     overflow-x: hidden;
     margin: 0;
 }
@@ -23,6 +23,7 @@ p {
     color: var(--dark_base);
     transition: color 1.5s ease;
     font-family: 'Lato';
+    cursor: default;
 }
 
 .dark_mode p {

@@ -28,7 +28,6 @@ export function renderCorrectScreen(navigate, location, setRotate, setMobile) {
     }
 }
 
-
 export async function cacheImages(srcArray, setLoading) {
     const startTime = performance.now();
 

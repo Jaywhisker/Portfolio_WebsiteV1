@@ -198,6 +198,7 @@
     text-underline-offset: 0.15em;
     text-decoration-thickness: 2px;
     font-size: 4vmin;
+    cursor: pointer;
 }
 
 .outline{
@@ -278,6 +279,7 @@ a:hover div{
     right: 7.5vw;
     opacity: 0;
     animation: textslidein 1s forwards 1.4s;
+    cursor: pointer;
 }
 
 .flexright:hover{

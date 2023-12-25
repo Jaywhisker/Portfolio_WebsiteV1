@@ -18,14 +18,6 @@ export function setDocumentMode(setlightMode) {
     }
 } 
 
-export function DocumentMode() {
-  const islightMode = localStorage.getItem("lightMode");
-  if (islightMode === "true") {
-    return true
-  } else {
-    return false
-  }
-}
 
 export function toggleChange(lightMode, setlightMode) {
   setlightMode(!lightMode)
