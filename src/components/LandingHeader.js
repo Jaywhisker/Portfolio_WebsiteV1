@@ -17,7 +17,7 @@ const LandingHeader = ({lightMode, isloadingScreen, pathColour , onClick}) => {
   const setLightMode = useSetTheme()
 
   useEffect(() => {
-    if (isloadingScreen === false && mountingCount.current > 1) {
+    if (isloadingScreen === false && mountingCount.current >= 1) {
       mountingCount.current += 1
       const eyeContainer = document.querySelector('.eyesHome');
       const pupils = document.querySelector('.pupilsHome');
