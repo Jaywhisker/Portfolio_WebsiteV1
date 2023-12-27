@@ -24,7 +24,6 @@ const HomeScreen = () => {
   const [isloadingScreen, setisLoadingScreen] = useState(location.state === null)
 
   var pathColour = lightMode ? "var(--dark_base)" : "var(--light_base)";
-  var scrollBarColour = lightMode ? "var(--light_base)" : "var(--dark_base)";
   
   var screenType = useContext(screenTypeContext)
 

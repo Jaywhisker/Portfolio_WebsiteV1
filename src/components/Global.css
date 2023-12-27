@@ -20,7 +20,7 @@ body{
 
 body::-webkit-scrollbar {
     background-color:transparent;
-    width:16px;
+    width:6px;
 }
 
 body::-webkit-scrollbar-track {
@@ -29,9 +29,9 @@ body::-webkit-scrollbar-track {
 
 /* scrollbar itself */
 body::-webkit-scrollbar-thumb {
-    background-color:#a0a0a5;
-    border-radius:16px;
-    border:5px solid;
+    background-color:#898886;
+    border-radius:8px;
+    /* border:1px solid; */
     border-color: inherit;
     transition: 1.5s all ease;
 }
