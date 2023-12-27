@@ -100,7 +100,7 @@ const AboutScreen = () => {
             </div>
 
             <div className='skill-set'>
-                <p className='skill-set-header' style={{marginTop: '-15px'}}>Web Development</p>
+                <p className='skill-set-header'>Web Development</p>
                 <p className='skill-set-text'>React, Next.js, Javascript, HTML/CSS, FastAPI, Flask</p>
 
                 <p className='skill-set-header'>AI Development</p>

@@ -26,7 +26,7 @@ const LandingHeader = ({lightMode, isloadingScreen, pathColour , onClick}) => {
       pupils.style.top = '-1px';
       pupils.style.left = '18px';
   
-      document.body.style.transition = "background-color 2.5s"
+      document.body.style.transition = "background-color 2.5s, border-color 2.5s"
       document.body.style.transitionDelay = "0.1s"
 
       if (lightMode === true) {

@@ -2,7 +2,7 @@ import React,  { useState, useEffect, useContext }  from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { screenTypeContext } from '../context/mobileContext';
 
-import { setDocumentMode } from '../functions/lightModeFunctions';
+import { useTheme } from '../context/lightContext';
 import LoadingScreen from './LoadingScreen';
 import NavBar from '../components/navigation/Navbar';
 import LandingHeader from '../components/LandingHeader';
@@ -12,7 +12,6 @@ import RotateScreen from '../components/loaders/rotateScreen';
 import '../components/styles/HomeScreenStyles.css';
 import '../components/styles/LoadingScreenStyles.css';
 import '../components/Global.css';
-import { useTheme } from '../context/lightContext';
 
 
 const HomeScreen = () => {
@@ -25,7 +24,8 @@ const HomeScreen = () => {
   const [isloadingScreen, setisLoadingScreen] = useState(location.state === null)
 
   var pathColour = lightMode ? "var(--dark_base)" : "var(--light_base)";
-
+  var scrollBarColour = lightMode ? "var(--light_base)" : "var(--dark_base)";
+  
   var screenType = useContext(screenTypeContext)
 
 

@@ -18,20 +18,20 @@
 @keyframes slideleft {
 
     0% {
-        margin: calc(30vh - 18vw) 35%;
+        margin: calc(30vh - 18vw + 16px) 35%;
         transform: scale(1);
     }
     15%{
-        margin: calc(30vh - 18vw) 35%;
+        margin: calc(30vh - 18vw + 16px) 35%;
         transform: scale(1.1);
     }
     40%{
-        margin: calc(30vh - 18vw) 35%;
+        margin: calc(30vh - 18vw + 16px) 35%;
         transform: scale(0.8);
     }
 
     100% {
-        margin: calc(30vh - 18vw) 5%;
+        margin: calc(30vh - 18vw + 16px) 5%;
         transform: scale(0.8);
     }
     

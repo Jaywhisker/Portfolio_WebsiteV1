@@ -4,13 +4,15 @@
         "key": "1",
         "date": "Aug 2023 - Dec 2023",
         "company": "DSTA",
-        "scope": "Software Engineering, Natural Language Processing"
+        "scope": "Software Engineering, Natural Language Processing",
+        "mobileScope": "Software Engineer"
       },
       {
         "key": "2",
         "date": "Jan 2021 - Apr 2021 ",
         "company": "DSTA",
-        "scope": "Computer Vision, Web Development"
+        "scope": "Computer Vision, Web Development",
+        "mobileScope": "AI Engineer"
       }
     ]
   }
