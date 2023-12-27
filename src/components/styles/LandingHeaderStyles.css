@@ -158,7 +158,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 8vh;
+    margin-bottom: 100vh;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
 }
 
 .info{
@@ -275,7 +279,7 @@ a:hover div{
     justify-content: flex-end;
     align-items: center;
     position: absolute;
-    bottom: 7.5%;
+    bottom: 10%;
     right: 7.5vw;
     opacity: 0;
     animation: textslidein 1s forwards 1.4s;
