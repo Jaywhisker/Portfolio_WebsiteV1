@@ -1,7 +1,7 @@
 .lightToggleContainer {
-    width: 3.15rem;
-    height: 1.5rem;
-    border-radius: 2rem;
+    width: 7vmin;
+    height: 3.5vmin;
+    border-radius: 2vmin;
     display: flex;
     align-items: center;
     position: relative;
@@ -9,11 +9,11 @@
 }
 
 .toggleButton{
-    width: 1.3rem;
-    height:1.3rem;
+    width: 2.5vmin;
+    height:2.5vmin;
     border-radius: 50%;
     position: absolute;
-    left: 1.7rem;
+    left: 3.8vmin;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,8 +28,8 @@
 
 .toggleEyes{
     background-color: var(--dark_base);
-    height: 1rem;
-    width: 1rem;
+    height: 2vmin;
+    width: 2vmin;
     border-radius: 50%;
     animation: none
 }
@@ -37,19 +37,19 @@
 
 @keyframes togglemoveleft {
     0%{
-        left: 1.7rem;
+        left: 3.8vmin;
 
     } 100% {
-        left: 0.15rem;
+        left: 0.5vmin;
     }
 }
 
 @keyframes togglemoveright {
     0%{
-        left: 0.15rem;
+        left: 0.5vmin;
 
     } 100% {
-        left: 1.7rem;
+        left: 3.8vmin;
     }
 }
 
@@ -72,23 +72,23 @@
 }
 
 .moon{
-    width: 1rem ;
-    height: 1rem ;
+    width: 2.15vmin ;
+    height: 2.15vmin ;
     background-color: transparent ; 
-    box-shadow: inset 0.4rem -0.2rem var(--dark_base) ;
-    border-radius: 0.5rem ;
+    box-shadow: inset 0.75vmin -0.5vmin var(--dark_base) ;
+    border-radius: 5vmin ;
     position: absolute;
-    right: 0.2rem;
+    right: 0.5vmin;
     transition: opacity 1s;
 }
 
 .sun{
     color: var(--light_base);
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 2.25vmin;
+    height: 2.25vmin;
     fill: var(--dark_base);
     position: absolute;
-    left: 0.2rem;
+    left: 0.5vmin;
     transition: opacity 0.25s;
 }
 
