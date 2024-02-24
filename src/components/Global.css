@@ -11,7 +11,7 @@
 }
 
 body{
-    transition: background-color 2.5s ease, border-color 2.5s ease;
+    transition:border-color 2.5s ease;
     overflow-x: hidden;
     margin: 0;
     height: 100vh;
